@@ -5,8 +5,7 @@ export default function TopNavigation() {
         <header>
             <nav>
                 <ul>
-                    <li><Link href="/">Home</Link></li>
-                    <li><Link href="/dashboard">Dashboard</Link></li>
+                    <li><Link href="/user/profile">Profile</Link></li>
                 </ul>
             </nav>
         </header>
