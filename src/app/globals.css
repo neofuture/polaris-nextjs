@@ -1,6 +1,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --purple: #a126fa;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,8 +34,13 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  transition: ease-in-out 300ms;
 }
 
+a:hover {
+  color: var(--purple);
+  transition: ease-in-out 300ms;
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

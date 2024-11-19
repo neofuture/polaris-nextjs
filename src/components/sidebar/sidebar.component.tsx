@@ -5,8 +5,16 @@ export default function Sidebar() {
         <aside>
             <nav>
                 <ul>
-                    <li><Link href="/">Home</Link></li>
-                    <li><Link href="/dashboard">Dashboard</Link></li>
+                    <li>
+                        <Link href="/">
+                            <i className={"fad fa-home"}/> Home
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/dashboard">
+                            <i className={"fad fa-dashboard"}/> Dashboard
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </aside>

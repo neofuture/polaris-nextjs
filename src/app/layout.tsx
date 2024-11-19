@@ -1,8 +1,9 @@
-import type {Metadata} from "next";
+import type { Metadata } from "next";
 import "./globals.css";
 import TopNavigation from "@/components/top-navigation/top-navigation.component";
 import Sidebar from "@/components/sidebar/sidebar.component";
 import React from "react";
+import { AuthProvider } from "@/context/AuthContext";
 
 export const metadata: Metadata = {
     title: "Polaris",
@@ -21,13 +22,15 @@ export default function RootLayout({
             <link rel="stylesheet" href="/css/duotone.min.css"/>
         </head>
         <body>
-        <TopNavigation/>
-        <div>
-        <Sidebar/>
-            <main>
-                {children}
-            </main>
-        </div>
+        <AuthProvider>
+            <TopNavigation/>
+            <div>
+                <Sidebar/>
+                <main>
+                    {children}
+                </main>
+            </div>
+        </AuthProvider>
         </body>
         </html>
     );
