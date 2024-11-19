@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import withAuth from "../../hoc/with-auth";
+import withAuth from "@/hoc/with-auth";
 
 const Profile = () => {
     return (

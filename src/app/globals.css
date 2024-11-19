@@ -40,14 +40,21 @@ a {
 }
 
 a:hover {
-    color: var(--purple);
-    transition: ease-in-out 300ms;
+    color: var(--light-purple);
 }
 
 @media (prefers-color-scheme: dark) {
     html {
         color-scheme: dark;
     }
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 button {
@@ -59,9 +66,9 @@ button {
     border-radius: 4px;
     transition: ease-in-out 300ms;
     font-size:inherit;
+    margin:8px;
 }
 
 button:hover {
     background-color: var(--darker-purple);
-    transition: ease-in-out 300ms;
 }

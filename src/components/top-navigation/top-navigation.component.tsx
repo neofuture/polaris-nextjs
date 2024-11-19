@@ -8,20 +8,28 @@ export default function TopNavigation() {
 
     return (
         <header>
-            <nav>
-                <ul>
-                    <li>
-                        <Link href="/user/profile">
-                            <i className="fad fa-user"/> Profile
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
             <div>
                 <button onClick={login}>Login</button>
                 <button onClick={logout}>Logout</button>
-                <p>Login state: {isLoggedIn ? "Logged In" : "Logged Out"}</p>
+                Login state: {isLoggedIn ? "Logged In" : "Logged Out"}
             </div>
+            <nav>
+                <ul>
+                    {isLoggedIn ? (
+                        <li>
+                            <Link href="/user/profile">
+                                <i className="fad fa-user icon"/> Profile
+                            </Link>
+                        </li>
+                    ) : (
+                        <li>
+                            <Link href="/user/login">
+                                <i className="fad fa-sign-in icon"/> Login
+                            </Link>
+                        </li>
+                    )}
+                </ul>
+            </nav>
         </header>
     );
 }
