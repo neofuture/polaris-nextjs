@@ -67,7 +67,6 @@ button {
     border-radius: 4px;
     transition: ease-in-out 300ms;
     font-size:inherit;
-    margin:8px;
 }
 
 button:hover {
@@ -98,4 +97,9 @@ header {
     padding: 8px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--light-purple);}
+    border-bottom: 1px solid var(--light-purple);
+}
+
+.icon {
+    margin-right:6px;
+}

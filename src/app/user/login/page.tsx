@@ -11,7 +11,9 @@ const Login = () => {
             <div>
                 <h1>Already Logged In</h1>
                 <p>You are already logged in.</p>
-                <button onClick={logout}>Logout</button>
+                <button onClick={logout}>
+                    <i className={"fad fa-sign-out icon"}/> Logout
+                </button>
             </div>
         );
     }
@@ -20,7 +22,9 @@ const Login = () => {
         <div>
             <h1>Login</h1>
             <p>Welcome to the login!</p>
-            <button onClick={login}>Login</button>
+            <button onClick={login}>
+                <i className={"fad fa-sign-in icon"}/> Login
+            </button>
         </div>
     );
 };
