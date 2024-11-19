@@ -3,8 +3,8 @@
 import React from 'react';
 import { useAuth } from '@/context/AuthContext';
 
-const withAuth = (WrappedComponent: React.ComponentType) => {
-    const ComponentWithAuth = (props: any) => {
+const withAuth = <P extends object>(WrappedComponent: React.ComponentType<P>) => {
+    const ComponentWithAuth = (props: P) => {
         const { isLoggedIn } = useAuth();
 
         if (!isLoggedIn) {
