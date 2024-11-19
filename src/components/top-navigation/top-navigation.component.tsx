@@ -5,7 +5,11 @@ export default function TopNavigation() {
         <header>
             <nav>
                 <ul>
-                    <li><Link href="/user/profile">Profile</Link></li>
+                    <li>
+                        <Link href="/user/profile">
+                            <i className="fad fa-user"/> Profile
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </header>

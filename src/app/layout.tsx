@@ -16,10 +16,14 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+        <head>
+            <link rel="stylesheet" href="/css/fontawesome.min.css"/>
+            <link rel="stylesheet" href="/css/duotone.min.css"/>
+        </head>
         <body>
         <TopNavigation/>
         <div>
-            <Sidebar/>
+        <Sidebar/>
             <main>
                 {children}
             </main>
