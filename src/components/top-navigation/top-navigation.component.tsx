@@ -4,15 +4,10 @@ import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 
 export default function TopNavigation() {
-    const { isLoggedIn, login, logout } = useAuth();
+    const { isLoggedIn } = useAuth();
 
     return (
         <header>
-            <div>
-                <button onClick={login}>Login</button>
-                <button onClick={logout}>Logout</button>
-                Login state: {isLoggedIn ? "Logged In" : "Logged Out"}
-            </div>
             <nav>
                 <ul>
                     {isLoggedIn ? (
