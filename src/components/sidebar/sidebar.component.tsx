@@ -3,14 +3,19 @@
 import React from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
+import styles from './sidebar.module.css';
 
-export default function Sidebar() {
+interface SidebarProps {
+    className?: string;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ className }) => {
     const { isLoggedIn } = useAuth();
 
     return (
-        <aside>
+        <aside className={className}>
             <nav>
-                <ul>
+                <ul className={styles.navList}>
                     <li>
                         <Link href="/">
                             <i className={"fad fa-home icon"}/> Home
@@ -33,3 +38,5 @@ export default function Sidebar() {
         </aside>
     );
 }
+
+export default Sidebar;

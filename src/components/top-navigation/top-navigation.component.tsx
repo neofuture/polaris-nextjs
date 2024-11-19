@@ -2,20 +2,28 @@
 
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
-
-export default function TopNavigation() {
-    const { isLoggedIn } = useAuth();
+import React from "react";
+import styles from "./top-navigation.module.css";
+const TopNavigation: React.FC = () => {
+    const { isLoggedIn, logout } = useAuth();
 
     return (
         <header>
             <nav>
-                <ul>
+                <ul className={styles.navList}>
                     {isLoggedIn ? (
-                        <li>
-                            <Link href="/user/profile">
-                                <i className="fad fa-user icon"/> Profile
-                            </Link>
-                        </li>
+                        <>
+                            <li>
+                                <Link href="/user/profile">
+                                    <i className="fad fa-user icon"/> Profile
+                                </Link>
+                            </li>
+                            <li>
+                                <a onClick={logout}>
+                                    <i className="fad fa-sign-out icon"/> Logout
+                                </a>
+                            </li>
+                        </>
                     ) : (
                         <li>
                             <Link href="/user/login">
@@ -28,3 +36,5 @@ export default function TopNavigation() {
         </header>
     );
 }
+
+export default TopNavigation;

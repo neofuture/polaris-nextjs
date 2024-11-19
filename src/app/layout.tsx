@@ -24,9 +24,9 @@ export default function RootLayout({
         <body>
         <AuthProvider>
             <TopNavigation/>
-            <div>
-                <Sidebar/>
-                <main>
+            <div className="layout">
+                <Sidebar className="sidebar"/>
+                <main className="main">
                     {children}
                 </main>
             </div>

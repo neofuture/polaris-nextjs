@@ -1,0 +1,14 @@
+.navList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navList li {
+    margin-right: 20px;
+}
+
+.navList li i {
+    margin-right: 6px;
+}

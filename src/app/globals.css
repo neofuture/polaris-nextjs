@@ -16,7 +16,7 @@
 html,
 body {
     max-width: 100vw;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 body {
@@ -37,6 +37,7 @@ a {
     color: inherit;
     text-decoration: none;
     transition: ease-in-out 300ms;
+    cursor: pointer;
 }
 
 a:hover {
@@ -72,3 +73,29 @@ button {
 button:hover {
     background-color: var(--darker-purple);
 }
+
+.layout {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 50px);
+}
+
+.sidebar {
+    width: 200px;
+    padding: 20px 8px 8px 8px;
+}
+
+.main {
+    flex-grow: 1;
+    background-color: white;
+    color: black;
+    overflow: auto;
+    padding:20px;
+}
+
+header {
+    height: 50px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--light-purple);}
