@@ -16,10 +16,10 @@ const Button: React.FC<NavLinkProps> = ({ iconName, label, onClick }) => {
                 <>
                     {label ? (
                         <div className={styles['button__icon-wrapper']}>
-                            <i className={`fad ${iconName} icon`} />
+                            <i className={`fad ${iconName} ${styles.icon}`} />
                         </div>
                     ) : (
-                        <i className={`fad ${iconName}`} />
+                        <i className={`fad ${iconName} ${styles.icon}`} />
                     )}
                 </>
             )}

@@ -14,14 +14,18 @@ const TopNavigation: React.FC = () => {
 
     return (
         <header className={styles.header}>
-            <nav>
-                <ul>
-                    <Button onClick={toggleSidebar}
-                            iconName={isSidebarOpen ? "fad fa-square" : "fad fa-sidebar"}/>
-                </ul>
+            <nav className={styles['first-nav']}>
+
+                <Button onClick={toggleSidebar}
+                        iconName={isSidebarOpen ? "fad fa-square" : "fad fa-sidebar"}/>
+
+                <div className={styles.logo}>
+                    <img src="/images/hoops.png" className={styles.hoops}/>
+                    <img src="/images/polaris.png" className={styles.polaris}/>
+                </div>
             </nav>
             <nav>
-                <ul className={styles.navList}>
+                <ul className={styles['nav-list']}>
                     {isLoggedIn ? (
                         <>
                             <li>
