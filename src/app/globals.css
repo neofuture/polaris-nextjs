@@ -4,6 +4,7 @@
     --light-purple: #a126fa;
     --dark-purple: #6615a1;
     --darker-purple: #420d69;
+    --transition-delay: 100ms;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -79,11 +80,6 @@ button:hover {
     height: calc(100vh - 50px);
 }
 
-.sidebar {
-    width: 200px;
-    padding: 20px 8px 8px 8px;
-}
-
 .main {
     flex-grow: 1;
     background-color: white;
@@ -91,13 +87,6 @@ button:hover {
     overflow: auto;
     padding:20px;
     border-top-left-radius: 20px;
-}
-
-header {
-    height: 50px;
-    padding: 8px;
-    display: flex;
-    align-items: center;
 }
 
 .icon {
