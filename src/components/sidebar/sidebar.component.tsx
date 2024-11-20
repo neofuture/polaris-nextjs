@@ -23,7 +23,7 @@ const Sidebar: React.FC = () => {
                 <nav>
                     <ul className={styles['sidebar__nav-list']}>
                         <li className={styles['sidebar__nav-list-item']}>
-                            <NavLink iconName="fa-home" label="Home" href="/"/>
+                            <NavLink iconName="fa-home" label="Home" href="/" exact={true}/>
                         </li>
                         <li className={styles['sidebar__nav-list-item']}>
                             <NavLink iconName="fa-dashboard" label="Dashboard" href="/dashboard"/>
