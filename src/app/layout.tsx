@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <SidebarProvider>
                 <TopNavigation />
                 <div className="layout">
-                    <Sidebar className="sidebar" />
+                    <Sidebar/>
                     <main className="main">{children}</main>
                 </div>
             </SidebarProvider>

@@ -1,3 +1,23 @@
+.sidebarContainer {
+    position: relative;
+}
+
+.containerOpen {
+    min-width: 200px;
+    transition: ease-in-out var(--transition-delay);
+}
+
+.containerClosed {
+    min-width: 52px;
+    transition: ease-in-out var(--transition-delay);
+}
+
+.sidebar {
+    position:absolute;
+    height: 100%;
+    background-color: var(--background);
+}
+
 .navList {
     list-style-type: none;
     padding: 0;
@@ -26,8 +46,25 @@
     transition: ease-in-out var(--transition-delay);
 }
 
+.open span {
+    padding-left: 6px;
+    opacity: 1;
+    transition: ease-in-out var(--transition-delay);
+}
+
 .closed span {
+    padding-left: 0;
     opacity: 0;
+    transition: ease-in-out var(--transition-delay);
+}
+
+.closed:hover {
+    width: 200px;
+    transition: ease-in-out var(--transition-delay);
+}
+.closed:hover span {
+    padding-left: 6px;
+    opacity: 1;
     transition: ease-in-out var(--transition-delay);
 }
 
