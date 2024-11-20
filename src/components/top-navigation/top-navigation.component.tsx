@@ -17,10 +17,11 @@ const TopNavigation: React.FC = () => {
             <nav className={styles['first-nav']}>
 
                 <Button onClick={toggleSidebar}
+                        rounded={true}
                         iconName={isSidebarOpen ? "fad fa-square" : "fad fa-sidebar"}/>
 
                 <div className={styles.logo}>
-                    <Image src='/images/hoops.png' width='48' height='32' alt={""}/>
+                    <Image src='/images/hoops.png' width='54' height='36' alt={""}/>
                     <Image src="/images/polaris.png" width='80' height='14' alt={""}/>
                 </div>
             </nav>

@@ -3,15 +3,16 @@
 import React from 'react';
 import styles from './button.module.css';
 
-interface NavLinkProps {
+interface ButtonProps {
     iconName?: string;
     label?: string;
     onClick?: () => void;
+    rounded?: boolean;
 }
 
-const Button: React.FC<NavLinkProps> = ({ iconName, label, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ iconName, label, onClick, rounded }) => {
     return (
-        <button onClick={onClick} className={styles.button}>
+        <button onClick={onClick} className={`${styles.button} ${rounded ? styles.rounded : ''}`}>
             {iconName && (
                 <>
                     {label ? (
