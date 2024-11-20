@@ -32,6 +32,11 @@ const Sidebar: React.FC = () => {
                         <li className={styles['sidebar__nav-list-item']}>
                             <NavLink iconName="fa-dashboard" label="Dashboard" href="/dashboard"/>
                         </li>
+                        {!isLoggedIn && (
+                            <li className={styles['sidebar__nav-list-item']}>
+                                <NavLink iconName="fa-sign-in" label="Login" href="/user/login"/>
+                            </li>
+                        )}
                         {isLoggedIn && (
                             <li className={styles['sidebar__nav-list-item']}>
                                 <NavLink iconName="fa-user" label="Profile" href="/user/profile"/>
