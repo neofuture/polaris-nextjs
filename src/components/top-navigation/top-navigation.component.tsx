@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import {useAuth} from "@/context/AuthContext";
 import {useSidebar} from "@/context/SidebarContext";
 import styles from "./top-navigation.module.css";
 import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
 import Button from "@/components/microcomponents/button/button.component";
+import Image from "next/image";
 
 const TopNavigation: React.FC = () => {
     const {isLoggedIn, logout} = useAuth();
@@ -20,8 +20,8 @@ const TopNavigation: React.FC = () => {
                         iconName={isSidebarOpen ? "fad fa-square" : "fad fa-sidebar"}/>
 
                 <div className={styles.logo}>
-                    <img src="/images/hoops.png" className={styles.hoops}/>
-                    <img src="/images/polaris.png" className={styles.polaris}/>
+                    <Image src='/images/hoops.png' className={styles.hoops} width='48' height='32' alt={""}/>
+                    <Image src="/images/polaris.png" className={styles.polaris} width='90' height='16' alt={""}/>
                 </div>
             </nav>
             <nav>
