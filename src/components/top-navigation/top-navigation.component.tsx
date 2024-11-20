@@ -8,21 +8,23 @@ import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
 import Button from "@/components/microcomponents/button/button.component";
 import Image from "next/image";
 
-const TopNavigation: React.FC = () => {
+interface TopNavigationProps {
+    project: string
+}
+
+const TopNavigation: React.FC<TopNavigationProps> = ({ project }) => {
     const {isLoggedIn, logout} = useAuth();
     const {isSidebarOpen, toggleSidebar} = useSidebar();
 
     return (
         <header className={styles.header}>
             <nav className={styles['first-nav']}>
-
                 <Button onClick={toggleSidebar}
                         rounded={true}
                         iconName={isSidebarOpen ? "fad fa-square" : "fad fa-sidebar"}/>
-
                 <div className={styles.logo}>
-                    <Image src='/images/hoops.png' width='54' height='36' alt={""}/>
-                    <Image src="/images/polaris.png" width='80' height='14' alt={""}/>
+                    <Image src='/images/hoops.png' width='48' height='28' alt={project}/>
+                    <Image src="/images/polaris.png" width='80' height='14' alt={project}/>
                 </div>
             </nav>
             <nav>

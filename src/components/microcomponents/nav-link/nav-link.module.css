@@ -13,7 +13,7 @@
 
 .nav-link:hover {
     transition: ease-in-out var(--transition-delay);
-    background-color: var(--dark-purple);
+    background-color: var(--dark-primary);
 }
 
 .button__icon-wrapper {
@@ -25,7 +25,7 @@
 }
 
 .active {
-    background-color: var(--dark-purple);
+    background-color: var(--dark-primary);
 }
 
 .icon {

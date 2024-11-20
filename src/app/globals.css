@@ -1,9 +1,9 @@
 :root {
     --background: #ffffff;
     --foreground: #171717;
-    --light-purple: #a126fa;
-    --dark-purple: #6615a1;
-    --darker-purple: #420d69;
+    --light-primary: #a126fa;
+    --dark-primary: #6615a1;
+    --darker-primary: #420d69;
     --transition-delay:150ms;
     --sidebar-width: 220px;
     --sidebar-closed-width: 54px;

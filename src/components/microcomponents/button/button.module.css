@@ -1,7 +1,7 @@
 .button {
     border: none;
     cursor: pointer;
-    background-color: var(--dark-purple);
+    background-color: var(--light-primary);
     color: var(--foreground);
     padding: 8px;
     border-radius: 4px;
@@ -14,7 +14,7 @@
 }
 
 .button:hover {
-    background-color: var(--darker-purple);
+    background-color: var(--dark-primary);
 }
 
 .button__icon-wrapper {

@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <body>
         <AuthProvider>
             <SidebarProvider>
-                <TopNavigation />
+                <TopNavigation project={projectName}/>
                 <div className="layout">
                     <Sidebar/>
                     <main className="main">{children}</main>
