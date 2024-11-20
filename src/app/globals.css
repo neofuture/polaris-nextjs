@@ -46,7 +46,8 @@ body {
 .layout {
     display: flex;
     flex: 1;
-    height: calc(100vh - var(--navbar-height));
+    height: calc(100vh - var(--navbar-height) - 10px);
+    width: calc(100vw - 10px);
 }
 
 .main {
@@ -54,6 +55,6 @@ body {
     background-color: white;
     color: black;
     overflow: auto;
-    padding:20px;
-    border-top-left-radius: 20px;
+    padding:12px;
+    border-radius: 8px;
 }
