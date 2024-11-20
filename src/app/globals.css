@@ -4,7 +4,7 @@
     --light-purple: #a126fa;
     --dark-purple: #6615a1;
     --darker-purple: #420d69;
-    --transition-delay: 100ms;
+    --transition-delay:150ms;
 }
 
 @media (prefers-color-scheme: dark) {

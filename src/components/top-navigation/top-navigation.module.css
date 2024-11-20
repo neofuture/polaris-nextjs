@@ -1,10 +1,24 @@
+.header {
+    width: 100dvw;
+    height: 54px;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    padding: 8px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
 .navList {
     list-style-type: none;
     padding: 0;
     margin: 0;
     display: flex;
-    height:40px;
-    gap: 30px;
+    height: 32px;
+    gap: 10px;
 }
 
 .navList li {
@@ -12,11 +26,16 @@
     justify-content: center;
 }
 
-.header {
-    width:100dvw;
-    height: 50px;
+.navList a {
+    border-radius: 6px;
     display: flex;
-    align-content: center;
-    justify-content: space-between;
-    padding:8px 20px 8px 10px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px;
+    color: var(--foreground);
+}
+
+.navList a:hover {
+    background-color: var(--dark-purple);
 }

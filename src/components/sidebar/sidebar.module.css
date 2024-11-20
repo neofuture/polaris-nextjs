@@ -1,5 +1,9 @@
 .sidebarContainer {
     position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .containerOpen {
@@ -8,7 +12,7 @@
 }
 
 .containerClosed {
-    min-width: 52px;
+    min-width: 54px;
     transition: ease-in-out var(--transition-delay);
 }
 
@@ -41,7 +45,7 @@
 }
 
 .closed {
-    width: 52px;
+    width: 54px;
     padding: 20px 8px 20px 8px;
     transition: ease-in-out var(--transition-delay);
 }
