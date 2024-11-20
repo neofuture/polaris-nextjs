@@ -5,9 +5,11 @@ import Sidebar from "@/components/sidebar/sidebar.component";
 import React from "react";
 import { AuthProvider } from "@/context/AuthContext";
 
+const projectName = process.env.NEXT_PUBLIC_PROJECT_NAME || "Default Project Name";
+
 export const metadata: Metadata = {
-    title: "Polaris",
-    description: "Polaris NextJS Starter",
+    title: projectName,
+    description: `${projectName} NextJS Starter`,
 };
 
 export default function RootLayout({

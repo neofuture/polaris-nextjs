@@ -1,11 +1,13 @@
 "use client";
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useAuth } from "@/context/AuthContext";
 
 const Login = () => {
     const { isLoggedIn, login, logout } = useAuth();
-
+    useEffect(() => {
+        document.title = `${process.env.NEXT_PUBLIC_PROJECT_NAME} - Login`;
+    });
     if (isLoggedIn) {
         return (
             <div>
