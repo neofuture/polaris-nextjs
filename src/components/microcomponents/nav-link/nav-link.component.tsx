@@ -9,12 +9,14 @@ interface NavLinkProps {
     label: string;
     href: string;
     onClick?: () => void;
-    active?: boolean;
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ iconName, label, href, onClick, active }) => {
+const NavLink: React.FC<NavLinkProps> = ({ iconName, label, href, onClick }) => {
+
+    const isActive = (href: string) => false;
+
     return (
-        <Link href={href} onClick={onClick} className={`${styles['nav-link']} ${active ? styles.active : ''}`}>
+        <Link href={href} onClick={onClick} className={`${styles['nav-link']} ${isActive(href) ? styles.active : ''}`}>
             {iconName && (
                 <>
                     {label ? (
