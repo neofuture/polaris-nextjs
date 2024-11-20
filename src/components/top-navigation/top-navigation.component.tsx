@@ -8,7 +8,14 @@ const TopNavigation: React.FC = () => {
     const { isLoggedIn, logout } = useAuth();
 
     return (
-        <header>
+        <header className={styles.header}>
+            <nav>
+                <ul>
+                    <button>
+                        <i className={"fad fa-sidebar"}/>
+                    </button>
+                </ul>
+            </nav>
             <nav>
                 <ul className={styles.navList}>
                     {isLoggedIn ? (

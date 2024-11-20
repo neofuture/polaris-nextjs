@@ -90,6 +90,7 @@ button:hover {
     color: black;
     overflow: auto;
     padding:20px;
+    border-top-left-radius: 20px;
 }
 
 header {
@@ -97,7 +98,6 @@ header {
     padding: 8px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--light-purple);
 }
 
 .icon {
