@@ -25,17 +25,3 @@
     align-content: center;
     justify-content: center;
 }
-
-.navList a {
-    border-radius: 6px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 100%;
-    padding: 10px;
-    color: var(--foreground);
-}
-
-.navList a:hover {
-    background-color: var(--dark-purple);
-}

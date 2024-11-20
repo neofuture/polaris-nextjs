@@ -2,6 +2,7 @@
 
 import React, {useEffect} from 'react';
 import { useAuth } from "@/context/AuthContext";
+import Button from "@/components/microcomponents/button/button.component";
 
 const Login = () => {
     const { isLoggedIn, login, logout } = useAuth();
@@ -13,9 +14,8 @@ const Login = () => {
             <div>
                 <h1>Already Logged In</h1>
                 <p>You are already logged in.</p>
-                <button onClick={logout}>
-                    <i className={"fad fa-sign-out icon"}/> Logout
-                </button>
+
+                <Button label="Logout" onClick={logout} iconName='fa-sign-out'/>
             </div>
         );
     }
@@ -24,9 +24,7 @@ const Login = () => {
         <div>
             <h1>Login</h1>
             <p>Welcome to the login!</p>
-            <button onClick={login}>
-                <i className={"fad fa-sign-in icon"}/> Login
-            </button>
+            <Button label="Login" onClick={login} iconName={'fa-sign-in'}/>
         </div>
     );
 };

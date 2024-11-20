@@ -1,0 +1,25 @@
+.button {
+    border: none;
+    cursor: pointer;
+    background-color: var(--dark-purple);
+    color: var(--foreground);
+    padding: 8px;
+    border-radius: 4px;
+    transition: ease-in-out 300ms;
+    font-size: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button:hover {
+    background-color: var(--darker-purple);
+}
+
+.button__icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    margin-right: 6px;
+}

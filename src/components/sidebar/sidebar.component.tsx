@@ -1,45 +1,36 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link';
 import {useAuth} from '@/context/AuthContext';
 import styles from './sidebar.module.css';
 import {useSidebar} from "@/context/SidebarContext";
 import clsx from "clsx";
+import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
 
-const Sidebar: React.FC= () => {
+const Sidebar: React.FC = () => {
     const {isLoggedIn} = useAuth();
     const {isSidebarOpen} = useSidebar();
 
     return (
-        <div className={clsx(styles.sidebarContainer, { [styles.containerOpen]: isSidebarOpen, [styles.containerClosed]: !isSidebarOpen })}>
-            <div className={clsx(styles.sidebar, { [styles.open]: isSidebarOpen, [styles.closed]: !isSidebarOpen })}>
+        <div className={clsx(styles.sidebar, {
+            [styles['sidebar__container--open']]: isSidebarOpen,
+            [styles['sidebar__container--closed']]: !isSidebarOpen
+        })}>
+            <div className={clsx(styles.sidebar__content, {
+                [styles['sidebar__content--open']]: isSidebarOpen,
+                [styles['sidebar__content--closed']]: !isSidebarOpen
+            })}>
                 <nav>
-                    <ul className={styles.navList}>
-                        <li>
-                            <Link href="/">
-                                <div className={styles.iconWrapper}>
-                                    <i className={"fad fa-home icon"}/>
-                                </div>
-                                <span>Home</span>
-                            </Link>
+                    <ul className={styles['sidebar__nav-list']}>
+                        <li className={styles['sidebar__nav-list-item']}>
+                            <NavLink iconName="fa-home" label="Home" href="/"/>
                         </li>
-                        <li>
-                            <Link href="/dashboard">
-                                <div className={styles.iconWrapper}>
-                                    <i className={"fad fa-dashboard icon"}/>
-                                </div>
-                                <span>Dashboard</span>
-                            </Link>
+                        <li className={styles['sidebar__nav-list-item']}>
+                            <NavLink iconName="fa-dashboard" label="Dashboard" href="/dashboard"/>
                         </li>
                         {isLoggedIn && (
-                            <li>
-                                <Link href="/user/profile">
-                                    <div className={styles.iconWrapper}>
-                                        <i className="fad fa-user icon"/>
-                                    </div>
-                                    <span>Profile</span>
-                                </Link>
+                            <li className={styles['sidebar__nav-list-item']}>
+                                <NavLink iconName="fa-user" label="Profile" href="/user/profile" active={true}/>
                             </li>
                         )}
                     </ul>

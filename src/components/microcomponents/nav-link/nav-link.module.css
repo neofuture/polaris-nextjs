@@ -1,0 +1,28 @@
+.nav-link {
+    border-radius: 6px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px;
+    color: var(--foreground);
+    text-decoration: none;
+    transition: ease-in-out var(--transition-delay);
+}
+
+.nav-link:hover {
+    transition: ease-in-out var(--transition-delay);
+    background-color: var(--dark-purple);
+}
+
+.button__icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    margin-right: 6px;
+}
+
+.active {
+    color:red;
+}

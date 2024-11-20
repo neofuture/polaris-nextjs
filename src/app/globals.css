@@ -34,44 +34,10 @@ body {
     margin: 0;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-    transition: ease-in-out 300ms;
-    cursor: pointer;
-}
-
-a:hover {
-    color: var(--light-purple);
-}
-
 @media (prefers-color-scheme: dark) {
     html {
         color-scheme: dark;
     }
-}
-
-.icon {
-    width: 16px;
-    height: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-button {
-    border: none;
-    cursor: pointer;
-    background-color: var(--dark-purple);
-    color: var(--foreground);
-    padding: 8px;
-    border-radius: 4px;
-    transition: ease-in-out 300ms;
-    font-size:inherit;
-}
-
-button:hover {
-    background-color: var(--darker-purple);
 }
 
 .layout {
@@ -87,8 +53,4 @@ button:hover {
     overflow: auto;
     padding:20px;
     border-top-left-radius: 20px;
-}
-
-.icon {
-    margin-right:6px;
 }
