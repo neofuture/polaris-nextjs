@@ -36,9 +36,7 @@ const TopNavigation: React.FC = () => {
                         </>
                     ) : (
                         <li>
-                            <Link href="/user/login">
-                                <i className="fad fa-sign-in icon"/> Login
-                            </Link>
+                            <NavLink label="Login" href="/user/login" iconName={'fa-sign-in'}/>
                         </li>
                     )}
                 </ul>
