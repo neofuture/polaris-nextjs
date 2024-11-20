@@ -20,8 +20,8 @@ const TopNavigation: React.FC = () => {
                         iconName={isSidebarOpen ? "fad fa-square" : "fad fa-sidebar"}/>
 
                 <div className={styles.logo}>
-                    <Image src='/images/hoops.png' className={styles.hoops} width='48' height='32' alt={""}/>
-                    <Image src="/images/polaris.png" className={styles.polaris} width='90' height='16' alt={""}/>
+                    <Image src='/images/hoops.png' width='48' height='32' alt={""}/>
+                    <Image src="/images/polaris.png" width='80' height='14' alt={""}/>
                 </div>
             </nav>
             <nav>

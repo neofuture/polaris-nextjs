@@ -25,7 +25,7 @@
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 10px;
+    gap: 8px;
 }
 
 .nav-list li {
@@ -37,13 +37,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-}
-
-.hoops {
-    width: 48px;
-}
-
-.polaris {
-    width: 90px;
+    gap: 8px;
 }
