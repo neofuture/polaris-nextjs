@@ -8,11 +8,22 @@ interface ButtonProps {
     label?: string;
     onClick?: () => void;
     rounded?: boolean;
+    className?: string;
+    href?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ iconName, label, onClick, rounded }) => {
+const Button: React.FC<ButtonProps> = ({ iconName, label, onClick, rounded, className, href }) => {
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        if (onClick) {
+            onClick();
+        }
+        if (href) {
+            window.location.href = href;
+        }
+    };
+
     return (
-        <button onClick={onClick} className={`${styles.button} ${rounded ? styles.rounded : ''}`}>
+        <button onClick={handleClick} className={`${styles.button} ${rounded ? styles.rounded : ''} ${className || ''}`}>
             {iconName && (
                 <>
                     {label ? (
