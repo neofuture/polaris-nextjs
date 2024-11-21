@@ -9,11 +9,7 @@ import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
 
 const Sidebar: React.FC = () => {
     const {isLoggedIn} = useAuth();
-    const {isSidebarOpen, isLoading} = useSidebar();
-
-    if (isLoading) {
-        return null;
-    }
+    const {isSidebarOpen} = useSidebar();
 
     return (
         <div className={clsx(styles.sidebar, {

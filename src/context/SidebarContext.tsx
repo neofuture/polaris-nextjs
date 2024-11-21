@@ -6,21 +6,18 @@ import Cookies from "js-cookie";
 interface SidebarContextProps {
     isSidebarOpen: boolean;
     toggleSidebar: () => void;
-    isLoading: boolean; // Add this line
 }
 
 const SidebarContext = createContext<SidebarContextProps | undefined>(undefined);
 
 export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const cookieValue = Cookies.get("sidebarOpen");
         if (cookieValue) {
             setIsSidebarOpen(cookieValue === "true");
         }
-        setIsLoading(false);
     }, []);
 
     const toggleSidebar = () => {
@@ -32,7 +29,7 @@ export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({ child
     };
 
     return (
-        <SidebarContext.Provider value={{ isSidebarOpen, toggleSidebar, isLoading }}>
+        <SidebarContext.Provider value={{ isSidebarOpen, toggleSidebar }}>
             {children}
         </SidebarContext.Provider>
     );
