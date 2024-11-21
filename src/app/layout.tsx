@@ -1,9 +1,7 @@
 import React from "react";
-import {AuthProvider} from "@/context/AuthContext";
-import {SidebarProvider} from "@/context/SidebarContext";
 import TopNavigation from "@/components/top-navigation/top-navigation.component";
 import Sidebar from "@/components/sidebar/sidebar.component";
-import {ThemeProvider} from "@/context/ThemeContext";
+import CombinedProvider from "@/context/CombinedProvider";
 import "./globals.css";
 
 const projectName = process.env.NEXT_PUBLIC_PROJECT_NAME || "Default Project Name";
@@ -22,17 +20,13 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
             <link rel="icon" href="/src/app/favicon.ico"/>
         </head>
         <body>
-        <ThemeProvider>
-            <AuthProvider>
-                <SidebarProvider>
-                    <TopNavigation project={projectName}/>
-                    <div className="layout">
-                        <Sidebar/>
-                        <main className="main">{children}</main>
-                    </div>
-                </SidebarProvider>
-            </AuthProvider>
-        </ThemeProvider>
+        <CombinedProvider>
+            <TopNavigation project={projectName}/>
+            <div className="layout">
+                <Sidebar/>
+                <main className="main">{children}</main>
+            </div>
+        </CombinedProvider>
         </body>
         </html>
     );
