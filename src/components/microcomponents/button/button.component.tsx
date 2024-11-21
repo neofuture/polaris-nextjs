@@ -5,14 +5,14 @@ import styles from './button.module.css';
 
 interface ButtonProps {
     iconName?: string;
-    label?: string;
     onClick?: () => void;
     rounded?: boolean;
     className?: string;
     href?: string;
+    children?: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({ iconName, label, onClick, rounded, className, href }) => {
+const Button: React.FC<ButtonProps> = ({ iconName, onClick, rounded, className, href, children }) => {
     const handleClick = () => {
         if (onClick) {
             onClick();
@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({ iconName, label, onClick, rounded, clas
         <button onClick={handleClick} className={`${styles.button} ${rounded ? styles.rounded : ''} ${className || ''}`}>
             {iconName && (
                 <>
-                    {label ? (
+                    {children ? (
                         <div className={styles['button__icon-wrapper']}>
                             <i className={`fad ${iconName} ${styles.icon}`} />
                         </div>
@@ -35,8 +35,8 @@ const Button: React.FC<ButtonProps> = ({ iconName, label, onClick, rounded, clas
                     )}
                 </>
             )}
-            {label && (
-                <span>{label}</span>
+            {children && (
+                <span>{children}</span>
             )}
         </button>
     );

@@ -24,3 +24,14 @@
     left: 15px;
     background-color: var(--light-primary)
 }
+
+.toggleContainer {
+    display: flex;
+    align-items: center;
+}
+
+.label {
+    margin-left: 8px;
+    font-size: 14px;
+    color: var(--foreground-main);
+}

@@ -7,13 +7,13 @@ import { usePathname } from 'next/navigation';
 
 interface NavLinkProps {
     iconName?: string;
-    label: string;
     href?: string;
     onClick?: () => void;
     exact?: boolean;
+    children: React.ReactNode;
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ iconName, label, href, onClick, exact = false }) => {
+const NavLink: React.FC<NavLinkProps> = ({ iconName, href, onClick, exact = false, children }) => {
     const [active, setActive] = useState(false);
     const pathname = usePathname();
 
@@ -29,7 +29,7 @@ const NavLink: React.FC<NavLinkProps> = ({ iconName, label, href, onClick, exact
         <Link href={href} onClick={onClick} className={className}>
             {iconName && (
                 <>
-                    {label ? (
+                    {children ? (
                         <div className={styles['button__icon-wrapper']}>
                             <i className={`fad ${iconName} ${styles.icon}`} />
                         </div>
@@ -38,13 +38,13 @@ const NavLink: React.FC<NavLinkProps> = ({ iconName, label, href, onClick, exact
                     )}
                 </>
             )}
-            {label && <span>{label}</span>}
+            {children && <span>{children}</span>}
         </Link>
     ) : (
         <div onClick={onClick} className={className}>
             {iconName && (
                 <>
-                    {label ? (
+                    {children ? (
                         <div className={styles['button__icon-wrapper']}>
                             <i className={`fad ${iconName} ${styles.icon}`} />
                         </div>
@@ -53,7 +53,7 @@ const NavLink: React.FC<NavLinkProps> = ({ iconName, label, href, onClick, exact
                     )}
                 </>
             )}
-            {label && <span>{label}</span>}
+            {children && <span>{children}</span>}
         </div>
     );
 }

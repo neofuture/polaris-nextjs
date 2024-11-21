@@ -15,7 +15,7 @@ const Login = () => {
                 <h1>Already Logged In</h1>
                 <p>You are already logged in.</p>
 
-                <Button label="Logout" onClick={logout} iconName='fa-sign-out'/>
+                <Button onClick={logout} iconName='fa-sign-out'>Logout</Button>
             </div>
         );
     }
@@ -24,7 +24,7 @@ const Login = () => {
         <div>
             <h1>Login</h1>
             <p>Welcome to the login!</p>
-            <Button label="Login" onClick={login} iconName={'fa-sign-in'}/>
+            <Button onClick={login} iconName={'fa-sign-in'}>Login</Button>
         </div>
     );
 };
