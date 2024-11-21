@@ -1,6 +1,8 @@
 :root {
     --background: #ffffff;
     --foreground: #171717;
+    --background-main: #ffffff;
+    --foreground-main: #1f1f1f;
     --light-primary: #a126fa;
     --dark-primary: #6615a1;
     --darker-primary: #420d69;
@@ -14,6 +16,8 @@
     :root {
         --background: #0a0a0a;
         --foreground: #ededed;
+        --background-main: #1f1f1f;
+        --foreground-main: #ededed;
     }
 }
 
@@ -52,8 +56,8 @@ body {
 
 .main {
     flex-grow: 1;
-    background-color: white;
-    color: black;
+    background-color: var(--background-main);
+    color: var(--foreground-main);
     overflow: auto;
     padding:12px;
     border-radius: 8px;
