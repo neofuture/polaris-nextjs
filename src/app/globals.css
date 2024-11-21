@@ -10,15 +10,14 @@
     --sidebar-width: 220px;
     --sidebar-closed-width: 54px;
     --navbar-height: 54px;
-}
 
-@media (prefers-color-scheme: dark) {
-    :root {
+
+
         --background: #0a0a0a;
         --foreground: #ededed;
         --background-main: #1f1f1f;
         --foreground-main: #ededed;
-    }
+
 }
 
 html,
