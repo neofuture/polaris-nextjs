@@ -10,6 +10,8 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    background-color: var(--container-background-color);
+    transition: background-color ease-in-out var(--transition-delay);
 }
 
 .header .first-nav {

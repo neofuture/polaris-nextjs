@@ -18,6 +18,14 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     const [theme, setTheme] = useState('dark');
 
     useEffect(() => {
+        const timer = setTimeout(() => {
+            document.body.style.setProperty("--transition-delay", "300ms");
+        }, 300);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
         const savedTheme = Cookies.get('theme') || 'dark';
         setTheme(savedTheme);
         document.documentElement.className = savedTheme;

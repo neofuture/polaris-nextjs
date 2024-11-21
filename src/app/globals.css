@@ -1,5 +1,4 @@
 :root {
-
     --light-primary: #a126fa;
     --dark-primary: #6615a1;
     --darker-primary: #420d69;
@@ -8,10 +7,22 @@
     --sidebar-closed-width: 54px;
     --navbar-height: 54px;
 
-    --transition-delay: 250ms;
+    --transition-delay: 0;
 }
 
 .dark {
+    --grey-0: #000000;
+    --grey-10: #1a1a1a;
+    --grey-20: #333333;
+    --grey-30: #4d4d4d;
+    --grey-40: #666666;
+    --grey-50: #808080;
+    --grey-60: #999999;
+    --grey-70: #b3b3b3;
+    --grey-80: #cccccc;
+    --grey-90: #e6e6e6;
+    --grey-100: #ffffff;
+
     --background: #0a0a0a;
     --foreground: #ededed;
     --background-main: #1f1f1f;
@@ -24,6 +35,18 @@
 }
 
 .light {
+    --grey-0: #ffffff;
+    --grey-10: #e6e6e6;
+    --grey-20: #cccccc;
+    --grey-30: #b3b3b3;
+    --grey-40: #999999;
+    --grey-50: #808080;
+    --grey-60: #666666;
+    --grey-70: #4d4d4d;
+    --grey-80: #333333;
+    --grey-90: #1a1a1a;
+    --grey-100: #000000;
+
     --background: #ededed;
     --foreground: #0a0a0a;
     --background-main: #ededed;
@@ -47,7 +70,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    transition: background-color var(--transition-delay), color var(--transition-delay);
+    transition: background-color ease-in-out var(--transition-delay);
 }
 
 * {
@@ -76,4 +99,5 @@ body {
     overflow: auto;
     padding: 12px;
     border-radius: 8px;
+    transition: background-color ease-in-out var(--transition-delay), color ease-in-out var(--transition-delay);
 }

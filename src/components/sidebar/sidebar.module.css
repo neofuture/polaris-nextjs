@@ -19,7 +19,6 @@
 .sidebar__content {
     position: absolute;
     height: 100%;
-    background-color: var(--container-background-color);
 }
 
 .sidebar__nav-list {
@@ -41,15 +40,19 @@
 .sidebar__content--open {
     width: var(--sidebar-width);
     padding: 20px 8px 8px 8px;
+    background-color: var(--container-background-color);
     transition: width ease-in-out var(--transition-delay),
-    padding ease-in-out var(--transition-delay);
+    padding ease-in-out var(--transition-delay),
+    background ease-in-out var(--transition-delay);
 }
 
 .sidebar__content--closed {
     width: VAR(--sidebar-closed-width);
     padding: 20px 8px 20px 8px;
+    background-color: var(--container-background-color);
     transition: width ease-in-out var(--transition-delay),
-    padding ease-in-out var(--transition-delay);
+    padding ease-in-out var(--transition-delay),
+    background ease-in-out var(--transition-delay);
 }
 
 .sidebar__content--open span {
@@ -81,6 +84,7 @@
 .sidebar__content--closed:hover span {
     padding-left: 6px;
     opacity: 1;
+    width:100%;
     transition: opacity ease-in-out var(--transition-delay),
     padding-left ease-in-out var(--transition-delay);
 }

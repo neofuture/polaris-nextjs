@@ -8,15 +8,10 @@ interface ToggleProps {
 
 const Toggle: React.FC<ToggleProps> = ({ initialState, onToggle }) => {
     const [isToggled, setIsToggled] = useState(initialState);
-    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
         setIsToggled(initialState);
     }, [initialState]);
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
 
     const handleToggle = () => {
         setIsToggled(!isToggled);
@@ -24,7 +19,7 @@ const Toggle: React.FC<ToggleProps> = ({ initialState, onToggle }) => {
     };
 
     return (
-        <div className={`${styles.toggle} ${!isMounted ? styles.noAnimation : ''}`} onClick={handleToggle}>
+        <div className={styles.toggle} onClick={handleToggle}>
             <div className={`${styles.switch} ${isToggled ? styles.toggled : ''}`} />
         </div>
     );
