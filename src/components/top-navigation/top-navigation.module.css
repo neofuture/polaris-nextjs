@@ -29,7 +29,8 @@
 }
 
 .nav-list li {
-    align-content: center;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
@@ -42,4 +43,11 @@
 
 .button-rounded {
     border-radius:50%;
+}
+
+.theme-switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
 }

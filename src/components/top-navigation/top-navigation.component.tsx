@@ -7,6 +7,7 @@ import styles from "./top-navigation.module.css";
 import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
 import Button from "@/components/microcomponents/button/button.component";
 import Image from "next/image";
+import Toggle from "@/components/microcomponents/toggle/toggle.component";
 
 interface TopNavigationProps {
     project: string
@@ -29,6 +30,11 @@ const TopNavigation: React.FC<TopNavigationProps> = ({ project }) => {
             </nav>
             <nav>
                 <ul className={styles['nav-list']}>
+                    <li className={styles['theme-switch']}>
+                        <i className="fad fa-moon"/>
+                        <Toggle initialState={true} onToggle={toggleSidebar}/>
+                        <i className="fad fa-sun"/>
+                    </li>
                     {isLoggedIn ? (
                         <>
                             <li>
