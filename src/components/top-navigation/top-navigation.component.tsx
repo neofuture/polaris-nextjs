@@ -24,10 +24,6 @@ const TopNavigation: React.FC<TopNavigationProps> = ({ project }) => {
         setIsToggled(theme === 'dark');
     }, [theme]);
 
-    // const handleToggle = () => {
-    //     toggleTheme();
-    // };
-
     return (
         <header className={styles.header}>
             <nav className={styles['first-nav']}>
@@ -36,13 +32,12 @@ const TopNavigation: React.FC<TopNavigationProps> = ({ project }) => {
                         iconName={isSidebarOpen ? "fad fa-square" : "fad fa-sidebar"}/>
                 <div className={styles.logo}>
                     <Image src='/images/hoops.png' width='48' height='28' alt={project}/>
-                    <Image src="/images/polaris.png" width='80' height='14' alt={project}/>
+                    <Image src={theme === 'dark' ? '/images/polaris.png' : '/images/polaris_dark.png'} width='80' height='14' alt={project} />
                 </div>
             </nav>
             <nav>
                 <ul className={styles['nav-list']}>
                     <li className={styles['theme-switch']}>
-                        {theme}
                         <i className="fad fa-sun"/>
                         <Toggle initialState={isToggled} onToggle={toggleTheme}/>
                         <i className="fad fa-moon"/>

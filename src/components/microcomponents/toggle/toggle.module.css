@@ -1,7 +1,7 @@
 .toggle {
     width: 32px;
     height: 18px;
-    background-color: #ccc;
+    background-color: #aaa;
     border-radius: 25px;
     position: relative;
     cursor: pointer;
@@ -17,7 +17,7 @@
     position: absolute;
     top: 1px;
     left: 1px;
-    transition: left 0.3s;
+    transition: left 0.1s;
 }
 
 .toggled {
