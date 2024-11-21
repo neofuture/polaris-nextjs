@@ -15,10 +15,10 @@ interface ThemeProviderProps {
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState('dark');
 
     useEffect(() => {
-        const savedTheme = Cookies.get('theme') || 'light';
+        const savedTheme = Cookies.get('theme') || 'dark';
         setTheme(savedTheme);
         document.documentElement.className = savedTheme;
     }, []);

@@ -9,6 +9,10 @@
     display: inline-block;
 }
 
+.noAnimation .switch {
+    transition: none;
+}
+
 .switch {
     width: 16px;
     height: 16px;
