@@ -1,23 +1,37 @@
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
-    --background-main: #ffffff;
-    --foreground-main: #1f1f1f;
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --background-main: #1f1f1f;
+    --foreground-main: #ededed;
+
+    --nav-link-color: #ededed;
+    --nav-link-highlight-color: #ededed;
+    --button-color: #ededed;
+    --container-background-color: #0a0a0a;
+
+
+
+    /*--background: #ededed;*/
+    /*--foreground: #0a0a0a;*/
+    /*--background-main: #ededed;*/
+    /*--foreground-main: #1f1f1f;*/
+
+    /*--nav-link-color: #0a0a0a;*/
+    /*--nav-link-highlight-color: #ededed;*/
+    /*--button-color: #ededed;*/
+    /*--container-background-color: #dedddd;*/
+
+
+
     --light-primary: #a126fa;
     --dark-primary: #6615a1;
     --darker-primary: #420d69;
-    --transition-delay:150ms;
+
     --sidebar-width: 220px;
     --sidebar-closed-width: 54px;
     --navbar-height: 54px;
 
-
-
-        --background: #0a0a0a;
-        --foreground: #ededed;
-        --background-main: #1f1f1f;
-        --foreground-main: #ededed;
-
+    --transition-delay: 250ms;
 }
 
 html,
@@ -28,7 +42,7 @@ body {
 
 body {
     color: var(--foreground);
-    background: var(--background);
+    background: var(--container-background-color);
     font-family: Arial, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -58,6 +72,6 @@ body {
     background-color: var(--background-main);
     color: var(--foreground-main);
     overflow: auto;
-    padding:12px;
+    padding: 12px;
     border-radius: 8px;
 }

@@ -2,15 +2,15 @@
     border: none;
     cursor: pointer;
     background-color: var(--light-primary);
-    color: var(--foreground);
+    color: var(--button-color);
     padding: 8px;
     border-radius: 4px;
-    transition: ease-in-out 300ms;
     font-size: inherit;
     display: flex;
     justify-content: center;
     align-items: center;
     min-width:36px;
+    transition: color ease-in-out var(--transition-delay), background-color ease-in-out var(--transition-delay);
 }
 
 .button:hover {

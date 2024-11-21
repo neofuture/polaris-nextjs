@@ -8,18 +8,18 @@
 
 .sidebar__container--open {
     min-width: var(--sidebar-width);
-    transition: ease-in-out var(--transition-delay);
+    transition: min-width ease-in-out var(--transition-delay);
 }
 
 .sidebar__container--closed {
     min-width: var(--sidebar-closed-width);
-    transition: ease-in-out var(--transition-delay);
+    transition: min-width ease-in-out var(--transition-delay);
 }
 
 .sidebar__content {
     position: absolute;
     height: 100%;
-    background-color: var(--background);
+    background-color: var(--container-background-color);
 }
 
 .sidebar__nav-list {
@@ -41,34 +41,46 @@
 .sidebar__content--open {
     width: var(--sidebar-width);
     padding: 20px 8px 8px 8px;
-    transition: ease-in-out var(--transition-delay);
+    transition: width ease-in-out var(--transition-delay),
+    padding ease-in-out var(--transition-delay);
 }
 
 .sidebar__content--closed {
     width: VAR(--sidebar-closed-width);
     padding: 20px 8px 20px 8px;
-    transition: ease-in-out var(--transition-delay);
+    transition: width ease-in-out var(--transition-delay),
+    padding ease-in-out var(--transition-delay);
 }
 
 .sidebar__content--open span {
     padding-left: 6px;
     opacity: 1;
-    transition: ease-in-out var(--transition-delay);
+    width: calc(var(--sidebar-width) - 20px);
+    overflow: hidden;
+    transition: opacity ease-in-out var(--transition-delay),
+    padding-left ease-in-out var(--transition-delay),
+    width ease-in-out var(--transition-delay);
 }
 
 .sidebar__content--closed span {
     padding-left: 0;
     opacity: 0;
-    transition: ease-in-out var(--transition-delay);
+    width: 0;
+    overflow: hidden;
+    transition: opacity ease-in-out var(--transition-delay),
+    padding-left ease-in-out var(--transition-delay),
+    width ease-in-out var(--transition-delay);
 }
 
 .sidebar__content--closed:hover {
     width: var(--sidebar-width);
-    transition: ease-in-out var(--transition-delay);
+    transition: width ease-in-out var(--transition-delay),
+    padding-left ease-in-out var(--transition-delay);
 }
 
 .sidebar__content--closed:hover span {
     padding-left: 6px;
     opacity: 1;
-    transition: ease-in-out var(--transition-delay);
+    transition: opacity ease-in-out var(--transition-delay),
+    padding-left ease-in-out var(--transition-delay);
 }

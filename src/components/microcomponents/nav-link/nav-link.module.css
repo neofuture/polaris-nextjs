@@ -5,15 +5,17 @@
     align-items: flex-start;
     width: 100%;
     padding: 10px;
-    color: var(--foreground);
+    color: var(--nav-link-color);
     text-decoration: none;
-    transition: ease-in-out var(--transition-delay);
     cursor: pointer;
+    transition:
+            color ease-in-out var(--transition-delay),
+            background-color ease-in-out var(--transition-delay);
 }
 
 .nav-link:hover {
-    transition: ease-in-out var(--transition-delay);
     background-color: var(--light-primary);
+    color: var(--nav-link-highlight-color);
 }
 
 .button__icon-wrapper {
@@ -26,6 +28,7 @@
 
 .active {
     background-color: var(--dark-primary);
+    color: var(--nav-link-highlight-color)
 }
 
 .icon {
