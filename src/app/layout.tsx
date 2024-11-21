@@ -3,8 +3,8 @@ import {AuthProvider} from "@/context/AuthContext";
 import {SidebarProvider} from "@/context/SidebarContext";
 import TopNavigation from "@/components/top-navigation/top-navigation.component";
 import Sidebar from "@/components/sidebar/sidebar.component";
-import "./globals.css";
 import {ThemeProvider} from "@/context/ThemeContext";
+import "./globals.css";
 
 const projectName = process.env.NEXT_PUBLIC_PROJECT_NAME || "Default Project Name";
 
@@ -19,7 +19,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         <head>
             <link rel="stylesheet" href="/css/fontawesome.min.css"/>
             <link rel="stylesheet" href="/css/duotone.min.css"/>
-            <link rel="icon" href="/favicon.ico"/>
+            <link rel="icon" href="/src/app/favicon.ico"/>
         </head>
         <body>
         <ThemeProvider>
