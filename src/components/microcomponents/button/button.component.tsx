@@ -13,7 +13,7 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ iconName, label, onClick, rounded, className, href }) => {
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const handleClick = () => {
         if (onClick) {
             onClick();
         }
