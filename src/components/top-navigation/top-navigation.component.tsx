@@ -38,7 +38,7 @@ const TopNavigation: React.FC<TopNavigationProps> = ({ project }) => {
                                 <NavLink iconName="fa-sign-out" label="Logout" onClick={logout}/>
                             </li>
                             <li>
-                                <NavLink label="Test" href="/test"/>
+                                <NavLink iconName="fa-flask" label="Labs" href="/lab"/>
                             </li>
                         </>
                     ) : (
