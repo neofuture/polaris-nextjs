@@ -8,7 +8,7 @@ import clsx from "clsx";
 import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
 
 const Sidebar: React.FC = () => {
-    const {isLoggedIn} = useAuth();
+    const {isLoggedIn, logout} = useAuth();
     const {isSidebarOpen} = useSidebar();
 
     return (
@@ -34,10 +34,18 @@ const Sidebar: React.FC = () => {
                             </li>
                         )}
                         {isLoggedIn && (
-                            <li className={styles['sidebar__nav-list-item']}>
-                                <NavLink iconName="fa-user" href="/user/profile">Profile</NavLink>
-                            </li>
+                            <>
+                                <li className={styles['sidebar__nav-list-item']}>
+                                    <NavLink iconName="fa-user" href="/user/profile">Profile</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink iconName="fa-sign-out" onClick={logout}>Logout</NavLink>
+                                </li>
+                            </>
                         )}
+                        <li>
+                            <NavLink iconName="fa-flask" href="/the-lab">The Lab</NavLink>
+                        </li>
                     </ul>
                 </nav>
             </div>

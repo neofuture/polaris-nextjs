@@ -22,7 +22,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            document.body.style.setProperty("--transition-delay", "300ms");
+            document.body.style.setProperty("--transition-delay", "150ms");
         }, 300);
 
         return () => clearTimeout(timer);

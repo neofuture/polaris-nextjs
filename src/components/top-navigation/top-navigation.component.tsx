@@ -15,7 +15,7 @@ interface TopNavigationProps {
 }
 
 const TopNavigation: React.FC<TopNavigationProps> = ({project}) => {
-    const {isLoggedIn, logout} = useAuth();
+    const {isLoggedIn} = useAuth();
     const {isSidebarOpen, toggleSidebar} = useSidebar();
     const {theme, themeColor, toggleTheme, setThemeColor} = useTheme();
     const [isToggled, setIsToggled] = useState(theme === 'dark');
@@ -69,22 +69,14 @@ const TopNavigation: React.FC<TopNavigationProps> = ({project}) => {
                         <i className="fad fa-moon"/>
                     </li>
                     {isLoggedIn ? (
-                        <>
-                            <li>
-                                <NavLink iconName="fa-user" href="/user/profile">Profile</NavLink>
-                            </li>
-                            <li>
-                                <NavLink iconName="fa-sign-out" onClick={logout}>Logout</NavLink>
-                            </li>
-                        </>
+                        <li>
+                            <NavLink iconName="fa-user" href="/user/profile">Profile</NavLink>
+                        </li>
                     ) : (
                         <li>
                             <NavLink href="/user/login" iconName={'fa-sign-in'}>Login</NavLink>
                         </li>
                     )}
-                    <li>
-                        <NavLink iconName="fa-flask" href="/the-lab">The Lab</NavLink>
-                    </li>
                 </ul>
             </nav>
         </header>
