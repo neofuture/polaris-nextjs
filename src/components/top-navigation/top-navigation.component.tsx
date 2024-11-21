@@ -3,12 +3,13 @@
 import React, {useEffect, useState} from "react";
 import {useAuth} from "@/context/AuthContext";
 import {useSidebar} from "@/context/SidebarContext";
-import styles from "./top-navigation.module.css";
+import {useTheme} from "@/context/ThemeContext";
 import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
 import Button from "@/components/microcomponents/button/button.component";
+import ColorPicker from "@/components/color-picker/color-picker.component";
+import ToggleSwitch from "@/components/microcomponents/toggle-switch/toggle-switch.component";
 import Image from "next/image";
-import Toggle from "@/components/microcomponents/toggle/toggle.component";
-import {useTheme} from "@/context/ThemeContext";
+import styles from "./top-navigation.module.css";
 
 interface TopNavigationProps {
     project: string;
@@ -24,9 +25,6 @@ const TopNavigation: React.FC<TopNavigationProps> = ({project}) => {
         setIsToggled(theme === 'dark');
     }, [theme]);
 
-    const handleSetColor = (color: string) => () => {
-        setThemeColor(color);
-    };
 
     return (
         <header className={styles.header}>
@@ -43,29 +41,11 @@ const TopNavigation: React.FC<TopNavigationProps> = ({project}) => {
             <nav>
                 <ul className={styles['nav-list']}>
                     <li>
-                        <div
-                            className={`${styles['blue']} ${styles['pip']} ${themeColor === 'blue' ? styles['active'] : ''}`}
-                            onClick={handleSetColor('blue')}></div>
-                        <div
-                            className={`${styles['green']} ${styles['pip']} ${themeColor === 'green' ? styles['active'] : ''}`}
-                            onClick={handleSetColor('green')}></div>
-                        <div
-                            className={`${styles['orange']} ${styles['pip']} ${themeColor === 'orange' ? styles['active'] : ''}`}
-                            onClick={handleSetColor('orange')}></div>
-                        <div
-                            className={`${styles['purple']} ${styles['pip']} ${themeColor === 'purple' ? styles['active'] : ''}`}
-                            onClick={handleSetColor('purple')}></div>
-                        <div
-                            className={`${styles['red']} ${styles['pip']} ${themeColor === 'red' ? styles['active'] : ''}`}
-                            onClick={handleSetColor('red')}></div>
-                        <div
-                            className={`${styles['grey']} ${styles['pip']} ${themeColor === 'grey' ? styles['active'] : ''}`}
-                            onClick={handleSetColor('grey')}></div>
-
+                        <ColorPicker selectedColor={themeColor} onColorSelect={setThemeColor}/>
                     </li>
                     <li className={styles['theme-switch']}>
                         <i className="fad fa-sun"/>
-                        <Toggle initialState={isToggled} onToggle={toggleTheme}/>
+                        <ToggleSwitch initialState={isToggled} onToggle={toggleTheme}/>
                         <i className="fad fa-moon"/>
                     </li>
                     {isLoggedIn ? (

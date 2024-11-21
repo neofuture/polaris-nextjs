@@ -1,0 +1,49 @@
+.color-picker {
+    display: flex;
+    gap: 5px;
+}
+
+.pip {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin: 3px;
+    cursor: pointer;
+    box-shadow: 0 0 0 0 var(--container-background-color), 0 0 0 0 var(--light-primary);
+    transition: all ease-in-out var(--transition-delay);
+}
+
+.active {
+    box-shadow: 0 0 0 2px var(--container-background-color), 0 0 0 5px currentColor;
+    transition: all ease-in-out var(--transition-delay);
+}
+
+.purple {
+    background-color: #a126fa;
+    color: #a126fa;
+}
+
+.red {
+    background-color: #ff4d4d;
+    color: #ff4d4d;
+}
+
+.green {
+    background-color: #4dff4d;
+    color: #4dff4d;
+}
+
+.blue {
+    background-color: #4d4dff;
+    color: #4d4dff;
+}
+
+.orange {
+    background-color: #ffb84d;
+    color: #ffb84d;
+}
+
+.grey {
+    background-color: #808080;
+    color: #808080;
+}

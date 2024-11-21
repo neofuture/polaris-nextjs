@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import styles from './toggle.module.css';
+import styles from './toggle-switch.module.css';
 
 interface ToggleProps {
     initialState: boolean;
@@ -10,7 +10,7 @@ interface ToggleProps {
     viewStateOff?: string;
 }
 
-const Toggle: React.FC<ToggleProps> = ({ initialState, onToggle, viewStateOn, viewStateOff }) => {
+const ToggleSwitch: React.FC<ToggleProps> = ({ initialState, onToggle, viewStateOn, viewStateOff }) => {
     const [isToggled, setIsToggled] = useState(initialState);
 
     useEffect(() => {
@@ -34,4 +34,4 @@ const Toggle: React.FC<ToggleProps> = ({ initialState, onToggle, viewStateOn, vi
     );
 };
 
-export default Toggle;
+export default ToggleSwitch;
