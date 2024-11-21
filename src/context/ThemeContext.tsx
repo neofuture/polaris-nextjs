@@ -5,7 +5,9 @@ import Cookies from 'js-cookie';
 
 interface ThemeContextProps {
     theme: string;
+    themeColor: string;
     toggleTheme: () => void;
+    setThemeColor: (color: string) => void;
 }
 
 interface ThemeProviderProps {
@@ -16,6 +18,7 @@ const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     const [theme, setTheme] = useState('dark');
+    const [themeColor, setThemeColorState] = useState('purple');
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -27,19 +30,27 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
     useEffect(() => {
         const savedTheme = Cookies.get('theme') || 'dark';
+        const savedThemeColor = Cookies.get('themeColor') || 'purple';
         setTheme(savedTheme);
-        document.documentElement.className = savedTheme;
+        setThemeColorState(savedThemeColor);
+        document.documentElement.className = `${savedTheme} ${savedThemeColor}`;
     }, []);
 
     const toggleTheme = () => {
         const newTheme = theme === 'light' ? 'dark' : 'light';
         setTheme(newTheme);
-        document.documentElement.className = newTheme;
+        document.documentElement.className = `${newTheme} ${themeColor}`;
         Cookies.set('theme', newTheme, { expires: 365 });
     };
 
+    const setThemeColor = (color: string) => {
+        setThemeColorState(color);
+        document.documentElement.className = `${theme} ${color}`;
+        Cookies.set('themeColor', color, { expires: 365 });
+    };
+
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <ThemeContext.Provider value={{ theme, themeColor, toggleTheme, setThemeColor }}>
             {children}
         </ThemeContext.Provider>
     );

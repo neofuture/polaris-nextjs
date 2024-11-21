@@ -1,13 +1,69 @@
 :root {
-    --light-primary: #a126fa;
-    --dark-primary: #6615a1;
-    --darker-primary: #420d69;
-
     --sidebar-width: 220px;
     --sidebar-closed-width: 54px;
     --navbar-height: 54px;
 
     --transition-delay: 0;
+}
+
+.purple {
+    --light-primary: #a126fa;
+    --dark-primary: #6615a1;
+    --darker-primary: #420d69;
+
+    --nav-link-color: #ededed;
+    --nav-link-highlight-color: #ededed;
+    --button-color: #ededed;
+}
+
+.red {
+    --light-primary: #ff4d4d;
+    --dark-primary: #b30000;
+    --darker-primary: #660000;
+
+    --nav-link-color: #ededed;
+    --nav-link-highlight-color: #ededed;
+    --button-color: #ededed;
+}
+
+.green {
+    --light-primary: #4dff4d;
+    --dark-primary: #00b300;
+    --darker-primary: #006600;
+
+    --nav-link-color: #ededed;
+    --nav-link-highlight-color: #1f1f1f;
+    --button-color: #1f1f1f;
+}
+
+.blue {
+    --light-primary: #4d4dff;
+    --dark-primary: #0000b3;
+    --darker-primary: #000066;
+
+    --nav-link-color: #ededed;
+    --nav-link-highlight-color: #ededed;
+    --button-color: #ededed;
+}
+
+.orange {
+    --light-primary: #ffb84d;
+    --dark-primary: #b37400;
+    --darker-primary: #664200;
+
+    --nav-link-color: #ededed;
+    --nav-link-highlight-color: #ededed;
+    --button-color: #ededed;
+}
+
+.grey {
+    --light-primary: #808080;
+    --dark-primary: #404040;
+    --darker-primary: #202020;
+
+    --nav-link-color: #ededed;
+    --nav-link-highlight-color: #ededed;
+    --button-color: #ededed;
 }
 
 .dark {
@@ -28,9 +84,6 @@
     --background-main: #1f1f1f;
     --foreground-main: #ededed;
 
-    --nav-link-color: #ededed;
-    --nav-link-highlight-color: #ededed;
-    --button-color: #ededed;
     --container-background-color: #0a0a0a;
 }
 
