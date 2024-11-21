@@ -2,15 +2,10 @@
 
 import React from 'react';
 import { useAuth } from '@/context/AuthContext';
-import Link from "next/link";
 import Button from "@/components/microcomponents/button/button.component";
-import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
 
 
 const withAuth = <P extends object>(WrappedComponent: React.ComponentType<P>) => {
-    function login() {
-        console.log('Login');
-    }
 
     const ComponentWithAuth = (props: P) => {
         const { isLoggedIn } = useAuth();
