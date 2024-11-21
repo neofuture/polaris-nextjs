@@ -57,7 +57,7 @@ const TopNavigation: React.FC<TopNavigationProps> = ({ project }) => {
                         </li>
                     )}
                     <li>
-                        <NavLink iconName="fa-flask" href="/lab">Labs</NavLink>
+                        <NavLink iconName="fa-flask" href="/the-lab">The Lab</NavLink>
                     </li>
                 </ul>
             </nav>

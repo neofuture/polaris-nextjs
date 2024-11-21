@@ -21,15 +21,18 @@
     border: 1px solid var(--grey-50);
     border-radius: 8px;
     margin-top: 8px;
-    font-family: monospace;
     white-space: pre-wrap;
 }
 
-.section h5 {
+.section h3, .container h4, .container h1 {
     margin-bottom: 16px;
 }
 
 .section ul {
-    margin-left:16px;
+    margin-left:8px;
     padding:12px;
+}
+
+.section ul li {
+    padding: 4px;
 }

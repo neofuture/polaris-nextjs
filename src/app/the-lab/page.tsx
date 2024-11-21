@@ -15,16 +15,16 @@ export default function Lab() {
 
     return (
         <div className={styles['container']}>
-            <h1>Lab</h1>
+            <h1><i className={'fad fa-flask'}/> The Lab</h1>
             <h4>Welcome to the lab!</h4>
             <div className={styles.section}>
-                <h5>NavLink Example</h5>
+                <h3>NavLink Example</h3>
                 <NavLink onClick={() => alert('NavLink clicked')}>Go to example</NavLink>
                 <div className={styles.documentationBox}>
                     {`<NavLink onClick={() => alert('NavLink clicked')}/>Go to example</NavLink>`}
                 </div>
                 <div className={styles.parametersBox}>
-                    <h6>Parameters:</h6>
+                    <h5>Parameters:</h5>
                     <ul>
                         <li><code>iconName</code>: string (optional)</li>
                         <li><code>href</code>: string (optional)</li>
@@ -35,13 +35,13 @@ export default function Lab() {
             </div>
 
             <div className={styles.section}>
-                <h5>Button Example</h5>
+                <h3>Button Example</h3>
                 <Button onClick={() => alert('Button clicked!')}>Click me</Button>
                 <div className={styles.documentationBox}>
                     {`<Button onClick={() => alert('Button clicked!')}>Click me</Button>`}
                 </div>
                 <div className={styles.parametersBox}>
-                    <h6>Parameters:</h6>
+                    <h5>Parameters:</h5>
                     <ul>
                         <li><code>iconName</code>: string (optional)</li>
                         <li><code>label</code>: string (optional)</li>
@@ -54,13 +54,13 @@ export default function Lab() {
             </div>
 
             <div className={styles.section}>
-                <h5>Toggle Example</h5>
+                <h3>Toggle Example</h3>
                 <Toggle initialState={false} onToggle={handleToggle} viewStateOn='On' viewStateOff='Off'/>
                 <div className={styles.documentationBox}>
                     {`<Toggle initialState={false} onToggle={handleToggle} viewStateOn='On' viewStateOff='Off' />`}
                 </div>
                 <div className={styles.parametersBox}>
-                    <h6>Parameters:</h6>
+                    <h5>Parameters:</h5>
                     <ul>
                         <li><code>initialState</code>: boolean</li>
                         <li><code>onToggle</code>: function</li>
