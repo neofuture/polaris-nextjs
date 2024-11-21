@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useAuth} from "@/context/AuthContext";
 import {useSidebar} from "@/context/SidebarContext";
 import styles from "./top-navigation.module.css";
@@ -8,6 +8,7 @@ import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
 import Button from "@/components/microcomponents/button/button.component";
 import Image from "next/image";
 import Toggle from "@/components/microcomponents/toggle/toggle.component";
+import {useTheme} from "@/context/ThemeContext";
 
 interface TopNavigationProps {
     project: string
@@ -16,6 +17,16 @@ interface TopNavigationProps {
 const TopNavigation: React.FC<TopNavigationProps> = ({ project }) => {
     const {isLoggedIn, logout} = useAuth();
     const {isSidebarOpen, toggleSidebar} = useSidebar();
+    const { theme, toggleTheme } = useTheme();
+    const [isToggled, setIsToggled] = useState(theme === 'dark');
+
+    useEffect(() => {
+        setIsToggled(theme === 'dark');
+    }, [theme]);
+
+    // const handleToggle = () => {
+    //     toggleTheme();
+    // };
 
     return (
         <header className={styles.header}>
@@ -31,9 +42,10 @@ const TopNavigation: React.FC<TopNavigationProps> = ({ project }) => {
             <nav>
                 <ul className={styles['nav-list']}>
                     <li className={styles['theme-switch']}>
-                        <i className="fad fa-moon"/>
-                        <Toggle initialState={true} onToggle={toggleSidebar}/>
+                        {theme}
                         <i className="fad fa-sun"/>
+                        <Toggle initialState={isToggled} onToggle={toggleTheme}/>
+                        <i className="fad fa-moon"/>
                     </li>
                     {isLoggedIn ? (
                         <>

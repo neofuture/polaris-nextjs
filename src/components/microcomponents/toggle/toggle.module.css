@@ -1,11 +1,11 @@
 .toggle {
-    width: 44px;
+    width: 32px;
     height: 18px;
     background-color: #ccc;
     border-radius: 25px;
     position: relative;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color var(--transition-delay);
     display: inline-block;
 }
 
@@ -21,6 +21,6 @@
 }
 
 .toggled {
-    left: 27px;
+    left: 15px;
     background-color: var(--light-primary)
 }

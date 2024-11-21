@@ -1,22 +1,21 @@
-"use client";
-
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './toggle.module.css';
 
 interface ToggleProps {
-    initialState?: boolean;
-    onToggle?: (state: boolean) => void;
+    initialState: boolean;
+    onToggle: () => void;
 }
 
-const Toggle: React.FC<ToggleProps> = ({ initialState = false, onToggle }) => {
+const Toggle: React.FC<ToggleProps> = ({ initialState, onToggle }) => {
     const [isToggled, setIsToggled] = useState(initialState);
 
+    useEffect(() => {
+        setIsToggled(initialState);
+    }, [initialState]);
+
     const handleToggle = () => {
-        const newState = !isToggled;
-        setIsToggled(newState);
-        if (onToggle) {
-            onToggle(newState);
-        }
+        setIsToggled(!isToggled);
+        onToggle();
     };
 
     return (

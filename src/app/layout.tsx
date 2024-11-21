@@ -1,9 +1,10 @@
 import React from "react";
-import { AuthProvider } from "@/context/AuthContext";
-import { SidebarProvider } from "@/context/SidebarContext";
+import {AuthProvider} from "@/context/AuthContext";
+import {SidebarProvider} from "@/context/SidebarContext";
 import TopNavigation from "@/components/top-navigation/top-navigation.component";
 import Sidebar from "@/components/sidebar/sidebar.component";
 import "./globals.css";
+import {ThemeProvider} from "@/context/ThemeContext";
 
 const projectName = process.env.NEXT_PUBLIC_PROJECT_NAME || "Default Project Name";
 
@@ -12,24 +13,26 @@ export const metadata = {
     description: `${projectName} NextJS Starter`,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({children}: { children: React.ReactNode }) {
     return (
         <html lang="en">
         <head>
-            <link rel="stylesheet" href="/css/fontawesome.min.css" />
-            <link rel="stylesheet" href="/css/duotone.min.css" />
-            <link rel="icon" href="/favicon.ico" />
+            <link rel="stylesheet" href="/css/fontawesome.min.css"/>
+            <link rel="stylesheet" href="/css/duotone.min.css"/>
+            <link rel="icon" href="/favicon.ico"/>
         </head>
         <body>
-        <AuthProvider>
-            <SidebarProvider>
-                <TopNavigation project={projectName}/>
-                <div className="layout">
-                    <Sidebar/>
-                    <main className="main">{children}</main>
-                </div>
-            </SidebarProvider>
-        </AuthProvider>
+        <ThemeProvider>
+            <AuthProvider>
+                <SidebarProvider>
+                    <TopNavigation project={projectName}/>
+                    <div className="layout">
+                        <Sidebar/>
+                        <main className="main">{children}</main>
+                    </div>
+                </SidebarProvider>
+            </AuthProvider>
+        </ThemeProvider>
         </body>
         </html>
     );
