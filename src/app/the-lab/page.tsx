@@ -29,7 +29,7 @@ export default function Lab() {
                         <NavLink onClick={() => alert('NavLink clicked')} iconName={'fa-flask'}>Go to example</NavLink>
                     </div>
                     <div className={styles.documentationBox}>
-                        {`<NavLink onClick={() => alert('NavLink clicked')} iconName={'fa-flask'}>Go to example</NavLink>`}
+                        {`<NavLink onClick={handleClick} iconName={'fa-flask'}>Go to example</NavLink>`}
                     </div>
                     <div className={styles.parametersBox}>
                         <h5>Parameters:</h5>
@@ -49,7 +49,7 @@ export default function Lab() {
                         <Button onClick={() => alert('Button clicked!')} iconName={'fa-flask'}>Click me</Button>
                     </div>
                     <div className={styles.documentationBox}>
-                        {`<Button onClick={() => alert('Button clicked!')} iconName={'fa-flask'}>Click me</Button>`}
+                        {`<Button onClick={handleClick} iconName={'fa-flask'}>Click me</Button>`}
                     </div>
                     <div className={styles.parametersBox}>
                         <h5>Parameters:</h5>
