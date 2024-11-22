@@ -10,7 +10,7 @@ const Profile = () => {
     return (
         <div>
             <h1>Profile</h1>
-            <p>Welcome to your profile!</p>
+            <h2>Welcome to your profile!</h2>
         </div>
     );
 };

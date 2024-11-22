@@ -13,7 +13,7 @@ const Login = () => {
         return (
             <div>
                 <h1>Already Logged In</h1>
-                <p>You are already logged in.</p>
+                <h2>You are already logged in.</h2>
 
                 <Button onClick={logout} iconName='fa-sign-out'>Logout</Button>
             </div>
@@ -23,7 +23,7 @@ const Login = () => {
     return (
         <div>
             <h1>Login</h1>
-            <p>Welcome to the login!</p>
+            <h2>Welcome to the login!</h2>
             <Button onClick={login} iconName={'fa-sign-in'}>Login</Button>
         </div>
     );

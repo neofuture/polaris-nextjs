@@ -106,8 +106,6 @@
     --foreground-main: #1f1f1f;
 
     --nav-link-color: #0a0a0a;
-    --nav-link-highlight-color: #ededed;
-    --button-color: #ededed;
     --container-background-color: #dedddd;
 }
 
@@ -153,4 +151,12 @@ body {
     padding: 12px;
     border-radius: 8px;
     transition: background-color ease-in-out var(--transition-delay), color ease-in-out var(--transition-delay);
+}
+
+h1 {
+    margin-bottom: 16px;
+}
+
+h2 {
+    margin-bottom: 16px;
 }

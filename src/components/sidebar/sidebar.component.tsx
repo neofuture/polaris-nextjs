@@ -26,7 +26,7 @@ const Sidebar: React.FC = () => {
                             <NavLink iconName="fa-home" href="/" exact={true}>Home</NavLink>
                         </li>
                         <li className={styles['sidebar__nav-list-item']}>
-                            <NavLink iconName="fa-dashboard" href="/dashboard">Dahsboard</NavLink>
+                            <NavLink iconName="fa-dashboard" href="/dashboard">Dashboard</NavLink>
                         </li>
                         {!isLoggedIn && (
                             <li className={styles['sidebar__nav-list-item']}>

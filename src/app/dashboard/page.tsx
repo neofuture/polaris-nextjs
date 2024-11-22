@@ -9,7 +9,7 @@ export default function Dashboard() {
     return (
         <div>
             <h1>Dashboard</h1>
-            <p>Welcome to the dashboard!</p>
+            <h2>Welcome to the dashboard!</h2>
 
             <p>Bacon ipsum dolor amet chislic ball tip ground round pancetta beef tri-tip pig salami rump tail short
                 loin sirloin alcatra. Strip steak shoulder pork landjaeger cupim chicken ham hock rump turducken.
