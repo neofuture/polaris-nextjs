@@ -6,6 +6,7 @@ import Button from '@/components/microcomponents/button/button.component';
 import ColorPicker from "@/components/color-picker/color-picker.component";
 import ToggleSwitch from "@/components/microcomponents/toggle-switch/toggle-switch.component";
 import styles from './lab.module.css';
+import Link from "next/link";
 
 export default function Page() {
     const [toggleState, setToggleState] = useState(false);
@@ -100,6 +101,20 @@ export default function Page() {
                             <li><code>onColorSelect</code>: function</li>
                         </ul>
                     </div>
+                </div>
+                <div className={styles.section}>
+                    <h3>Slug Demo</h3>
+                    <ul>
+                        <li>
+                            <Link href="/the-lab/string1">Slug 1</Link>
+                        </li>
+                        <li>
+                            <Link href="/the-lab/string2">Slug 2</Link>
+                        </li>
+                        <li>
+                            <Link href="/the-lab/string3">Slug 3</Link>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -10,6 +10,9 @@ import ColorPicker from "@/components/color-picker/color-picker.component";
 import ToggleSwitch from "@/components/microcomponents/toggle-switch/toggle-switch.component";
 import Image from "next/image";
 import styles from "./top-navigation.module.css";
+import Hoops from "../../../public/images/hoops.png";
+import Polaris from "../../../public/images/polaris.png";
+import PolarisDark from "../../../public/images/polaris_dark.png";
 
 interface TopNavigationProps {
     project: string;
@@ -33,9 +36,9 @@ const TopNavigation: React.FC<TopNavigationProps> = ({project}) => {
                         rounded={true}
                         iconName={isSidebarOpen ? "fad fa-square" : "fad fa-sidebar"}/>
                 <div className={styles.logo}>
-                    <Image src='/images/hoops.png' width='48' height='28' alt={project}/>
-                    <Image src={theme === 'dark' ? '/images/polaris.png' : '/images/polaris_dark.png'} width='80'
-                           height='14' alt={project}/>
+                    <Image src={Hoops} width={46} height={28} alt={project}/>
+                    <Image src={theme === 'dark' ? Polaris : PolarisDark} width={80}
+                           height={14} alt={project}/>
                 </div>
             </nav>
             <nav>
