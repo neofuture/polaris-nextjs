@@ -4,6 +4,7 @@ import Sidebar from "@/components/sidebar/sidebar.component";
 import CombinedProvider from "@/context/CombinedProvider";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const projectName = process.env.NEXT_PUBLIC_PROJECT_NAME || "Default Project Name";
 const inter = Inter({
@@ -32,6 +33,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
                 <main className="main">{children}</main>
             </div>
         </CombinedProvider>
+        <SpeedInsights />
         </body>
         </html>
     );
