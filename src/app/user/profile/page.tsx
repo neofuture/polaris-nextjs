@@ -9,8 +9,8 @@ const Profile = () => {
     });
     return (
         <div>
-            <h1>Profile</h1>
-            <h2>Welcome to your profile!</h2>
+            <h1><i className={'fad fa-user'}/> Profile</h1>
+            <h2>Welcome to your profile</h2>
         </div>
     );
 };

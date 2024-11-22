@@ -8,8 +8,8 @@ export default function Home() {
     });
   return (
       <div>
-        <h1>Home</h1>
-        <h2>Welcome to home!</h2>
+        <h1><i className={'fad fa-house'}/> Home</h1>
+        <h2>Welcome to home</h2>
       </div>
   );
 }

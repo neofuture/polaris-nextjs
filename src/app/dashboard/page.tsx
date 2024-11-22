@@ -8,8 +8,8 @@ export default function Dashboard() {
     });
     return (
         <div>
-            <h1>Dashboard</h1>
-            <h2>Welcome to the dashboard!</h2>
+            <h1><i className={'fad fa-dashboard'}/> Dashboard</h1>
+            <h2>Welcome to The Dashboard</h2>
 
             <p>Bacon ipsum dolor amet chislic ball tip ground round pancetta beef tri-tip pig salami rump tail short
                 loin sirloin alcatra. Strip steak shoulder pork landjaeger cupim chicken ham hock rump turducken.

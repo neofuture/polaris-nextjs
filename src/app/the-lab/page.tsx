@@ -20,7 +20,7 @@ export default function Lab() {
     return (
         <div className={styles['outer-container']}>
             <h1><i className={'fad fa-flask'}/> The Lab</h1>
-            <h2>Welcome to the lab!</h2>
+            <h2>Welcome to The Lab</h2>
 
             <div className={styles['container']}>
                 <div className={styles.section}>
