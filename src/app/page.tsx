@@ -36,7 +36,6 @@ export default function Page() {
             </div>
             <div className={styles.container}>
                 <Image src={theme === "dark" ? Logo : LogoDark} alt={projectName} width={220} height={116}/>
-                <h1 className={styles.title}>Welcome to {projectName}</h1>
                 <Link href="/app" className={styles.link}>
                     <Image src={Hoops} alt="Continue to App" width={20} height={13}/>
                     Continue to App

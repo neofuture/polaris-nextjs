@@ -9,12 +9,14 @@ const projectName = process.env.NEXT_PUBLIC_PROJECT_NAME || "Default Project Nam
 
 export default function AppLayout({children}: { children: React.ReactNode }) {
     return (
-        <CombinedProvider>
+        <>
             <TopNavigation project={projectName}/>
             <div className={styles.layout}>
                 <Sidebar/>
                 <main className={styles.main}>{children}</main>
             </div>
-        </CombinedProvider>
+        </>
+
+
     );
 }
