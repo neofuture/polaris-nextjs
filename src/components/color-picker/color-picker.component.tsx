@@ -7,7 +7,7 @@ interface ColorPickerProps {
 }
 
 const ColorPicker: React.FC<ColorPickerProps> = ({ selectedColor, onColorSelect }) => {
-    const colors = ['purple', 'blue', 'green', 'orange', 'red', 'grey'];
+    const colors = ['blue', 'purple', 'red', 'orange', 'green', 'grey'];
 
     const handleColorSelect = (color: string) => () => {
         onColorSelect(color);
