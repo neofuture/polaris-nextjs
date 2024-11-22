@@ -106,13 +106,13 @@ export default function Page() {
                     <h3>Slug Demo</h3>
                     <ul>
                         <li>
-                            <Link href="/the-lab/string1">Slug 1</Link>
+                            <Link href="/app/the-lab/string1">Slug 1</Link>
                         </li>
                         <li>
-                            <Link href="/the-lab/string2">Slug 2</Link>
+                            <Link href="/app/the-lab/string2">Slug 2</Link>
                         </li>
                         <li>
-                            <Link href="/the-lab/string3">Slug 3</Link>
+                            <Link href="/app/the-lab/string3">Slug 3</Link>
                         </li>
                     </ul>
                 </div>

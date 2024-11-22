@@ -23,20 +23,20 @@ const Sidebar: React.FC = () => {
                 <nav>
                     <ul className={styles['sidebar__nav-list']}>
                         <li className={styles['sidebar__nav-list-item']}>
-                            <NavLink iconName="fa-home" href="/" exact={true}>Home</NavLink>
+                            <NavLink iconName="fa-home" href="/app" exact={true}>Home</NavLink>
                         </li>
                         <li className={styles['sidebar__nav-list-item']}>
-                            <NavLink iconName="fa-dashboard" href="/dashboard">Dashboard</NavLink>
+                            <NavLink iconName="fa-dashboard" href="/app/dashboard">Dashboard</NavLink>
                         </li>
                         {!isLoggedIn && (
                             <li className={styles['sidebar__nav-list-item']}>
-                                <NavLink iconName="fa-sign-in" href="/user/login">Login</NavLink>
+                                <NavLink iconName="fa-sign-in" href="/app/user/login">Login</NavLink>
                             </li>
                         )}
                         {isLoggedIn && (
                             <>
                                 <li className={styles['sidebar__nav-list-item']}>
-                                    <NavLink iconName="fa-user" href="/user/profile">Profile</NavLink>
+                                    <NavLink iconName="fa-user" href="/app/user/profile">Profile</NavLink>
                                 </li>
                                 <li>
                                     <NavLink iconName="fa-sign-out" onClick={logout}>Logout</NavLink>
@@ -44,7 +44,7 @@ const Sidebar: React.FC = () => {
                             </>
                         )}
                         <li>
-                            <NavLink iconName="fa-flask" href="/the-lab">The Lab</NavLink>
+                            <NavLink iconName="fa-flask" href="/app/the-lab">The Lab</NavLink>
                         </li>
                     </ul>
                 </nav>

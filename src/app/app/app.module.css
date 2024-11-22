@@ -1,0 +1,16 @@
+.layout {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - var(--navbar-height) - 10px);
+    width: calc(100vw - 10px);
+}
+
+.main {
+    flex-grow: 1;
+    background-color: var(--background-main);
+    color: var(--foreground-main);
+    overflow: auto;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background-color ease-in-out var(--transition-delay), color ease-in-out var(--transition-delay);
+}

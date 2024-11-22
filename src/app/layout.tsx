@@ -1,10 +1,8 @@
 import React from "react";
-import TopNavigation from "@/components/top-navigation/top-navigation.component";
-import Sidebar from "@/components/sidebar/sidebar.component";
-import CombinedProvider from "@/context/CombinedProvider";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import CombinedProvider from "@/context/CombinedProvider";
 
 const projectName = process.env.NEXT_PUBLIC_PROJECT_NAME || "Default Project Name";
 const inter = Inter({
@@ -27,11 +25,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         </head>
         <body>
         <CombinedProvider>
-            <TopNavigation project={projectName}/>
-            <div className="layout">
-                <Sidebar/>
-                <main className="main">{children}</main>
-            </div>
+            {children}
         </CombinedProvider>
         <SpeedInsights />
         </body>
