@@ -1,10 +1,12 @@
 interface PageProps {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 }
 
-export default function Page({ params: { slug } }: PageProps) {
+export default async function Page({ params }: PageProps) {
+    const { slug } = await params;
+
     return (
         <div>
             <h1><i className={'fad fa-flask'} /> The Lab</h1>
