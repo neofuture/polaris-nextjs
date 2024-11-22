@@ -4,7 +4,7 @@ import React, {useEffect} from 'react';
 import { useAuth } from "@/context/AuthContext";
 import Button from "@/components/microcomponents/button/button.component";
 
-const Login = () => {
+export default function Page() {
     const { isLoggedIn, login, logout } = useAuth();
     useEffect(() => {
         document.title = `${process.env.NEXT_PUBLIC_PROJECT_NAME} - Login`;
@@ -28,5 +28,3 @@ const Login = () => {
         </div>
     );
 };
-
-export default Login;

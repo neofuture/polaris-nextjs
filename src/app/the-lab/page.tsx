@@ -7,7 +7,7 @@ import ColorPicker from "@/components/color-picker/color-picker.component";
 import ToggleSwitch from "@/components/microcomponents/toggle-switch/toggle-switch.component";
 import styles from './lab.module.css';
 
-export default function Lab() {
+export default function Page() {
     const [toggleState, setToggleState] = useState(false);
     const [color, setColor] = useState('purple');
 

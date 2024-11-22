@@ -3,7 +3,7 @@
 import React, {useEffect} from 'react';
 import withAuth from "@/hoc/with-auth";
 
-const Profile = () => {
+export default function Page() {
     useEffect(() => {
         document.title = `${process.env.NEXT_PUBLIC_PROJECT_NAME} - Profile`;
     });
@@ -14,5 +14,3 @@ const Profile = () => {
         </div>
     );
 };
-
-export default withAuth(Profile);
