@@ -122,6 +122,18 @@ function TheLab() {
                     <h3>DataGrid</h3>
                 </div>
             </div>
+
+            <div className={styles['container-half']}>
+
+                <div className={`${styles['section']} ${styles['section']}`}>
+                    <h3>DataGrid</h3>
+                </div>
+
+                <div className={`${styles['section']} ${styles['section']}`}>
+                    <h3>DataGrid</h3>
+                </div>
+
+            </div>
         </div>
     );
 }
