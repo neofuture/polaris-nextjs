@@ -4,7 +4,7 @@ interface PageProps {
     }>;
 }
 
-export default async function Page({ params }: PageProps) {
+async function TheLabSlug({ params }: PageProps) {
     const { slug } = await params;
 
     return (
@@ -15,3 +15,5 @@ export default async function Page({ params }: PageProps) {
         </div>
     );
 }
+
+export default TheLabSlug;

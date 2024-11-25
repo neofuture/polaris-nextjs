@@ -1,8 +1,8 @@
 "use client";
 
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 
-export default function Page() {
+const Page: React.FC = () => {
     useEffect(() => {
         document.title = `${process.env.NEXT_PUBLIC_PROJECT_NAME} - Home`;
     });
@@ -13,3 +13,5 @@ export default function Page() {
       </div>
   );
 }
+
+export default Page;

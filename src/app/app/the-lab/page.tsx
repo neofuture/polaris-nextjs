@@ -8,7 +8,7 @@ import ToggleSwitch from "@/components/microcomponents/toggle-switch/toggle-swit
 import styles from './lab.module.css';
 import Link from "next/link";
 
-export default function Page() {
+function TheLab() {
     const [toggleState, setToggleState] = useState(false);
     const [color, setColor] = useState('purple');
 
@@ -103,7 +103,6 @@ export default function Page() {
                     </div>
                 </div>
                 <div className={styles.section}>
-                    <h3>Slug Demo</h3>
                     <ul>
                         <li>
                             <Link href="/app/the-lab/string1">Slug 1</Link>
@@ -117,6 +116,14 @@ export default function Page() {
                     </ul>
                 </div>
             </div>
+            <div className={styles['container-full']}>
+
+                <div className={`${styles['section']} ${styles['full-width-section']}`}>
+                    <h3>DataGrid</h3>
+                </div>
+            </div>
         </div>
     );
 }
+
+export default TheLab;

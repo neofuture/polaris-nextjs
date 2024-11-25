@@ -1,8 +1,8 @@
 "use client";
 
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 
-export default function Page() {
+const Dashboard: React.FC = () => {
     useEffect(() => {
         document.title = `${process.env.NEXT_PUBLIC_PROJECT_NAME} - Dashboard`;
     });
@@ -140,3 +140,5 @@ export default function Page() {
         </div>
     );
 }
+
+export default Dashboard;

@@ -5,7 +5,7 @@ import withAuth from "@/hoc/with-auth";
 import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
 import {useAuth} from "@/context/AuthContext";
 
-function Page() {
+const Profile: React.FC = () => {
     const {logout} = useAuth();
 
     useEffect(() => {
@@ -20,4 +20,4 @@ function Page() {
     );
 };
 
-export default withAuth(Page);
+export default withAuth(Profile);
