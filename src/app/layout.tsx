@@ -32,7 +32,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <head>
             <link rel="stylesheet" href="/css/fontawesome.min.css"/>
             <link rel="stylesheet" href="/css/duotone.min.css"/>
-            <link rel="icon" href="/src/app/favicon.ico"/>
+            <link rel="icon" href="/favicon.ico"/>
         </head>
         <body>
         <CombinedProvider cookies={parsedCookies}>
