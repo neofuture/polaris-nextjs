@@ -3,7 +3,7 @@
     --sidebar-closed-width: 54px;
     --navbar-height: 54px;
 
-    --transition-delay: 0;
+    --transition-delay: 300ms;
 }
 
 .purple {

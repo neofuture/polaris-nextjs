@@ -8,17 +8,22 @@ interface SidebarContextProps {
     toggleSidebar: () => void;
 }
 
+interface SidebarProviderProps {
+    children: React.ReactNode;
+    cookies: { [key: string]: string };
+}
+
 const SidebarContext = createContext<SidebarContextProps | undefined>(undefined);
 
-export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+export const SidebarProvider: React.FC<SidebarProviderProps> = ({ children, cookies }) => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>( cookies["sidebarOpen"] ==='true' || true);
 
     useEffect(() => {
-        const cookieValue = Cookies.get("sidebarOpen");
+        const cookieValue = cookies["sidebarOpen"];
         if (cookieValue) {
             setIsSidebarOpen(cookieValue === "true");
         }
-    }, []);
+    }, [cookies]);
 
     const toggleSidebar = () => {
         setIsSidebarOpen((prev) => {

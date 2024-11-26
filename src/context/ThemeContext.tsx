@@ -12,29 +12,22 @@ interface ThemeContextProps {
 
 interface ThemeProviderProps {
     children: ReactNode;
+    cookies: { [key: string]: string };
 }
 
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-    const [theme, setTheme] = useState('dark');
-    const [themeColor, setThemeColorState] = useState('purple');
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, cookies }) => {
+    const [theme, setTheme] = useState(cookies['theme'] || 'dark');
+    const [themeColor, setThemeColorState] = useState(cookies['themeColor'] || 'purple');
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            document.body.style.setProperty("--transition-delay", "150ms");
-        }, 300);
-
-        return () => clearTimeout(timer);
-    }, []);
-
-    useEffect(() => {
-        const savedTheme = Cookies.get('theme') || 'dark';
-        const savedThemeColor = Cookies.get('themeColor') || 'purple';
+        const savedTheme = cookies['theme'] || 'dark';
+        const savedThemeColor = cookies['themeColor'] || 'purple';
         setTheme(savedTheme);
         setThemeColorState(savedThemeColor);
         document.documentElement.className = `${savedTheme} ${savedThemeColor}`;
-    }, []);
+    }, [cookies]);
 
     const toggleTheme = () => {
         const newTheme = theme === 'light' ? 'dark' : 'light';

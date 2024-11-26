@@ -11,15 +11,15 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+export const AuthProvider: React.FC<{ children: React.ReactNode; cookies: { [key: string]: string } }> = ({ children, cookies }) => {
+    const [isLoggedIn, setIsLoggedIn] = useState(cookies["loggedIn"] === "true" || false);
 
     useEffect(() => {
-        const cookieValue = Cookies.get("loggedIn");
+        const cookieValue = cookies["loggedIn"];
         if (cookieValue) {
             setIsLoggedIn(cookieValue === "true");
         }
-    }, []);
+    }, [cookies]);
 
     const login = () => {
         setIsLoggedIn(true);

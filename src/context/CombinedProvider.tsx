@@ -3,11 +3,16 @@ import { AuthProvider } from "@/context/AuthContext";
 import { SidebarProvider } from "@/context/SidebarContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 
-const CombinedProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+interface CombinedProviderProps {
+    children: React.ReactNode;
+    cookies: { [key: string]: string };
+}
+
+const CombinedProvider: React.FC<CombinedProviderProps> = ({ children, cookies }) => {
     return (
-        <ThemeProvider>
-            <AuthProvider>
-                <SidebarProvider>
+        <ThemeProvider cookies={cookies}>
+            <AuthProvider cookies={cookies}>
+                <SidebarProvider cookies={cookies}>
                     {children}
                 </SidebarProvider>
             </AuthProvider>
