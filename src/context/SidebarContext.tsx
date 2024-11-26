@@ -16,7 +16,7 @@ interface SidebarProviderProps {
 const SidebarContext = createContext<SidebarContextProps | undefined>(undefined);
 
 export const SidebarProvider: React.FC<SidebarProviderProps> = ({ children, cookies }) => {
-    const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>( cookies["sidebarOpen"] ==='true' || true);
+    const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>( cookies["sidebarOpen"] ==='true' || false);
 
     useEffect(() => {
         const cookieValue = cookies["sidebarOpen"];

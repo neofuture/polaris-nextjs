@@ -1,7 +1,6 @@
 "use client";
 
 import React, {useEffect} from 'react';
-import withAuth from "@/hoc/with-auth";
 import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
 import {useAuth} from "@/context/AuthContext";
 
@@ -20,4 +19,4 @@ const Profile: React.FC = () => {
     );
 };
 
-export default withAuth(Profile);
+export default Profile;

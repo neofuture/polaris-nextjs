@@ -1,15 +1,15 @@
 "use client";
 
 import React from 'react';
-import {useAuth} from '@/context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 import styles from './sidebar.module.css';
-import {useSidebar} from '@/context/SidebarContext';
+import { useSidebar } from '@/context/SidebarContext';
 import clsx from "clsx";
 import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
 
 const Sidebar: React.FC = () => {
-    const {isLoggedIn, logout} = useAuth();
-    const {isSidebarOpen} = useSidebar();
+    const { isLoggedIn, logout } = useAuth();
+    const { isSidebarOpen } = useSidebar();
 
     return (
         <div className={clsx(styles.sidebar, {
