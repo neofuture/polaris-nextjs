@@ -12,6 +12,7 @@
             color ease-in-out var(--transition-delay),
             background-color ease-in-out var(--transition-delay);
     white-space: nowrap;
+    gap: 4px;
 }
 
 .nav-link:hover {
