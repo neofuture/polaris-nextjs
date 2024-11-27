@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./auth-layout.module.css";
+import styles from "./layout.module.css";
 
 export default async function AuthLayout({ children }: { children: React.ReactNode }) {
 
