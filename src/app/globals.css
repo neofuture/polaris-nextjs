@@ -68,15 +68,25 @@
 
 .dark {
     --grey-0: #000000;
+    --grey-5: #0d0d0d;
     --grey-10: #1a1a1a;
+    --grey-15: #262626;
     --grey-20: #333333;
+    --grey-25: #404040;
     --grey-30: #4d4d4d;
+    --grey-35: #595959;
     --grey-40: #666666;
+    --grey-45: #737373;
     --grey-50: #808080;
+    --grey-55: #8c8c8c;
     --grey-60: #999999;
+    --grey-65: #a6a6a6;
     --grey-70: #b3b3b3;
+    --grey-75: #bfbfbf;
     --grey-80: #cccccc;
+    --grey-85: #d9d9d9;
     --grey-90: #e6e6e6;
+    --grey-95: #f2f2f2;
     --grey-100: #ffffff;
 
     --background: #0a0a0a;
@@ -89,15 +99,25 @@
 
 .light {
     --grey-0: #ffffff;
+    --grey-5: #f2f2f2;
     --grey-10: #e6e6e6;
+    --grey-15: #d9d9d9;
     --grey-20: #cccccc;
+    --grey-25: #bfbfbf;
     --grey-30: #b3b3b3;
+    --grey-35: #a6a6a6;
     --grey-40: #999999;
+    --grey-45: #8c8c8c;
     --grey-50: #808080;
+    --grey-55: #737373;
     --grey-60: #666666;
+    --grey-65: #595959;
     --grey-70: #4d4d4d;
+    --grey-75: #404040;
     --grey-80: #333333;
+    --grey-85: #262626;
     --grey-90: #1a1a1a;
+    --grey-95: #0d0d0d;
     --grey-100: #000000;
 
     --background: #ededed;

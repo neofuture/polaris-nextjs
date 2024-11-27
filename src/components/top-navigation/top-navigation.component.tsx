@@ -19,7 +19,6 @@ interface TopNavigationProps {
 }
 
 const TopNavigation: React.FC<TopNavigationProps> = ({project}) => {
-    const {isLoggedIn} = useAuth();
     const {isSidebarOpen, toggleSidebar} = useSidebar();
     const {theme, themeColor, toggleTheme, setThemeColor} = useTheme();
     const [isToggled, setIsToggled] = useState(theme === 'dark');
@@ -44,6 +43,10 @@ const TopNavigation: React.FC<TopNavigationProps> = ({project}) => {
             <nav>
                 <ul className={styles['nav-list']}>
                     <li>
+                        <NavLink iconName="fa-user" href="/app/profile">Profile</NavLink>
+                    </li>
+
+                    <li>
                         <ColorPicker selectedColor={themeColor} onColorSelect={setThemeColor}/>
                     </li>
                     <li className={styles['theme-switch']}>
@@ -51,15 +54,7 @@ const TopNavigation: React.FC<TopNavigationProps> = ({project}) => {
                         <ToggleSwitch initialState={isToggled} onToggle={toggleTheme}/>
                         <i className="fad fa-moon"/>
                     </li>
-                    {isLoggedIn ? (
-                        <li>
-                            <NavLink iconName="fa-user" href="/app/profile">Profile</NavLink>
-                        </li>
-                    ) : (
-                        <li>
-                            <NavLink href="/auth/login" iconName={'fa-sign-in'}>Login</NavLink>
-                        </li>
-                    )}
+
                 </ul>
             </nav>
         </header>

@@ -10,10 +10,10 @@
 
 .theme-picker {
     position: fixed;
-    top:0;
+    top: 0;
     right: 0;
     color: var(--foreground-main);
-    padding:16px;
+    padding: 17px 16px 0 0;
 }
 
 .link {
