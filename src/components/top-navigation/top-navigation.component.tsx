@@ -1,14 +1,13 @@
 "use client";
 
-import React, {useEffect, useState} from "react";
-import {useAuth} from "@/context/AuthContext";
-import {useSidebar} from "@/context/SidebarContext";
-import {useTheme} from "@/context/ThemeContext";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import { useSidebar } from "@/context/SidebarContext";
+import { useTheme } from "@/context/ThemeContext";
 import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
 import Button from "@/components/microcomponents/button/button.component";
 import ColorPicker from "@/components/color-picker/color-picker.component";
 import ToggleSwitch from "@/components/microcomponents/toggle-switch/toggle-switch.component";
-import Image from "next/image";
 import styles from "./top-navigation.module.css";
 import Hoops from "../../../public/images/hoops.png";
 import Polaris from "../../../public/images/polaris.png";
