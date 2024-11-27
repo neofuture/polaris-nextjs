@@ -29,6 +29,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode; cookies: { [key
     const logout = () => {
         setIsLoggedIn(false);
         Cookies.set("loggedIn", "false");
+        window.location.href = "/auth/login";
     };
 
     return (

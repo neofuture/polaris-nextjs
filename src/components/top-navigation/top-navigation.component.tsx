@@ -53,11 +53,11 @@ const TopNavigation: React.FC<TopNavigationProps> = ({project}) => {
                     </li>
                     {isLoggedIn ? (
                         <li>
-                            <NavLink iconName="fa-user" href="/app/user/profile">Profile</NavLink>
+                            <NavLink iconName="fa-user" href="/app/profile">Profile</NavLink>
                         </li>
                     ) : (
                         <li>
-                            <NavLink href="/app/user/login" iconName={'fa-sign-in'}>Login</NavLink>
+                            <NavLink href="/auth/login" iconName={'fa-sign-in'}>Login</NavLink>
                         </li>
                     )}
                 </ul>

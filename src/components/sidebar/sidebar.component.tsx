@@ -30,19 +30,22 @@ const Sidebar: React.FC = () => {
                         </li>
                         {!isLoggedIn && (
                             <li className={styles['sidebar__nav-list-item']}>
-                                <NavLink iconName="fa-sign-in" href="/app/user/login">Login</NavLink>
+                                <NavLink iconName="fa-sign-in" href="/auth/login">Login</NavLink>
                             </li>
                         )}
                         {isLoggedIn && (
                             <>
                                 <li className={styles['sidebar__nav-list-item']}>
-                                    <NavLink iconName="fa-user" href="/app/user/profile">Profile</NavLink>
+                                    <NavLink iconName="fa-user" href="/app/profile">Profile</NavLink>
                                 </li>
                                 <li>
                                     <NavLink iconName="fa-sign-out" onClick={logout}>Logout</NavLink>
                                 </li>
                             </>
                         )}
+                        <li>
+                            <hr/>
+                        </li>
                         <li>
                             <NavLink iconName="fa-flask" href="/app/the-lab">The Lab</NavLink>
                         </li>

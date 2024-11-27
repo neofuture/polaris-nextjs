@@ -151,3 +151,10 @@ a {
 a:hover {
     color: var(--dark-primary);
 }
+
+hr {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid var(--grey-30);
+    margin: 16px 0;
+}
