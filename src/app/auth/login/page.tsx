@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 import { useAuth } from "@/context/AuthContext";
 import Button from "@/components/microcomponents/button/button.component";
 import { useRouter } from 'next/navigation';
-import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
 
 const Login: React.FC = () => {
     const { isLoggedIn, login } = useAuth();
@@ -25,7 +24,7 @@ const Login: React.FC = () => {
             <h1><i className={'fad fa-sign-in'} /> Login</h1>
             <h2>Welcome to the login</h2>
             <Button onClick={login} iconName={'fa-sign-in'}>Login</Button>
-            <NavLink href='/auth/register' iconName='fa-user-plus'>Register</NavLink>
+            <Button href='/auth/register' iconName='fa-user-plus'>Register</Button>
         </div>
     );
 };

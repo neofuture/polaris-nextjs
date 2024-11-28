@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./page.module.css";
+import styles from "@/app/general.module.css";
 import Image from "next/image";
 import Logo from "../../public/images/logo.png";
 import LogoDark from "../../public/images/logo_dark.png";

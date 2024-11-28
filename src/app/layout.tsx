@@ -1,7 +1,6 @@
 import React from "react";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import CombinedProvider from "@/context/CombinedProvider";
 import { cookies } from "next/headers";
 
@@ -38,7 +37,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <CombinedProvider cookies={parsedCookies}>
             {children}
         </CombinedProvider>
-        <SpeedInsights />
         </body>
         </html>
     );
