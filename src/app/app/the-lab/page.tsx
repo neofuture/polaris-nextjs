@@ -20,7 +20,8 @@ function TheLab() {
         isFirstModalOpen: false,
         isSecondModalOpen: false,
         isThirdModalOpen: false,
-        isFourthModalOpen: false
+        isFourthModalOpen: false,
+        isFifthModalOpen: false
     });
     const {theme} = useTheme();
 
@@ -165,6 +166,8 @@ function TheLab() {
                             Modal (Blur close blocked)</Button>
                         <Button onClick={() => openModal('isFourthModalOpen')} iconName='fa-up-right-from-square'>Open Fourth
                             Modal (Auto close 5 seconds)</Button>
+                        <Button onClick={() => openModal('isFifthModalOpen')} iconName='fa-up-right-from-square'>Open Fifth
+                            Modal (Auto close 20 seconds, with close)</Button>
 
                     </div>
                     <Modal isOpen={modalStates.isFirstModalOpen}
@@ -192,6 +195,13 @@ function TheLab() {
                            showCloseButton={false}
                            allowBlurClose={false}
                            closeTimer={5000}>
+                        <Image src={theme === 'light' ? LogoDark : Logo} alt={'Hoops'} width={442} height={234}/>
+                    </Modal>
+                    <Modal isOpen={modalStates.isFifthModalOpen}
+                           onClose={() => closeModal('isFifthModalOpen')}
+                           showCloseButton={true}
+                           allowBlurClose={false}
+                           closeTimer={20000}>
                         <Image src={theme === 'light' ? LogoDark : Logo} alt={'Hoops'} width={442} height={234}/>
                     </Modal>
 
