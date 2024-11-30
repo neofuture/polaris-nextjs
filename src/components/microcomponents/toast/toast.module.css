@@ -1,0 +1,154 @@
+/* src/components/microcomponents/toast/toast.module.css */
+.toast {
+    background-color: var(--background);
+    color: var(--foreground);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--grey-30);
+    padding: 20px;
+    width: 300px;
+    border-radius: 6px;
+    min-height: 60px;
+    animation: fadeIn 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, margin 0.5s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.toast.fade-out {
+    animation: fadeOut 0.5s ease-in-out;
+}
+
+.close-button {
+    cursor: pointer;
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    transition: background-color var(--transition-delay) ease-in-out,
+    color var(--transition-delay) ease-in-out;
+}
+
+.close-button:hover {
+    background-color: var(--light-primary);
+    color: var(--light-button-color);
+}
+
+.toast-content {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.toast-content i {
+    font-size: 36px;
+}
+
+/* Status styles */
+.toast.default {
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+.toast.warning {
+    background-color: var(--warning-color);
+    color: var(--dark-button-color);
+}
+
+.toast.error {
+    background-color: var(--error-color);
+    color: var(--dark-button-color);
+}
+
+.toast.disabled {
+    background-color: var(--disabled-color);
+    color: var(--dark-button-color);
+}
+
+.toast.success {
+    background-color: var(--success-color);
+    color: var(--dark-button-color);
+}
+
+.toast.warning .close-button:hover {
+    background-color: var(--warning-hover-color);
+}
+
+.toast.error .close-button:hover {
+    background-color: var(--error-hover-color);
+}
+
+.toast.disabled .close-button:hover {
+    background-color: var(--disabled-hover-color);
+}
+
+.toast.success .close-button:hover {
+    background-color: var(--success-hover-color);
+}
+
+.progress-bar-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--success-color);
+    transition: width 0.1s linear;
+}
+
+.toast-clickable {
+    cursor: pointer;
+    transition: background-color var(--transition-delay) ease-in-out;
+}
+
+.toast-clickable.default:hover {
+    background-color: var(--grey-15);
+}
+
+.toast-clickable.warning:hover {
+    background-color: var(--warning-hover-color);
+}
+
+.toast-clickable.error:hover {
+    background-color: var(--error-hover-color);
+}
+
+.toast-clickable.disabled:hover {
+    background-color: var(--disabled-hover-color);
+}
+
+.toast-clickable.success:hover {
+    background-color: var(--success-hover-color);
+}

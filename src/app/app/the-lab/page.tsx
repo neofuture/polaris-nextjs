@@ -12,6 +12,7 @@ import Image from "next/image";
 import Logo from "../../../../public/images/logo.png";
 import LogoDark from "../../../../public/images/logo_dark.png";
 import {useTheme} from "@/context/ThemeContext";
+import {showToast} from "@/components/microcomponents/toast/toast-utils";
 
 function TheLab() {
     const [toggleState, setToggleState] = useState(false);
@@ -238,6 +239,56 @@ function TheLab() {
                             <li><code>allowBlurClose</code>: boolean (optional)</li>
                             <li><code>children</code>: React.ReactNode</li>
                             <li><code>closeTimer</code>: number (optional)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className={styles.section}>
+                    <h3>Toasts</h3>
+                    <div className={styles['flex-buttons']}>
+                        <Button onClick={() => showToast('Title', 'Message', 'default', undefined,)} state={'default'}>Show
+                            Toast</Button>
+                        <Button onClick={() => showToast('Title', 'Message', 'warning', undefined)} state={'warning'}>Show
+                            Toast</Button>
+                        <Button onClick={() => showToast('Title', 'Message', 'error', undefined)} state={'error'}>Show
+                            Toast</Button>
+                        <Button onClick={() => showToast('Title', 'Message', 'success', undefined)} state={'success'}>Show
+                            Toast</Button>
+                        <Button onClick={() => showToast('Title', 'Message', 'disabled', undefined)}>Show Toast</Button>
+                        <Button onClick={() => showToast('Title', 'Message', 'default', 5000)}>Show Toast (auto
+                            close)</Button>
+                        <Button
+                            onClick={() => showToast('Title', 'Message', 'default', undefined, () => alert('Toast clicked!'))}>Show
+                            Toast (with callback)</Button>
+                        <Button
+                            onClick={() => showToast('Title', 'Message', 'warning', undefined, () => alert('Toast clicked!'))}
+                            state={'warning'}>Show
+                            Toast (with callback)</Button>
+                        <Button
+                            onClick={() => showToast('Title', 'Message', 'error', undefined, () => alert('Toast clicked!'))}
+                            state={'error'}>Show
+                            Toast (with callback)</Button>
+                        <Button
+                            onClick={() => showToast('Title', 'Message', 'success', undefined, () => alert('Toast clicked!'))}
+                            state={'success'}>Show
+                            Toast (with callback)</Button>
+                        <Button
+                            onClick={() => showToast('Title', 'Message', 'disabled', undefined, () => alert('Toast clicked!'))}>Show
+                            Toast (with callback)</Button>
+
+                    </div>
+                    <div className={styles.documentationBox}>
+                        <div>{`<Button onClick={() => showToast('Title', 'Message', 'default', 5000, () => alert('Toast clicked!'))} state={'default'}>Show Toast</Button>`}</div>
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                        <ul>
+                            <li><code>title</code>: string</li>
+                            <li><code>message</code>: string</li>
+                            <li>
+                                <code>status</code>: &#39;warning&#39; | &#39;error&#39; | &#39;disabled&#39; | &#39;success&#39; | &#39;default&#39;
+                            </li>
+                            <li><code>autoClose</code>: number (optional)</li>
+                            <li><code>onClick</code>: function (optional)</li>
                         </ul>
                     </div>
                 </div>
