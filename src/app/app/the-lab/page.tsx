@@ -31,11 +31,11 @@ function TheLab() {
     };
 
     const openModal = (modalName: string) => {
-        setModalStates(prevState => ({ ...prevState, [modalName]: true }));
+        setModalStates(prevState => ({...prevState, [modalName]: true}));
     };
 
     const closeModal = (modalName: string) => {
-        setModalStates(prevState => ({ ...prevState, [modalName]: false }));
+        setModalStates(prevState => ({...prevState, [modalName]: false}));
     };
 
     return (
@@ -79,6 +79,18 @@ function TheLab() {
                                     state={'disabled'}>Disabled</Button>
                             <Button onClick={() => alert('Success Button clicked!')} iconName={'fa-check-circle'}
                                     state={'success'}>Success</Button>
+
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-user'}
+                                    rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')}
+                                    iconName={'fa-exclamation-triangle'} state={'warning'} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-times-circle'}
+                                    state={'error'} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-ban'}
+                                    state={'disabled'} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-check-circle'}
+                                    state={'success'} rounded={true}></Button>
+
                         </div>
                     </div>
                     <div className={styles.documentationBox}>
@@ -158,15 +170,19 @@ function TheLab() {
                 <div className={styles.section}>
                     <h3>Modal</h3>
                     <div className={styles['flex-buttons']}>
-                        <Button onClick={() => openModal('isFirstModalOpen')} iconName='fa-up-right-from-square'>Open First
+                        <Button onClick={() => openModal('isFirstModalOpen')} iconName='fa-up-right-from-square'>Open
+                            First
                             Model</Button>
                         <Button onClick={() => openModal('isSecondModalOpen')} iconName='fa-up-right-from-square'>Open
                             Second Modal (No close button)</Button>
-                        <Button onClick={() => openModal('isThirdModalOpen')} iconName='fa-up-right-from-square'>Open Third
+                        <Button onClick={() => openModal('isThirdModalOpen')} iconName='fa-up-right-from-square'>Open
+                            Third
                             Modal (Blur close blocked)</Button>
-                        <Button onClick={() => openModal('isFourthModalOpen')} iconName='fa-up-right-from-square'>Open Fourth
+                        <Button onClick={() => openModal('isFourthModalOpen')} iconName='fa-up-right-from-square'>Open
+                            Fourth
                             Modal (Auto close 5 seconds)</Button>
-                        <Button onClick={() => openModal('isFifthModalOpen')} iconName='fa-up-right-from-square'>Open Fifth
+                        <Button onClick={() => openModal('isFifthModalOpen')} iconName='fa-up-right-from-square'>Open
+                            Fifth
                             Modal (Auto close 20 seconds, with close)</Button>
 
                     </div>
