@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width:36px;
+    min-width: 36px;
     transition: color ease-in-out var(--transition-delay), background-color ease-in-out var(--transition-delay);
 }
 
@@ -38,6 +38,7 @@
     background-color: var(--warning-color);
     color: var(--dark-button-color);
 }
+
 .button.warning i {
     color: black;
 }
@@ -50,6 +51,7 @@
     background-color: var(--error-color);
     color: var(--dark-button-color);
 }
+
 .button.error i {
     color: black;
 }
@@ -60,18 +62,22 @@
 
 .button.disabled {
     background-color: var(--disabled-color);
-    color: var(--light-button-color);
+    color: var(--dark-button-color);
+}
+
+.button.disabled i {
+    color: black;
 }
 
 .button.disabled:hover {
     background-color: var(--disabled-hover-color);
-    color: var(--light-button-color);
 }
 
 .button.success {
     background-color: var(--success-color);
     color: var(--dark-button-color);
 }
+
 .button.success i {
     color: black;
 }
