@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useSidebar } from "@/context/SidebarContext";
 import { useTheme } from "@/context/ThemeContext";
-import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
 import Button from "@/components/microcomponents/button/button.component";
 import ColorPicker from "@/components/color-picker/color-picker.component";
 import ToggleSwitch from "@/components/microcomponents/toggle-switch/toggle-switch.component";
