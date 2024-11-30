@@ -211,6 +211,7 @@ function TheLab() {
                             <li><code>showCloseButton</code>: boolean (optional)</li>
                             <li><code>allowBlurClose</code>: boolean (optional)</li>
                             <li><code>children</code>: React.ReactNode</li>
+                            <li><code>closeTimer</code>: number (optional)</li>
                         </ul>
                     </div>
                 </div>
