@@ -3,7 +3,7 @@
     cursor: pointer;
     background-color: var(--light-primary);
     color: var(--button-color);
-    padding: 8px;
+    padding: 8px 16px 8px 8px;
     border-radius: 4px;
     font-size: inherit;
     display: flex;
@@ -32,4 +32,50 @@
 
 .rounded {
     border-radius: 50%;
+}
+
+.button.warning {
+    background-color: var(--warning-color);
+    color: var(--dark-button-color);
+}
+.button.warning i {
+    color: black;
+}
+
+.button.warning:hover {
+    background-color: var(--warning-hover-color);
+}
+
+.button.error {
+    background-color: var(--error-color);
+    color: var(--dark-button-color);
+}
+.button.error i {
+    color: black;
+}
+
+.button.error:hover {
+    background-color: var(--error-hover-color);
+}
+
+.button.disabled {
+    background-color: var(--disabled-color);
+    color: var(--light-button-color);
+}
+
+.button.disabled:hover {
+    background-color: var(--disabled-hover-color);
+    color: var(--light-button-color);
+}
+
+.button.success {
+    background-color: var(--success-color);
+    color: var(--dark-button-color);
+}
+.button.success i {
+    color: black;
+}
+
+.button.success:hover {
+    background-color: var(--success-hover-color);
 }

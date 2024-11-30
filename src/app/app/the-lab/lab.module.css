@@ -34,7 +34,6 @@
 }
 
 .component-container {
-    height: 40px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -70,4 +69,10 @@
 
 .section ul li {
     padding: 4px;
+}
+
+.flex-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
 }

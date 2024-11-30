@@ -12,6 +12,8 @@ import styles from "./top-navigation.module.css";
 import Hoops from "../../../public/images/hoops.png";
 import Polaris from "../../../public/images/polaris.png";
 import PolarisDark from "../../../public/images/polaris_dark.png";
+import avatar from "../../../public/images/avatar.jpg";
+import Link from "next/link";
 
 interface TopNavigationProps {
     project: string;
@@ -42,10 +44,6 @@ const TopNavigation: React.FC<TopNavigationProps> = ({project}) => {
             <nav>
                 <ul className={styles['nav-list']}>
                     <li>
-                        <NavLink iconName="fa-user" href="/app/profile">Profile</NavLink>
-                    </li>
-
-                    <li>
                         <ColorPicker selectedColor={themeColor} onColorSelect={setThemeColor}/>
                     </li>
                     <li className={styles['theme-switch']}>
@@ -53,7 +51,11 @@ const TopNavigation: React.FC<TopNavigationProps> = ({project}) => {
                         <ToggleSwitch initialState={isToggled} onToggle={toggleTheme}/>
                         <i className="fad fa-moon"/>
                     </li>
-
+                    <li>
+                        <Link  href="/app/profile">
+                        <Image className={styles['avatar']} src={avatar} alt={'User Name'} width={32} height={32}/>
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </header>
