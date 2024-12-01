@@ -63,7 +63,7 @@ const Toast: React.FC<ToastProps> = ({ title, message, status = 'default', onClo
             <div className={styles['toast-content']}>
                 <i className={`fa-duotone ${statusIconMap[status]}`}></i>
                 <div>
-                    <h3>{title}</h3>
+                    <h4>{title}</h4>
                     <div>{message}</div>
                 </div>
             </div>

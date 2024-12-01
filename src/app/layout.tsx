@@ -3,6 +3,8 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import CombinedProvider from "@/context/CombinedProvider";
 import { cookies } from "next/headers";
+import CookieConsent from "@/components/microcomponents/cookie-consent/cookie-consent.component";
+import ToastManager from "@/components/microcomponents/toast/toast-manager.component";
 
 const projectName = process.env.NEXT_PUBLIC_PROJECT_NAME || "Default Project Name";
 const inter = Inter({
@@ -34,9 +36,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <link rel="icon" href="/favicon.ico"/>
         </head>
         <body>
+        <ToastManager />
         <CombinedProvider cookies={parsedCookies}>
             {children}
         </CombinedProvider>
+        <CookieConsent/>
         </body>
         </html>
     );

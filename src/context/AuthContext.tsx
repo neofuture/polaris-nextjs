@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import {showToast} from "@/components/microcomponents/toast/toast-utils";
 
 interface AuthContextType {
     isLoggedIn: boolean;
@@ -23,12 +24,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode; cookies: { [key
 
     const login = () => {
         setIsLoggedIn(true);
-        Cookies.set("loggedIn", "true");
+        const consent = localStorage.getItem('cookieConsent') === 'true';
+        if (consent) {
+            Cookies.set("loggedIn", "true");
+        } else {
+            showToast("Error", "Please accept cookies to login", "error", 4000);
+        }
     };
 
     const logout = () => {
         setIsLoggedIn(false);
-        Cookies.set("loggedIn", "false");
+        const consent = localStorage.getItem('cookieConsent') === 'true';
+        if (consent) {
+            Cookies.set("loggedIn", "false");
+        }
         window.location.href = "/auth/login";
     };
 

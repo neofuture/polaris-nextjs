@@ -33,13 +33,19 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, cookies 
         const newTheme = theme === 'light' ? 'dark' : 'light';
         setTheme(newTheme);
         document.documentElement.className = `${newTheme} ${themeColor}`;
-        Cookies.set('theme', newTheme, { expires: 365 });
+        const consent = localStorage.getItem('cookieConsent') === 'true';
+        if (consent) {
+            Cookies.set('theme', newTheme, {expires: 365});
+        }
     };
 
     const setThemeColor = (color: string) => {
         setThemeColorState(color);
         document.documentElement.className = `${theme} ${color}`;
-        Cookies.set('themeColor', color, { expires: 365 });
+        const consent = localStorage.getItem('cookieConsent') === 'true';
+        if (consent) {
+            Cookies.set('themeColor', color, {expires: 365});
+        }
     };
 
     return (

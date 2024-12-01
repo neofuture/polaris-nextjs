@@ -28,7 +28,10 @@ export const SidebarProvider: React.FC<SidebarProviderProps> = ({ children, cook
     const toggleSidebar = () => {
         setIsSidebarOpen((prev) => {
             const newState = !prev;
-            Cookies.set("sidebarOpen", newState.toString());
+            const consent = localStorage.getItem('cookieConsent') === 'true';
+            if (consent) {
+                Cookies.set("sidebarOpen", newState.toString());
+            }
             return newState;
         });
     };
