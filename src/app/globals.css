@@ -107,6 +107,9 @@
     --foreground-main: #ededed;
 
     --container-background-color: #0a0a0a;
+    --field-background: #181818;
+    --field-color: #ededed;
+
 }
 
 .light {
@@ -139,6 +142,9 @@
 
     --nav-link-color: #0a0a0a;
     --container-background-color: #dedddd;
+
+    --field-background: #ffffff;
+    --field-color: #0a0a0a;
 }
 
 html,

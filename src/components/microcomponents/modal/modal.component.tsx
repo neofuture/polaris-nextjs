@@ -69,18 +69,15 @@ const Modal: React.FC<ModalProps> = (
         <div className={`${styles.modal} ${isFadingOut ? styles["fade-out"] : ""}`}
              onClick={allowBlurClose ? onClose : undefined}>
             <div className={styles["modal-content"]} onClick={(e) => e.stopPropagation()}>
-                {children}
-                {showCloseButton &&
-                    <div className={styles["button-container"]}>
-                        <Button iconName='fa-circle-xmark' onClick={onClose}>Close</Button>
-                    </div>}
+                <div className={styles["modal-inner"]}>
+                    {children}
+                    {showCloseButton &&
+                        <div className={styles["button-container"]}>
+                            <Button iconName='fa-circle-xmark' onClick={onClose}>Close</Button>
+                        </div>}
+                </div>
                 {closeTimer && Math.ceil(remainingTime / 1000) > 0 &&
-                    <>
-                        <div className={styles["countdown-timer"]}>
-                            {`Closing in ${Math.ceil(remainingTime / 1000)} seconds`}
-                        </div>
-                        <div className={styles["percentage-bar"]} style={{width: `${percentage}%`}}></div>
-                    </>
+                    <div className={styles["percentage-bar"]} style={{width: `${percentage}%`}}></div>
                 }
             </div>
         </div>

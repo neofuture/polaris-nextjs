@@ -1,0 +1,29 @@
+.form-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.form-label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-field {
+    padding: 8px;
+    border: 2px solid var(--grey-30);
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: var(--field-background);
+    color: var(--field-color);
+}
+
+.form-field.error {
+    border-color: red;
+}
+
+.error-message {
+    margin-top: 4px;
+    color: red;
+    font-size: 12px;
+}

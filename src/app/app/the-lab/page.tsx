@@ -13,6 +13,10 @@ import Logo from "../../../../public/images/logo.png";
 import LogoDark from "../../../../public/images/logo_dark.png";
 import {useTheme} from "@/context/ThemeContext";
 import {showToast} from "@/components/microcomponents/toast/toast-utils";
+import FormInput from "@/components/microcomponents/form-input/form-input.component";
+import { z } from 'zod';
+const emailSchema = z.string().email({ message: 'Invalid email address' });
+
 
 function TheLab() {
     const [toggleState, setToggleState] = useState(false);
@@ -25,6 +29,10 @@ function TheLab() {
         isFifthModalOpen: false
     });
     const {theme} = useTheme();
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [nameError, setNameError] = useState('');
 
 
     const handleToggle = () => {
@@ -45,10 +53,27 @@ function TheLab() {
             const [name] = cookie.split("=");
             document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
         }
-
         localStorage.clear();
         window.location.reload();
+    };
 
+    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEmail(e.target.value);
+        const result = emailSchema.safeParse(e.target.value);
+        if (!result.success) {
+            setEmailError(result.error.errors[0].message);
+        } else {
+            setEmailError('');
+        }
+    };
+
+    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setName(e.target.value);
+        if (e.target.value.length <= 2) {
+            setNameError('Name must be longer than 2 characters');
+        } else {
+            setNameError('');
+        }
     };
 
     return (
@@ -179,7 +204,47 @@ function TheLab() {
                 <div className={styles.section}>
                     <h3>App Reset</h3>
                     <div className={styles['flex-buttons']}>
-                        <Button state={'error'} iconName={'fa-arrow-rotate-left'} onClick={clearCookiesAndLocalStorage}>Reset Cookie and Consent</Button>
+                        <Button state={'error'} iconName={'fa-arrow-rotate-left'} onClick={clearCookiesAndLocalStorage}>Reset
+                            Cookie and Consent</Button>
+                    </div>
+                </div>
+                <div className={styles.section}>
+                    <h3>Form Input</h3>
+                    <div>
+                        <FormInput
+                            type="text"
+                            label="Name"
+                            value={name}
+                            onChange={handleNameChange}
+                            error={nameError}
+                        />
+
+                        <FormInput
+                            type="email"
+                            label="Email"
+                            value={email}
+                            onChange={handleEmailChange}
+                            error={emailError}
+                        />
+
+                        <hr></hr>
+                        <div><b>Name:</b> {name}</div>
+                        <div><b>Email:</b> {email}</div>
+                        <div className={styles.documentationBox}>
+                            <div>{`<FormInput type="text" label="Name" value={name} onChange={handleNameChange} error={nameError} />`}</div>
+                        </div>
+                        <div className={styles.parametersBox}>
+                            <h5>Parameters:</h5>
+                            <ul>
+                                <li>
+                                    <code>type</code>: &#39;text&#39; | &#39;email&#39; | &#39;number&#39; | &#39;password&#39;
+                                </li>
+                                <li><code>label</code>: string</li>
+                                <li><code>value</code>: string</li>
+                                <li><code>onChange</code>: function</li>
+                                <li><code>error</code>: string (optional)</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
