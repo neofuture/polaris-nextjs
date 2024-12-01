@@ -1,4 +1,3 @@
-/* src/components/microcomponents/toast/toast.module.css */
 .toast {
     background-color: var(--background);
     color: var(--foreground);
@@ -12,32 +11,34 @@
     position: relative;
     overflow: hidden;
     user-select: none;
+    margin-bottom: 10px;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-40px) scale(0);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
 @keyframes fadeOut {
     from {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
     to {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-40px) scale(0);
     }
 }
 
 .toast.fade-out {
     animation: fadeOut 0.5s ease-in-out;
+    margin-bottom: 0;
 }
 
 .close-button {
@@ -72,7 +73,6 @@
     font-size: 20px;
 }
 
-/* Status styles */
 .toast.default {
     background-color: var(--background);
     color: var(--foreground);
@@ -85,7 +85,7 @@
 
 .toast.error {
     background-color: var(--error-color);
-    color: var(--dark-button-color);
+    color: var(--light-button-color);
 }
 
 .toast.disabled {
@@ -116,7 +116,7 @@
 
 .progress-bar-container {
     width: 100%;
-    height: 8px;
+    height: 5px;
 }
 
 .progress-bar {

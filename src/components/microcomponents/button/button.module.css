@@ -50,11 +50,11 @@
 
 .button.error {
     background-color: var(--error-color);
-    color: var(--dark-button-color);
+    color: var(--light-button-color);
 }
 
 .button.error i {
-    color: black;
+    color: var(--light-button-color);;
 }
 
 .button.error:hover {

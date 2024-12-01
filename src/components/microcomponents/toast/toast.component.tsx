@@ -16,6 +16,7 @@ const statusIconMap: { [key: string]: string } = {
     error: 'fa-circle-xmark',
     success: 'fa-circle-check',
     default: 'fa-circle-info',
+    disabled: 'fa-circle-minus',
 };
 
 const Toast: React.FC<ToastProps> = ({ title, message, status = 'default', onClose, autoClose, onClick }) => {
@@ -47,7 +48,7 @@ const Toast: React.FC<ToastProps> = ({ title, message, status = 'default', onClo
     const handleClose = (event: React.MouseEvent) => {
         event.stopPropagation();
         setIsClosing(true);
-        setTimeout(onClose, 300);
+        setTimeout(onClose, 500);
     };
 
     return (

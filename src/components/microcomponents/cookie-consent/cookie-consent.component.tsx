@@ -17,6 +17,7 @@ const CookieConsent: React.FC = () => {
     const handleAccept = () => {
         localStorage.setItem('cookieConsent', 'true');
         setIsVisible(false);
+        window.location.reload();
     };
 
     if (!isVisible) return null;

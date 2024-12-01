@@ -39,6 +39,18 @@ function TheLab() {
         setModalStates(prevState => ({...prevState, [modalName]: false}));
     };
 
+    const clearCookiesAndLocalStorage = () => {
+        const cookies = document.cookie.split("; ");
+        for (const cookie of cookies) {
+            const [name] = cookie.split("=");
+            document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        }
+
+        localStorage.clear();
+        window.location.reload();
+
+    };
+
     return (
         <div className={styles['outer-container']}>
             <h1><i className={'fad fa-flask'}/> The Lab</h1>
@@ -164,6 +176,12 @@ function TheLab() {
                         </li>
                     </ul>
                 </div>
+                <div className={styles.section}>
+                    <h3>App Reset</h3>
+                    <div className={styles['flex-buttons']}>
+                        <Button state={'error'} iconName={'fa-arrow-rotate-left'} onClick={clearCookiesAndLocalStorage}>Reset Cookie and Consent</Button>
+                    </div>
+                </div>
             </div>
 
             <div className={styles['container-half']}>
@@ -171,18 +189,23 @@ function TheLab() {
                 <div className={styles.section}>
                     <h3>Modal</h3>
                     <div className={styles['flex-buttons']}>
-                        <Button onClick={() => openModal('isFirstModalOpen')} iconName='fa-up-right-from-square'>Open
+                        <Button onClick={() => openModal('isFirstModalOpen')}
+                                iconName='fa-up-right-from-square'>Open
                             First
                             Model</Button>
-                        <Button onClick={() => openModal('isSecondModalOpen')} iconName='fa-up-right-from-square'>Open
+                        <Button onClick={() => openModal('isSecondModalOpen')}
+                                iconName='fa-up-right-from-square'>Open
                             Second Modal (No close button)</Button>
-                        <Button onClick={() => openModal('isThirdModalOpen')} iconName='fa-up-right-from-square'>Open
+                        <Button onClick={() => openModal('isThirdModalOpen')}
+                                iconName='fa-up-right-from-square'>Open
                             Third
                             Modal (Blur close blocked)</Button>
-                        <Button onClick={() => openModal('isFourthModalOpen')} iconName='fa-up-right-from-square'>Open
+                        <Button onClick={() => openModal('isFourthModalOpen')}
+                                iconName='fa-up-right-from-square'>Open
                             Fourth
                             Modal (Auto close 5 seconds)</Button>
-                        <Button onClick={() => openModal('isFifthModalOpen')} iconName='fa-up-right-from-square'>Open
+                        <Button onClick={() => openModal('isFifthModalOpen')}
+                                iconName='fa-up-right-from-square'>Open
                             Fifth
                             Modal (Auto close 20 seconds, with close)</Button>
 
@@ -205,21 +228,24 @@ function TheLab() {
                         <h2>Third Modal Title</h2>
                         <div>This is the second modal component.</div>
                         <hr></hr>
-                        <Image src={theme === 'light' ? LogoDark : Logo} alt={'Hoops'} width={442} height={234}/>
+                        <Image src={theme === 'light' ? LogoDark : Logo} alt={'Hoops'} width={442}
+                               height={234}/>
                     </Modal>
                     <Modal isOpen={modalStates.isFourthModalOpen}
                            onClose={() => closeModal('isFourthModalOpen')}
                            showCloseButton={false}
                            allowBlurClose={false}
                            closeTimer={5000}>
-                        <Image src={theme === 'light' ? LogoDark : Logo} alt={'Hoops'} width={442} height={234}/>
+                        <Image src={theme === 'light' ? LogoDark : Logo} alt={'Hoops'} width={442}
+                               height={234}/>
                     </Modal>
                     <Modal isOpen={modalStates.isFifthModalOpen}
                            onClose={() => closeModal('isFifthModalOpen')}
                            showCloseButton={true}
                            allowBlurClose={false}
                            closeTimer={20000}>
-                        <Image src={theme === 'light' ? LogoDark : Logo} alt={'Hoops'} width={442} height={234}/>
+                        <Image src={theme === 'light' ? LogoDark : Logo} alt={'Hoops'} width={442}
+                               height={234}/>
                     </Modal>
 
                     <div className={styles.documentationBox}>
@@ -245,15 +271,20 @@ function TheLab() {
                 <div className={styles.section}>
                     <h3>Toasts</h3>
                     <div className={styles['flex-buttons']}>
-                        <Button onClick={() => showToast('Title', 'Message', 'default', undefined,)} state={'default'}>Show
+                        <Button onClick={() => showToast('Title', 'Message', 'default', undefined,)}
+                                state={'default'}>Show
                             Toast</Button>
-                        <Button onClick={() => showToast('Title', 'Message', 'warning', undefined)} state={'warning'}>Show
+                        <Button onClick={() => showToast('Title', 'Message', 'warning', undefined)}
+                                state={'warning'}>Show
                             Toast</Button>
-                        <Button onClick={() => showToast('Title', 'Message', 'error', undefined)} state={'error'}>Show
+                        <Button onClick={() => showToast('Title', 'Message', 'error', undefined)}
+                                state={'error'}>Show
                             Toast</Button>
-                        <Button onClick={() => showToast('Title', 'Message', 'success', undefined)} state={'success'}>Show
+                        <Button onClick={() => showToast('Title', 'Message', 'success', undefined)}
+                                state={'success'}>Show
                             Toast</Button>
-                        <Button onClick={() => showToast('Title', 'Message', 'disabled', undefined)}>Show Toast</Button>
+                        <Button onClick={() => showToast('Title', 'Message', 'disabled', undefined)}>Show
+                            Toast</Button>
                         <Button onClick={() => showToast('Title', 'Message', 'default', 5000)}>Show Toast (auto
                             close)</Button>
                         <Button
