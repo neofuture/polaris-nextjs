@@ -76,3 +76,7 @@
     gap: 8px;
     flex-wrap: wrap;
 }
+
+.outer-container code {
+    color: var(--light-primary);
+}

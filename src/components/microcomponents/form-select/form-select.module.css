@@ -1,4 +1,4 @@
-.form-input {
+.form-select {
     display: flex;
     flex-direction: column;
     margin-bottom: 16px;
@@ -17,6 +17,13 @@
     background-color: var(--field-background);
     color: var(--field-color);
     outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('/images/chevron-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
 }
 
 .form-field:focus {

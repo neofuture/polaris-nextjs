@@ -9,13 +9,15 @@ interface FormInputProps {
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     error?: string;
+    id: string;
 }
 
-const FormInput: React.FC<FormInputProps> = ({type, label, value, onChange, error}) => {
+const FormInput: React.FC<FormInputProps> = ({type, label, value, onChange, error, id}) => {
     return (
         <div className={styles['form-input']}>
-            <label className={styles['form-label']}>{label}</label>
+            <label htmlFor={id} className={styles['form-label']}>{label}</label>
             <input
+                id={id}
                 type={type}
                 value={value}
                 onChange={onChange}

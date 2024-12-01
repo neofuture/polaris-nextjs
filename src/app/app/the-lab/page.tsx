@@ -15,8 +15,13 @@ import {useTheme} from "@/context/ThemeContext";
 import {showToast} from "@/components/microcomponents/toast/toast-utils";
 import FormInput from "@/components/microcomponents/form-input/form-input.component";
 import {z} from 'zod';
+import FormSelect from "@/components/microcomponents/form-select/form-select.component";
 
 const emailSchema = z.string().email({message: 'Invalid email address'});
+const nameSchema = z.string().min(3, { message: 'Name must be longer than 2 characters' });
+const selectSchema = z.enum(['option1', 'option2', 'option3']).refine(value => value !== 'option3', {
+    message: 'Option 3 is not allowed',
+});
 
 
 function TheLab() {
@@ -34,6 +39,8 @@ function TheLab() {
     const [name, setName] = useState('');
     const [emailError, setEmailError] = useState('');
     const [nameError, setNameError] = useState('');
+    const [selectedValue, setSelectedValue] = useState('option2');
+    const [selectError, setSelectError] = useState('');
 
 
     const handleToggle = () => {
@@ -70,10 +77,21 @@ function TheLab() {
 
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setName(e.target.value);
-        if (e.target.value.length <= 2) {
-            setNameError('Name must be longer than 2 characters');
+        const result = nameSchema.safeParse(e.target.value);
+        if (!result.success) {
+            setNameError(result.error.errors[0].message);
         } else {
             setNameError('');
+        }
+    };
+
+    const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedValue(e.target.value);
+        const result = selectSchema.safeParse(e.target.value);
+        if (!result.success) {
+            setSelectError(result.error.errors[0].message);
+        } else {
+            setSelectError('');
         }
     };
 
@@ -250,42 +268,42 @@ function TheLab() {
                 <div className={styles.section}>
                     <h3>Toasts</h3>
                     <div className={styles['flex-buttons']}>
-                        <Button onClick={() => showToast('Title', 'Message', 'default', undefined,)}
+                        <Button iconName={'fa-bread-slice'} onClick={() => showToast('Title', 'Message', 'default', undefined,)}
                                 state={'default'}>Show
                             Toast</Button>
-                        <Button onClick={() => showToast('Title', 'Message', 'warning', undefined)}
-                                state={'warning'}>Show
-                            Toast</Button>
-                        <Button onClick={() => showToast('Title', 'Message', 'error', undefined)}
-                                state={'error'}>Show
-                            Toast</Button>
-                        <Button onClick={() => showToast('Title', 'Message', 'success', undefined)}
+                        <Button iconName={'fa-bread-slice'} onClick={() => showToast('Title', 'Message', 'success', undefined)}
                                 state={'success'}>Show
                             Toast</Button>
-                        <Button onClick={() => showToast('Title', 'Message', 'disabled', undefined)}
+                        <Button iconName={'fa-bread-slice'} onClick={() => showToast('Title', 'Message', 'warning', undefined)}
+                                state={'warning'}>Show
+                            Toast</Button>
+                        <Button iconName={'fa-bread-slice'} onClick={() => showToast('Title', 'Message', 'error', undefined)}
+                                state={'error'}>Show
+                            Toast</Button>
+                        <Button iconName={'fa-bread-slice'} onClick={() => showToast('Title', 'Message', 'disabled', undefined)}
                                 state={'disabled'}>Show
                             Toast</Button>
                         <hr/>
-                        <Button onClick={() => showToast('Title', 'Message', 'disabled', undefined)}>Show
+                        <Button iconName={'fa-bread-slice'} onClick={() => showToast('Title', 'Message', 'disabled', undefined)}>Show
                             Toast</Button>
-                        <Button onClick={() => showToast('Title', 'Message', 'default', 5000)}>Show Toast (auto
+                        <Button iconName={'fa-bread-slice'} onClick={() => showToast('Title', 'Message', 'default', 5000)}>Show Toast (auto
                             close)</Button>
-                        <Button
+                        <Button iconName={'fa-bread-slice'}
                             onClick={() => showToast('Title', 'Message', 'default', undefined, () => alert('Toast clicked!'))}>Show
                             Toast (with callback)</Button>
-                        <Button
+                        <Button iconName={'fa-bread-slice'}
+                                onClick={() => showToast('Title', 'Message', 'success', undefined, () => alert('Toast clicked!'))}
+                                state={'success'}>Show
+                            Toast (with callback)</Button>
+                        <Button iconName={'fa-bread-slice'}
                             onClick={() => showToast('Title', 'Message', 'warning', undefined, () => alert('Toast clicked!'))}
                             state={'warning'}>Show
                             Toast (with callback)</Button>
-                        <Button
+                        <Button iconName={'fa-bread-slice'}
                             onClick={() => showToast('Title', 'Message', 'error', undefined, () => alert('Toast clicked!'))}
                             state={'error'}>Show
                             Toast (with callback)</Button>
-                        <Button
-                            onClick={() => showToast('Title', 'Message', 'success', undefined, () => alert('Toast clicked!'))}
-                            state={'success'}>Show
-                            Toast (with callback)</Button>
-                        <Button
+                        <Button iconName={'fa-bread-slice'}
                             onClick={() => showToast('Title', 'Message', 'disabled', undefined, () => alert('Toast clicked!'))}
                             state={'disabled'}>Show
                             Toast (with callback)</Button>
@@ -314,25 +332,26 @@ function TheLab() {
 
                             <Button onClick={() => alert('Default Button clicked!')} iconName={'fa-check'}
                                     state={'default'}>Default</Button>
+                            <Button onClick={() => alert('Success Button clicked!')} iconName={'fa-check-circle'}
+                                    state={'success'}>Success</Button>
                             <Button onClick={() => alert('Warning Button clicked!')}
                                     iconName={'fa-exclamation-triangle'} state={'warning'}>Warning</Button>
                             <Button onClick={() => alert('Error Button clicked!')} iconName={'fa-times-circle'}
                                     state={'error'}>Error</Button>
                             <Button onClick={() => alert('Disabled Button clicked!')} iconName={'fa-ban'}
                                     state={'disabled'} disabled={true}>Disabled</Button>
-                            <Button onClick={() => alert('Success Button clicked!')} iconName={'fa-check-circle'}
-                                    state={'success'}>Success</Button>
                             <hr />
                             <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-user'}
                                     rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-check-circle'}
+                                    state={'success'} rounded={true}></Button>
                             <Button onClick={() => alert('Rounded Button clicked!')}
                                     iconName={'fa-exclamation-triangle'} state={'warning'} rounded={true}></Button>
                             <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-times-circle'}
                                     state={'error'} rounded={true}></Button>
                             <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-ban'}
-                                    state={'disabled'} rounded={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-check-circle'}
-                                    state={'success'} rounded={true}></Button>
+                                    state={'disabled'} rounded={true} disabled={true}></Button>
+
 
                         </div>
                     </div>
@@ -358,6 +377,7 @@ function TheLab() {
                     <h3>Form Input</h3>
                     <div>
                         <FormInput
+                            id='name'
                             type="text"
                             label="Name"
                             value={name}
@@ -366,6 +386,7 @@ function TheLab() {
                         />
 
                         <FormInput
+                            id='email'
                             type="email"
                             label="Email"
                             value={email}
@@ -395,7 +416,34 @@ function TheLab() {
                         </div>
                     </div>
                 </div>
-
+                <div className={styles.section}>
+                    <h3>Form Select</h3>
+                    <FormSelect
+                        id='select'
+                        label="Select Option"
+                        value={selectedValue}
+                        onChange={handleSelectChange}
+                        options={[
+                            { value: 'option1', label: 'Option 1' },
+                            { value: 'option2', label: 'Option 2' },
+                            { value: 'option3', label: 'Option 3' },
+                        ]}
+                        error={selectError}
+                    />
+                    <div className={styles.documentationBox}>
+                        <div>{`<FormSelect label="Select Option" value={selectedValue} onChange={handleSelectChange} options={[{ value: 'option1', label: 'Option 1' }, { value: 'option2', label: 'Option 2' }, { value: 'option3', label: 'Option 3' }]} error={selectError} />`}</div>
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                        <ul>
+                            <li><code>label</code>: string</li>
+                            <li><code>value</code>: string</li>
+                            <li><code>onChange</code>: function</li>
+                            <li><code>options</code>: {`{ value: string; label: string }[]`}</li>
+                            <li><code>error</code>: string (optional)</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div className={styles['container-full']}>
 

@@ -13,6 +13,11 @@
     transition: color ease-in-out var(--transition-delay), background-color ease-in-out var(--transition-delay);
 }
 
+.button:focus {
+    outline: 2px solid var(--light-primary);
+    outline-offset: 3px;
+}
+
 .button:hover {
     background-color: var(--dark-primary);
 }
