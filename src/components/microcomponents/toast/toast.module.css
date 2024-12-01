@@ -90,7 +90,7 @@
 
 .toast.disabled {
     background-color: var(--disabled-color);
-    color: var(--dark-button-color);
+    color: var(--light-button-color);
 }
 
 .toast.success {

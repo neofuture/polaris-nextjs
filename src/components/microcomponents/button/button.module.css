@@ -63,11 +63,11 @@
 
 .button.disabled {
     background-color: var(--disabled-color);
-    color: var(--dark-button-color);
+    color: var(--light-button-color);
 }
 
 .button.disabled i {
-    color: black;
+    color: var(--light-button-color);
 }
 
 .button.disabled:hover {
@@ -85,4 +85,9 @@
 
 .button.success:hover {
     background-color: var(--success-hover-color);
+}
+
+.button:disabled:hover {
+    cursor: not-allowed;
+    background-color: var(--disabled-color);
 }

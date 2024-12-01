@@ -16,6 +16,12 @@
     font-size: 16px;
     background-color: var(--field-background);
     color: var(--field-color);
+    outline: none; /* Remove the standard outline */
+}
+
+.form-field:focus {
+    outline: 2px solid var(--light-primary); /* New outline in theme color */
+    outline-offset: 3px; /* 3 pixels away from the border */
 }
 
 .form-field.error {

@@ -14,8 +14,9 @@ import LogoDark from "../../../../public/images/logo_dark.png";
 import {useTheme} from "@/context/ThemeContext";
 import {showToast} from "@/components/microcomponents/toast/toast-utils";
 import FormInput from "@/components/microcomponents/form-input/form-input.component";
-import { z } from 'zod';
-const emailSchema = z.string().email({ message: 'Invalid email address' });
+import {z} from 'zod';
+
+const emailSchema = z.string().email({message: 'Invalid email address'});
 
 
 function TheLab() {
@@ -103,54 +104,6 @@ function TheLab() {
                 </div>
 
                 <div className={styles.section}>
-                    <h3>Button</h3>
-                    <div className={styles['component-container']}>
-                        <div className={styles['flex-buttons']}>
-
-                            <Button onClick={() => alert('Default Button clicked!')} iconName={'fa-check'}
-                                    state={'default'}>Default</Button>
-                            <Button onClick={() => alert('Warning Button clicked!')}
-                                    iconName={'fa-exclamation-triangle'} state={'warning'}>Warning</Button>
-                            <Button onClick={() => alert('Error Button clicked!')} iconName={'fa-times-circle'}
-                                    state={'error'}>Error</Button>
-                            <Button onClick={() => alert('Disabled Button clicked!')} iconName={'fa-ban'}
-                                    state={'disabled'}>Disabled</Button>
-                            <Button onClick={() => alert('Success Button clicked!')} iconName={'fa-check-circle'}
-                                    state={'success'}>Success</Button>
-
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-user'}
-                                    rounded={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')}
-                                    iconName={'fa-exclamation-triangle'} state={'warning'} rounded={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-times-circle'}
-                                    state={'error'} rounded={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-ban'}
-                                    state={'disabled'} rounded={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-check-circle'}
-                                    state={'success'} rounded={true}></Button>
-
-                        </div>
-                    </div>
-                    <div className={styles.documentationBox}>
-                        {`<Button onClick={handleClick} iconName={'fa-flask'} state={'warning'}>Click me</Button>`}
-                    </div>
-                    <div className={styles.parametersBox}>
-                        <h5>Parameters:</h5>
-                        <ul>
-                            <li><code>iconName</code>: string (optional)</li>
-                            <li><code>label</code>: string (optional)</li>
-                            <li><code>onClick</code>: function (optional)</li>
-                            <li><code>rounded</code>: boolean (optional)</li>
-                            <li><code>href</code>: string (optional)</li>
-                            <li><code>children</code>: React.ReactNode</li>
-                            <li>
-                                <code>state</code>: &#39;default&#39; | &#39;warning&#39; | &#39;error&#39; | &#39;disabled&#39; | &#39;success&#39; (optional)
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div className={styles.section}>
                     <h3>Toggle Switch</h3>
                     <div className={styles['component-container']}>
 
@@ -206,45 +159,6 @@ function TheLab() {
                     <div className={styles['flex-buttons']}>
                         <Button state={'error'} iconName={'fa-arrow-rotate-left'} onClick={clearCookiesAndLocalStorage}>Reset
                             Cookie and Consent</Button>
-                    </div>
-                </div>
-                <div className={styles.section}>
-                    <h3>Form Input</h3>
-                    <div>
-                        <FormInput
-                            type="text"
-                            label="Name"
-                            value={name}
-                            onChange={handleNameChange}
-                            error={nameError}
-                        />
-
-                        <FormInput
-                            type="email"
-                            label="Email"
-                            value={email}
-                            onChange={handleEmailChange}
-                            error={emailError}
-                        />
-
-                        <hr></hr>
-                        <div><b>Name:</b> {name}</div>
-                        <div><b>Email:</b> {email}</div>
-                        <div className={styles.documentationBox}>
-                            <div>{`<FormInput type="text" label="Name" value={name} onChange={handleNameChange} error={nameError} />`}</div>
-                        </div>
-                        <div className={styles.parametersBox}>
-                            <h5>Parameters:</h5>
-                            <ul>
-                                <li>
-                                    <code>type</code>: &#39;text&#39; | &#39;email&#39; | &#39;number&#39; | &#39;password&#39;
-                                </li>
-                                <li><code>label</code>: string</li>
-                                <li><code>value</code>: string</li>
-                                <li><code>onChange</code>: function</li>
-                                <li><code>error</code>: string (optional)</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -348,6 +262,10 @@ function TheLab() {
                         <Button onClick={() => showToast('Title', 'Message', 'success', undefined)}
                                 state={'success'}>Show
                             Toast</Button>
+                        <Button onClick={() => showToast('Title', 'Message', 'disabled', undefined)}
+                                state={'disabled'}>Show
+                            Toast</Button>
+                        <hr/>
                         <Button onClick={() => showToast('Title', 'Message', 'disabled', undefined)}>Show
                             Toast</Button>
                         <Button onClick={() => showToast('Title', 'Message', 'default', 5000)}>Show Toast (auto
@@ -368,7 +286,8 @@ function TheLab() {
                             state={'success'}>Show
                             Toast (with callback)</Button>
                         <Button
-                            onClick={() => showToast('Title', 'Message', 'disabled', undefined, () => alert('Toast clicked!'))}>Show
+                            onClick={() => showToast('Title', 'Message', 'disabled', undefined, () => alert('Toast clicked!'))}
+                            state={'disabled'}>Show
                             Toast (with callback)</Button>
 
                     </div>
@@ -388,6 +307,95 @@ function TheLab() {
                         </ul>
                     </div>
                 </div>
+                <div className={styles.section}>
+                    <h3>Button</h3>
+                    <div className={styles['component-container']}>
+                        <div className={styles['flex-buttons']}>
+
+                            <Button onClick={() => alert('Default Button clicked!')} iconName={'fa-check'}
+                                    state={'default'}>Default</Button>
+                            <Button onClick={() => alert('Warning Button clicked!')}
+                                    iconName={'fa-exclamation-triangle'} state={'warning'}>Warning</Button>
+                            <Button onClick={() => alert('Error Button clicked!')} iconName={'fa-times-circle'}
+                                    state={'error'}>Error</Button>
+                            <Button onClick={() => alert('Disabled Button clicked!')} iconName={'fa-ban'}
+                                    state={'disabled'} disabled={true}>Disabled</Button>
+                            <Button onClick={() => alert('Success Button clicked!')} iconName={'fa-check-circle'}
+                                    state={'success'}>Success</Button>
+                            <hr />
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-user'}
+                                    rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')}
+                                    iconName={'fa-exclamation-triangle'} state={'warning'} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-times-circle'}
+                                    state={'error'} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-ban'}
+                                    state={'disabled'} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-check-circle'}
+                                    state={'success'} rounded={true}></Button>
+
+                        </div>
+                    </div>
+                    <div className={styles.documentationBox}>
+                        {`<Button onClick={handleClick} iconName={'fa-flask'} state={'warning'}>Click me</Button>`}
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                        <ul>
+                            <li><code>iconName</code>: string (optional)</li>
+                            <li><code>label</code>: string (optional)</li>
+                            <li><code>onClick</code>: function (optional)</li>
+                            <li><code>rounded</code>: boolean (optional)</li>
+                            <li><code>href</code>: string (optional)</li>
+                            <li><code>children</code>: React.ReactNode</li>
+                            <li>
+                                <code>state</code>: &#39;default&#39; | &#39;warning&#39; | &#39;error&#39; | &#39;disabled&#39; | &#39;success&#39; (optional)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div className={styles.section}>
+                    <h3>Form Input</h3>
+                    <div>
+                        <FormInput
+                            type="text"
+                            label="Name"
+                            value={name}
+                            onChange={handleNameChange}
+                            error={nameError}
+                        />
+
+                        <FormInput
+                            type="email"
+                            label="Email"
+                            value={email}
+                            onChange={handleEmailChange}
+                            error={emailError}
+                        />
+
+                        <hr />
+                        <div><b>Name:</b> {name}</div>
+                        <div><b>Email:</b> {email}</div>
+                        <div className={styles.documentationBox}>
+                            <div>{`<FormInput type="text" label="Name" value={name} onChange={handleNameChange} error={nameError} />`}</div>
+                        </div>
+                        <div className={styles.parametersBox}>
+                            <h5>Parameters:</h5>
+                            <ul>
+                                <li>
+                                    <code>type</code>: &#39;text&#39; | &#39;password&#39; | &#39;email&#39; | &#39;url&#39; | &#39;tel&#39; | &#39;number&#39; | &#39;range&#39; |
+                                    &#39;date&#39; | &#39;month&#39; | &#39;week&#39; | &#39;time&#39; | &#39;datetime-local&#39; | &#39;color&#39; |
+                                    &#39;radio&#39; | &#39;file&#39; | &#39;image&#39;
+                                </li>
+                                <li><code>label</code>: string</li>
+                                <li><code>value</code>: string</li>
+                                <li><code>onChange</code>: function</li>
+                                <li><code>error</code>: string (optional)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div className={styles['container-full']}>
 

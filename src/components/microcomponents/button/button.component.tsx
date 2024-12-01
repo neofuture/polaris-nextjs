@@ -11,9 +11,10 @@ interface ButtonProps {
     href?: string;
     children?: React.ReactNode;
     state?: 'default' | 'warning' | 'error' | 'disabled' | 'success';
+    disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ iconName, onClick, rounded, className, href, children, state = 'default' }) => {
+const Button: React.FC<ButtonProps> = ({ iconName, onClick, rounded, className, href, children, state = 'default', disabled }) => {
     const handleClick = () => {
         if (onClick) {
             onClick();
@@ -27,7 +28,7 @@ const Button: React.FC<ButtonProps> = ({ iconName, onClick, rounded, className, 
         <button
             onClick={handleClick}
             className={`${styles.button} ${rounded ? styles.rounded : ''} ${className || ''} ${styles[state]}`}
-            disabled={state === 'disabled'}
+            disabled={disabled}
         >
             {iconName && (
                 <>
@@ -46,5 +47,4 @@ const Button: React.FC<ButtonProps> = ({ iconName, onClick, rounded, className, 
         </button>
     );
 }
-
 export default Button;
