@@ -38,7 +38,7 @@ export default function Page() {
                 <Image src={theme === "dark" ? Logo : LogoDark} alt={projectName} width={220} height={116}/>
                 <Link href="/app" className={styles.link}>
                     <Image src={Hoops} alt="Continue to App" width={20} height={13}/>
-                    Continue to App
+                    Continue to The App
                     <Image src={Hoops} alt="Continue to App" width={20} height={13}/>
                 </Link>
             </div>
