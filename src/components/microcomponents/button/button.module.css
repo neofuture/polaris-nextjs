@@ -11,6 +11,7 @@
     align-items: center;
     min-width: 36px;
     transition: color ease-in-out var(--transition-delay), background-color ease-in-out var(--transition-delay);
+    font-weight: 500;
 }
 
 .button.small {
@@ -53,10 +54,6 @@
     color: var(--dark-button-color);
 }
 
-.button.warning i {
-    color: black;
-}
-
 .button.warning:hover {
     background-color: var(--warning-hover-color);
 }
@@ -90,10 +87,6 @@
 .button.success {
     background-color: var(--success-color);
     color: var(--dark-button-color);
-}
-
-.button.success i {
-    color: black;
 }
 
 .button.success:hover {

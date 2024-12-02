@@ -73,7 +73,7 @@ const Modal: React.FC<ModalProps> = (
                     {children}
                     {showCloseButton &&
                         <div className={styles["button-container"]}>
-                            <Button iconName='fa-circle-xmark' onClick={onClose}>Close</Button>
+                            <Button iconName='fas fa-circle-xmark' onClick={onClose}>Close</Button>
                         </div>}
                 </div>
                 {closeTimer && Math.ceil(remainingTime / 1000) > 0 &&

@@ -14,7 +14,7 @@
     --success-color: #4dff4d;
     --success-hover-color: #03e003;
 
-    --dark-button-color: #111111;
+    --dark-button-color: #333333;
     --light-button-color: #ededed;
 }
 
@@ -165,7 +165,7 @@
     --foreground-main: #1f1f1f;
 
     --nav-link-color: #0a0a0a;
-    --container-background-color: #eeeeee;
+    --container-background-color: #dedddd;
 
     --field-background: #ffffff;
     --field-color: #0a0a0a;
