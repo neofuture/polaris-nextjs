@@ -415,10 +415,12 @@ function TheLab() {
                                     small={true}>Secondary</Button>
                             <Button onClick={() => alert('Success Button clicked!')} state={'success'}
                                     small={true}>Success</Button>
-                            <Button onClick={() => alert('Warning Button clicked!')} small={true}>Warning</Button>
+                            <Button onClick={() => alert('Warning Button clicked!')} small={true}
+                                    state={'warning'}>Warning</Button>
                             <Button onClick={() => alert('Error Button clicked!')} state={'error'}
                                     small={true}>Error</Button>
                             <Button onClick={() => alert('Disabled Button clicked!')} small={true}
+                                    state={'disabled'}
                                     disabled={true}>Disabled</Button>
 
                         </div>
