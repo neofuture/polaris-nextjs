@@ -32,6 +32,20 @@
     --button-color: #ededed;
 }
 
+.ebg {
+    --light-primary: #80BC42;
+    --dark-primary: #4d7a29;
+    --darker-primary: #2e4a18;
+
+    --light-secondary: #1A77BD;
+    --dark-secondary: #12548a;
+    --darker-secondary: #0a3658;
+
+    --nav-link-color: #ededed;
+    --nav-link-highlight-color: #ededed;
+    --button-color: #ededed;
+}
+
 .red {
     --light-primary: #ff4d4d;
     --dark-primary: #b30000;
