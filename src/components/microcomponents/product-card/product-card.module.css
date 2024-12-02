@@ -1,4 +1,7 @@
 .product-card {
+    --ebg-green: #80bc42;
+    --ebg-blue: #1a77bd;
+
     flex: 1;
     border:2px solid var(--grey-30);
     border-radius: 12px;

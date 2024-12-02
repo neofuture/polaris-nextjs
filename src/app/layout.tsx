@@ -32,7 +32,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <html lang="en" className={`${inter.className} ${className}`}>
         <head>
             <link rel="stylesheet" href="/css/fontawesome.min.css"/>
-            <link rel="stylesheet" href="/css/duotone.min.css"/>
+            <link rel="stylesheet" href="/css/all.min.css"/>
             <link rel="icon" href="/favicon.ico"/>
         </head>
         <body>

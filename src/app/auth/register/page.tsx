@@ -6,7 +6,7 @@ const Register: React.FC = () => {
         <div>
             <h1><i className='fad fa-user-plus'/> Register</h1>
             <h2>Welcome to registration</h2>
-            <Button href='/auth/login' iconName='fa-sign-in'>Login</Button>
+            <Button href='/auth/login' iconName='fad fa-sign-in'>Login</Button>
 
         </div>
     );

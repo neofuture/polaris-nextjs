@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import clsx from 'clsx';
 import styles from './button.module.css';
 
 interface ButtonProps {
@@ -10,11 +11,12 @@ interface ButtonProps {
     className?: string;
     href?: string;
     children?: React.ReactNode;
-    state?: 'default' | 'warning' | 'error' | 'disabled' | 'success';
+    state?: 'default' | 'secondary' | 'warning' | 'error' | 'disabled' | 'success';
     disabled?: boolean;
+    small?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ iconName, onClick, rounded, className, href, children, state = 'default', disabled }) => {
+const Button: React.FC<ButtonProps> = ({ iconName, onClick, rounded, className, href, children, state = 'default', disabled, small }) => {
     const handleClick = () => {
         if (onClick) {
             onClick();
@@ -27,17 +29,23 @@ const Button: React.FC<ButtonProps> = ({ iconName, onClick, rounded, className, 
     return (
         <button
             onClick={handleClick}
-            className={`${styles.button} ${rounded ? styles.rounded : ''} ${className || ''} ${styles[state]}`}
+            className={clsx(
+                styles.button,
+                small && styles.small,
+                rounded && styles.rounded,
+                className,
+                styles[state]
+            )}
             disabled={disabled}
         >
             {iconName && (
                 <>
                     {children ? (
                         <div className={styles['button__icon-wrapper']}>
-                            <i className={`fad ${iconName} ${styles.icon}`} />
+                            <i className={`${iconName} ${styles.icon}`} />
                         </div>
                     ) : (
-                        <i className={`fad ${iconName} ${styles.icon}`} />
+                        <i className={`${iconName} ${styles.icon}`} />
                     )}
                 </>
             )}

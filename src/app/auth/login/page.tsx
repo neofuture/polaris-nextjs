@@ -23,8 +23,8 @@ const Login: React.FC = () => {
         <div>
             <h1><i className={'fad fa-sign-in'} /> Login</h1>
             <h2>Welcome to the login</h2>
-            <Button onClick={login} iconName={'fa-sign-in'}>Login</Button>
-            <Button href='/auth/register' iconName='fa-user-plus'>Register</Button>
+            <Button onClick={login} iconName={'fad fa-sign-in'}>Login</Button>
+            <Button href='/auth/register' iconName='fad fa-user-plus'>Register</Button>
         </div>
     );
 };

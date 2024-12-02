@@ -23,23 +23,23 @@ const Sidebar: React.FC = () => {
                 <nav>
                     <ul className={styles['sidebar__nav-list']}>
                         <li className={styles['sidebar__nav-list-item']}>
-                            <NavLink iconName="fa-home" href="/app" exact={true}>Home</NavLink>
+                            <NavLink iconName="fad fa-home" href="/app" exact={true}>Home</NavLink>
                         </li>
                         <li className={styles['sidebar__nav-list-item']}>
-                            <NavLink iconName="fa-dashboard" href="/app/dashboard">Dashboard</NavLink>
+                            <NavLink iconName="fad fa-dashboard" href="/app/dashboard">Dashboard</NavLink>
                         </li>
                         {!isLoggedIn && (
                             <li className={styles['sidebar__nav-list-item']}>
-                                <NavLink iconName="fa-sign-in" href="/auth/login">Login</NavLink>
+                                <NavLink iconName="fad fa-sign-in" href="/auth/login">Login</NavLink>
                             </li>
                         )}
                         {isLoggedIn && (
                             <>
                                 <li className={styles['sidebar__nav-list-item']}>
-                                    <NavLink iconName="fa-user" href="/app/profile">Profile</NavLink>
+                                    <NavLink iconName="fad fa-user" href="/app/profile">Profile</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink iconName="fa-sign-out" onClick={logout}>Logout</NavLink>
+                                    <NavLink iconName="fad fa-sign-out" onClick={logout}>Logout</NavLink>
                                 </li>
                             </>
                         )}
@@ -47,7 +47,7 @@ const Sidebar: React.FC = () => {
                             <hr/>
                         </li>
                         <li>
-                            <NavLink iconName="fa-flask" href="/app/the-lab">The Lab</NavLink>
+                            <NavLink iconName="fad fa-flask" href="/app/the-lab">The Lab</NavLink>
                         </li>
                     </ul>
                 </nav>

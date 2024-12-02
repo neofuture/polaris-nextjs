@@ -106,10 +106,10 @@ function TheLab() {
                 <div className={styles.section}>
                     <h3>NavLink</h3>
                     <div className={styles['component-container']}>
-                        <NavLink onClick={() => alert('NavLink clicked')} iconName={'fa-flask'}>Go to example</NavLink>
+                        <NavLink onClick={() => alert('NavLink clicked')} iconName={'fad fa-flask'}>Go to example</NavLink>
                     </div>
                     <div className={styles.documentationBox}>
-                        {`<NavLink onClick={handleClick} iconName={'fa-flask'}>Go to example</NavLink>`}
+                        {`<NavLink onClick={handleClick} iconName={'fad fa-flask'}>Go to example</NavLink>`}
                     </div>
                     <div className={styles.parametersBox}>
                         <h5>Parameters:</h5>
@@ -177,7 +177,7 @@ function TheLab() {
                 <div className={styles.section}>
                     <h3>App Reset</h3>
                     <div className={styles['flex-buttons']}>
-                        <Button state={'error'} iconName={'fa-arrow-rotate-left'} onClick={clearCookiesAndLocalStorage}>Reset
+                        <Button state={'error'} iconName={'fad fa-arrow-rotate-left'} onClick={clearCookiesAndLocalStorage}>Reset
                             Cookie and Consent</Button>
                     </div>
                 </div>
@@ -189,22 +189,22 @@ function TheLab() {
                     <h3>Modal</h3>
                     <div className={styles['flex-buttons']}>
                         <Button onClick={() => openModal('isFirstModalOpen')}
-                                iconName='fa-up-right-from-square'>Open
+                                iconName='fas fa-up-right-from-square'>Open
                             First
                             Model</Button>
                         <Button onClick={() => openModal('isSecondModalOpen')}
-                                iconName='fa-up-right-from-square'>Open
+                                iconName='fas fa-up-right-from-square'>Open
                             Second Modal (No close button)</Button>
                         <Button onClick={() => openModal('isThirdModalOpen')}
-                                iconName='fa-up-right-from-square'>Open
+                                iconName='fas fa-up-right-from-square'>Open
                             Third
                             Modal (Blur close blocked)</Button>
                         <Button onClick={() => openModal('isFourthModalOpen')}
-                                iconName='fa-up-right-from-square'>Open
+                                iconName='fas fa-up-right-from-square'>Open
                             Fourth
                             Modal (Auto close 5 seconds)</Button>
                         <Button onClick={() => openModal('isFifthModalOpen')}
-                                iconName='fa-up-right-from-square'>Open
+                                iconName='fas fa-up-right-from-square'>Open
                             Fifth
                             Modal (Auto close 20 seconds, with close)</Button>
 
@@ -270,56 +270,64 @@ function TheLab() {
                 <div className={styles.section}>
                     <h3>Toasts</h3>
                     <div className={styles['flex-buttons']}>
-                        <Button iconName={'fa-bread-slice'}
+                        <Button iconName={'fas fa-bread-slice'}
                                 onClick={() => showToast('Title', 'Message', 'default', undefined,)}
                                 state={'default'}>Show
                             Toast</Button>
-                        <Button iconName={'fa-bread-slice'}
+                        <Button iconName={'fas fa-bread-slice'}
+                                onClick={() => showToast('Title', 'Message', 'secondary', undefined,)}
+                                state={'secondary'}>Show
+                            Toast</Button>
+                        <Button iconName={'fas fa-bread-slice'}
                                 onClick={() => showToast('Title', 'Message', 'success', undefined)}
                                 state={'success'}>Show
                             Toast</Button>
-                        <Button iconName={'fa-bread-slice'}
+                        <Button iconName={'fas fa-bread-slice'}
                                 onClick={() => showToast('Title', 'Message', 'warning', undefined)}
                                 state={'warning'}>Show
                             Toast</Button>
-                        <Button iconName={'fa-bread-slice'}
+                        <Button iconName={'fas fa-bread-slice'}
                                 onClick={() => showToast('Title', 'Message', 'error', undefined)}
                                 state={'error'}>Show
                             Toast</Button>
-                        <Button iconName={'fa-bread-slice'}
+                        <Button iconName={'fas fa-bread-slice'}
                                 onClick={() => showToast('Title', 'Message', 'disabled', undefined)}
                                 state={'disabled'}>Show
                             Toast</Button>
                         <hr/>
-                        <Button iconName={'fa-bread-slice'}
+                        <Button iconName={'fas fa-bread-slice'}
                                 onClick={() => showToast('Title', 'Message', 'disabled', undefined)}>Show
                             Toast</Button>
-                        <Button iconName={'fa-bread-slice'}
+                        <Button iconName={'fas fa-bread-slice'}
                                 onClick={() => showToast('Title', 'Message', 'default', 5000)}>Show Toast (auto
                             close)</Button>
-                        <Button iconName={'fa-bread-slice'}
+                        <Button iconName={'fas fa-bread-slice'}
                                 onClick={() => showToast('Title', 'Message', 'default', undefined, () => alert('Toast clicked!'))}>Show
                             Toast (with callback)</Button>
-                        <Button iconName={'fa-bread-slice'}
+                        <Button iconName={'fas fa-bread-slice'}
+                                state={'secondary'}
+                                onClick={() => showToast('Title', 'Message', 'secondary', undefined, () => alert('Toast clicked!'))}>Show
+                            Toast (with callback)</Button>
+                        <Button iconName={'fas fa-bread-slice'}
                                 onClick={() => showToast('Title', 'Message', 'success', undefined, () => alert('Toast clicked!'))}
                                 state={'success'}>Show
                             Toast (with callback)</Button>
-                        <Button iconName={'fa-bread-slice'}
+                        <Button iconName={'fas fa-bread-slice'}
                                 onClick={() => showToast('Title', 'Message', 'warning', undefined, () => alert('Toast clicked!'))}
                                 state={'warning'}>Show
                             Toast (with callback)</Button>
-                        <Button iconName={'fa-bread-slice'}
+                        <Button iconName={'fas fa-bread-slice'}
                                 onClick={() => showToast('Title', 'Message', 'error', undefined, () => alert('Toast clicked!'))}
                                 state={'error'}>Show
                             Toast (with callback)</Button>
-                        <Button iconName={'fa-bread-slice'}
+                        <Button iconName={'fas fa-bread-slice'}
                                 onClick={() => showToast('Title', 'Message', 'disabled', undefined, () => alert('Toast clicked!'))}
                                 state={'disabled'}>Show
                             Toast (with callback)</Button>
 
                     </div>
                     <div className={styles.documentationBox}>
-                        <div>{`<Button onClick={() => showToast('Title', 'Message', 'default', 5000, () => alert('Toast clicked!'))} state={'default'}>Show Toast</Button>`}</div>
+                        <div>{`<Button iconName={'fas fa-toast'} onClick={() => showToast('Title', 'Message', 'default', 5000, () => alert('Toast clicked!'))} state={'default'}>Show Toast</Button>`}</div>
                     </div>
                     <div className={styles.parametersBox}>
                         <h5>Parameters:</h5>
@@ -339,33 +347,84 @@ function TheLab() {
                     <div className={styles['component-container']}>
                         <div className={styles['flex-buttons']}>
 
-                            <Button onClick={() => alert('Default Button clicked!')} iconName={'fa-check'}
-                                    state={'default'}>Default</Button>
-                            <Button onClick={() => alert('Success Button clicked!')} iconName={'fa-check-circle'}
+                            <Button onClick={() => alert('Default Button clicked!')}
+                                    iconName={'fad fa-check'}>Default</Button>
+                            <Button onClick={() => alert('Default Button clicked!')} iconName={'fad fa-user'}
+                                    state={'secondary'}>Secondary</Button>
+                            <Button onClick={() => alert('Success Button clicked!')} iconName={'fad fa-check-circle'}
                                     state={'success'}>Success</Button>
                             <Button onClick={() => alert('Warning Button clicked!')}
-                                    iconName={'fa-exclamation-triangle'} state={'warning'}>Warning</Button>
-                            <Button onClick={() => alert('Error Button clicked!')} iconName={'fa-times-circle'}
+                                    iconName={'fad fa-exclamation-triangle'} state={'warning'}>Warning</Button>
+                            <Button onClick={() => alert('Error Button clicked!')} iconName={'fad fa-times-circle'}
                                     state={'error'}>Error</Button>
-                            <Button onClick={() => alert('Disabled Button clicked!')} iconName={'fa-ban'}
+                            <Button onClick={() => alert('Disabled Button clicked!')} iconName={'fad fa-ban'}
                                     state={'disabled'} disabled={true}>Disabled</Button>
                             <hr/>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-user'}
+                            <Button onClick={() => alert('Default Button clicked!')} iconName={'fad fa-check'}
+                                    small={true}>Default</Button>
+                            <Button onClick={() => alert('Default Button clicked!')} iconName={'fad fa-user'}
+                                    state={'secondary'} small={true}>Secondary</Button>
+                            <Button onClick={() => alert('Success Button clicked!')} iconName={'fad fa-check-circle'}
+                                    state={'success'} small={true}>Success</Button>
+                            <Button onClick={() => alert('Warning Button clicked!')}
+                                    iconName={'fad fa-exclamation-triangle'} state={'warning'} small={true}>Warning</Button>
+                            <Button onClick={() => alert('Error Button clicked!')} iconName={'fad fa-times-circle'}
+                                    state={'error'} small={true}>Error</Button>
+                            <Button onClick={() => alert('Disabled Button clicked!')} iconName={'fad fa-ban'}
+                                    state={'disabled'} small={true} disabled={true}>Disabled</Button>
+                            <hr/>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fad fa-check'}
                                     rounded={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-check-circle'}
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fad fa-user'}
+                                    state={'secondary'} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fad fa-check-circle'}
                                     state={'success'} rounded={true}></Button>
                             <Button onClick={() => alert('Rounded Button clicked!')}
-                                    iconName={'fa-exclamation-triangle'} state={'warning'} rounded={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-times-circle'}
+                                    iconName={'fad fa-exclamation-triangle'} state={'warning'} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fad fa-times-circle'}
                                     state={'error'} rounded={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-ban'}
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fad fa-ban'}
                                     state={'disabled'} rounded={true} disabled={true}></Button>
+                            <hr/>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fad fa-check'}
+                                    rounded={true} small={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fad fa-user'}
+                                    state={'secondary'} rounded={true} small={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fad fa-check-circle'}
+                                    state={'success'} small={true} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')}
+                                    iconName={'fad fa-exclamation-triangle'} state={'warning'} small={true}
+                                    rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fad fa-times-circle'}
+                                    state={'error'} small={true} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fad fa-ban'}
+                                    state={'disabled'} small={true} rounded={true} disabled={true}></Button>
 
+                            <hr/>
+                            <Button onClick={() => alert('Default Button clicked!')}>Default</Button>
+                            <Button onClick={() => alert('Default Button clicked!')}
+                                    state={'secondary'}>Default</Button>
+                            <Button onClick={() => alert('Success Button clicked!')} state={'success'}>Success</Button>
+                            <Button onClick={() => alert('Warning Button clicked!')} state={'warning'}>Warning</Button>
+                            <Button onClick={() => alert('Error Button clicked!')} state={'error'}>Error</Button>
+                            <Button onClick={() => alert('Disabled Button clicked!')} state={'disabled'}
+                                    disabled={true}>Disabled</Button>
+                            <hr/>
+                            <Button onClick={() => alert('Default Button clicked!')} small={true}>Default</Button>
+                            <Button onClick={() => alert('Default Button clicked!')} state={'secondary'}
+                                    small={true}>Secondary</Button>
+                            <Button onClick={() => alert('Success Button clicked!')} state={'success'}
+                                    small={true}>Success</Button>
+                            <Button onClick={() => alert('Warning Button clicked!')} small={true}>Warning</Button>
+                            <Button onClick={() => alert('Error Button clicked!')} state={'error'}
+                                    small={true}>Error</Button>
+                            <Button onClick={() => alert('Disabled Button clicked!')} small={true}
+                                    disabled={true}>Disabled</Button>
 
                         </div>
                     </div>
                     <div className={styles.documentationBox}>
-                        {`<Button onClick={handleClick} iconName={'fa-flask'} state={'warning'}>Click me</Button>`}
+                        {`<Button onClick={handleClick} iconName={'fad fa-flask'} state={'warning'}>Click me</Button>`}
                     </div>
                     <div className={styles.parametersBox}>
                         <h5>Parameters:</h5>
@@ -378,6 +437,12 @@ function TheLab() {
                             <li><code>children</code>: React.ReactNode</li>
                             <li>
                                 <code>state</code>: &#39;default&#39; | &#39;warning&#39; | &#39;error&#39; | &#39;disabled&#39; | &#39;success&#39; (optional)
+                            </li>
+                            <li>
+                                <code>disabled</code>: boolean (optional)
+                            </li>
+                            <li>
+                                <code>small</code>: boolean (optional)
                             </li>
                         </ul>
                     </div>

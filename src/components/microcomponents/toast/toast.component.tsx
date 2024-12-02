@@ -4,7 +4,7 @@ import styles from './toast.module.css';
 interface ToastProps {
     title: string;
     message: string;
-    status?: 'info' | 'warning' | 'error' | 'disabled' | 'success' | 'default';
+    status?: 'info' | 'warning' | 'error' | 'disabled' | 'success' | 'default' | 'secondary';
     onClose: () => void;
     autoClose?: number;
     onClick?: () => void;
@@ -17,6 +17,7 @@ const statusIconMap: { [key: string]: string } = {
     success: 'fa-circle-check',
     default: 'fa-circle-info',
     disabled: 'fa-circle-minus',
+    secondary: 'fa-circle-question',
 };
 
 const Toast: React.FC<ToastProps> = ({ title, message, status = 'default', onClose, autoClose, onClick }) => {
@@ -62,14 +63,14 @@ const Toast: React.FC<ToastProps> = ({ title, message, status = 'default', onClo
             onMouseLeave={() => setPauseTimer(false)}
         >
             <div className={styles['toast-content']}>
-                <i className={`fa-duotone ${statusIconMap[status]}`}></i>
+                <i className={`fas ${statusIconMap[status]}`}></i>
                 <div>
                     <h4>{title}</h4>
                     <div>{message}</div>
                 </div>
             </div>
             <div className={styles['close-button']}>
-                <i className={`fa-duotone fa-xmark`} onClick={handleClose} title='Close'></i>
+                <i className={`fas fa-xmark`} onClick={handleClose} title='Close'></i>
             </div>
             {autoClose && (
                 <div className={styles['progress-bar-container']}>

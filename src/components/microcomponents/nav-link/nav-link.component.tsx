@@ -31,10 +31,10 @@ const NavLink: React.FC<NavLinkProps> = ({ iconName, href, onClick, exact = fals
                 <>
                     {children ? (
                         <div className={styles['button__icon-wrapper']}>
-                            <i className={`fad ${iconName} ${styles.icon}`} />
+                            <i className={`${iconName} ${styles.icon}`} />
                         </div>
                     ) : (
-                        <i className={`fad ${iconName} ${styles.icon}`} />
+                        <i className={`${iconName} ${styles.icon}`} />
                     )}
                 </>
             )}
@@ -46,10 +46,10 @@ const NavLink: React.FC<NavLinkProps> = ({ iconName, href, onClick, exact = fals
                 <>
                     {children ? (
                         <div className={styles['button__icon-wrapper']}>
-                            <i className={`fad ${iconName} ${styles.icon}`} />
+                            <i className={`${iconName} ${styles.icon}`} />
                         </div>
                     ) : (
-                        <i className={`fad ${iconName} ${styles.icon}`} />
+                        <i className={`${iconName} ${styles.icon}`} />
                     )}
                 </>
             )}
