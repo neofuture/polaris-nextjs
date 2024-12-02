@@ -1,5 +1,14 @@
 .product-card {
     flex: 1;
     border:2px solid var(--grey-30);
+    border-radius: 12px;
+    padding:3px;
+}
+
+.product-card h2 {
+    margin: 0;
+    background-color: var(--grey-30);
+    color: var(--foreground-main);
     border-radius: 8px;
+    text-align: center;
 }

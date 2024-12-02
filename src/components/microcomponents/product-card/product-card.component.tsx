@@ -8,7 +8,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ title }) => {
     return (
         <div className={styles['product-card']}>
-            <h3>{title}</h3>
+            <h2>{title}</h2>
         </div>
     );
 };
