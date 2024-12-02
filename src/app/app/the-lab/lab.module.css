@@ -40,9 +40,9 @@
 }
 
 .documentationBox {
-    background-color: var(--grey-10);
+    background-color: var(--grey-5);
     padding: 16px;
-    border: 1px solid var(--grey-50);
+    border: 1px solid var(--grey-30);
     border-radius: 8px;
     margin-top: 16px;
     font-family: monospace;
@@ -50,9 +50,9 @@
 }
 
 .parametersBox {
-    background-color: var(--grey-20);
+    background-color: var(--grey-5);
     padding: 16px;
-    border: 1px solid var(--grey-50);
+    border: 1px solid var(--grey-30);
     border-radius: 8px;
     margin-top: 8px;
     white-space: pre-wrap;
