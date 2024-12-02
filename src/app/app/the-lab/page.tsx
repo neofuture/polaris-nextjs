@@ -17,6 +17,7 @@ import FormInput from "@/components/microcomponents/form-input/form-input.compon
 import {z} from 'zod';
 import FormSelect from "@/components/microcomponents/form-select/form-select.component";
 import ProductCard from "@/components/microcomponents/product-card/product-card.component";
+import ProductCardContainer from "@/components/microcomponents/product-card-container/product-card-container.component";
 
 const emailSchema = z.string().email({message: 'Invalid email address'});
 const nameSchema = z.string().min(3, {message: 'Name must be longer than 2 characters'});
@@ -454,9 +455,18 @@ function TheLab() {
                 </div>
                 <div className={styles.section}>
                     <h3>Product Card</h3>
-                    <ProductCard title={'Product Title'}/>
+                    <ProductCardContainer>
+                        <ProductCard title={'Product Title'}/>
+                        <ProductCard title={'Product Title'}/>
+                        <ProductCard title={'Product Title'}/>
+                    </ProductCardContainer>
+
                     <div className={styles.documentationBox}>
-                        <div>{`<ProductCard title={'Product Title'} />`}</div>
+                        <div>{`<ProductCardContainer>`}</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`<ProductCard title={'Product Title'} />`}</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`<ProductCard title={'Product Title'} />`}</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`<ProductCard title={'Product Title'} />`}</div>
+                        <div>{`</ProductCardContainer>`}</div>
                     </div>
                     <div className={styles.parametersBox}>
                         <h5>Parameters:</h5>

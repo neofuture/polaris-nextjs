@@ -1,3 +1,5 @@
 .product-card {
-    /* Add your styles here */
+    flex: 1;
+    border:2px solid var(--grey-30);
+    border-radius: 8px;
 }
