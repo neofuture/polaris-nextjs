@@ -16,9 +16,10 @@ import {showToast} from "@/components/microcomponents/toast/toast-utils";
 import FormInput from "@/components/microcomponents/form-input/form-input.component";
 import {z} from 'zod';
 import FormSelect from "@/components/microcomponents/form-select/form-select.component";
+import ProductCard from "@/components/microcomponents/product-card/product-card.component";
 
 const emailSchema = z.string().email({message: 'Invalid email address'});
-const nameSchema = z.string().min(3, { message: 'Name must be longer than 2 characters' });
+const nameSchema = z.string().min(3, {message: 'Name must be longer than 2 characters'});
 const selectSchema = z.enum(['option1', 'option2', 'option3']).refine(value => value !== 'option3', {
     message: 'Option 3 is not allowed',
 });
@@ -268,44 +269,51 @@ function TheLab() {
                 <div className={styles.section}>
                     <h3>Toasts</h3>
                     <div className={styles['flex-buttons']}>
-                        <Button iconName={'fa-bread-slice'} onClick={() => showToast('Title', 'Message', 'default', undefined,)}
+                        <Button iconName={'fa-bread-slice'}
+                                onClick={() => showToast('Title', 'Message', 'default', undefined,)}
                                 state={'default'}>Show
                             Toast</Button>
-                        <Button iconName={'fa-bread-slice'} onClick={() => showToast('Title', 'Message', 'success', undefined)}
+                        <Button iconName={'fa-bread-slice'}
+                                onClick={() => showToast('Title', 'Message', 'success', undefined)}
                                 state={'success'}>Show
                             Toast</Button>
-                        <Button iconName={'fa-bread-slice'} onClick={() => showToast('Title', 'Message', 'warning', undefined)}
+                        <Button iconName={'fa-bread-slice'}
+                                onClick={() => showToast('Title', 'Message', 'warning', undefined)}
                                 state={'warning'}>Show
                             Toast</Button>
-                        <Button iconName={'fa-bread-slice'} onClick={() => showToast('Title', 'Message', 'error', undefined)}
+                        <Button iconName={'fa-bread-slice'}
+                                onClick={() => showToast('Title', 'Message', 'error', undefined)}
                                 state={'error'}>Show
                             Toast</Button>
-                        <Button iconName={'fa-bread-slice'} onClick={() => showToast('Title', 'Message', 'disabled', undefined)}
+                        <Button iconName={'fa-bread-slice'}
+                                onClick={() => showToast('Title', 'Message', 'disabled', undefined)}
                                 state={'disabled'}>Show
                             Toast</Button>
                         <hr/>
-                        <Button iconName={'fa-bread-slice'} onClick={() => showToast('Title', 'Message', 'disabled', undefined)}>Show
+                        <Button iconName={'fa-bread-slice'}
+                                onClick={() => showToast('Title', 'Message', 'disabled', undefined)}>Show
                             Toast</Button>
-                        <Button iconName={'fa-bread-slice'} onClick={() => showToast('Title', 'Message', 'default', 5000)}>Show Toast (auto
+                        <Button iconName={'fa-bread-slice'}
+                                onClick={() => showToast('Title', 'Message', 'default', 5000)}>Show Toast (auto
                             close)</Button>
                         <Button iconName={'fa-bread-slice'}
-                            onClick={() => showToast('Title', 'Message', 'default', undefined, () => alert('Toast clicked!'))}>Show
+                                onClick={() => showToast('Title', 'Message', 'default', undefined, () => alert('Toast clicked!'))}>Show
                             Toast (with callback)</Button>
                         <Button iconName={'fa-bread-slice'}
                                 onClick={() => showToast('Title', 'Message', 'success', undefined, () => alert('Toast clicked!'))}
                                 state={'success'}>Show
                             Toast (with callback)</Button>
                         <Button iconName={'fa-bread-slice'}
-                            onClick={() => showToast('Title', 'Message', 'warning', undefined, () => alert('Toast clicked!'))}
-                            state={'warning'}>Show
+                                onClick={() => showToast('Title', 'Message', 'warning', undefined, () => alert('Toast clicked!'))}
+                                state={'warning'}>Show
                             Toast (with callback)</Button>
                         <Button iconName={'fa-bread-slice'}
-                            onClick={() => showToast('Title', 'Message', 'error', undefined, () => alert('Toast clicked!'))}
-                            state={'error'}>Show
+                                onClick={() => showToast('Title', 'Message', 'error', undefined, () => alert('Toast clicked!'))}
+                                state={'error'}>Show
                             Toast (with callback)</Button>
                         <Button iconName={'fa-bread-slice'}
-                            onClick={() => showToast('Title', 'Message', 'disabled', undefined, () => alert('Toast clicked!'))}
-                            state={'disabled'}>Show
+                                onClick={() => showToast('Title', 'Message', 'disabled', undefined, () => alert('Toast clicked!'))}
+                                state={'disabled'}>Show
                             Toast (with callback)</Button>
 
                     </div>
@@ -340,7 +348,7 @@ function TheLab() {
                                     state={'error'}>Error</Button>
                             <Button onClick={() => alert('Disabled Button clicked!')} iconName={'fa-ban'}
                                     state={'disabled'} disabled={true}>Disabled</Button>
-                            <hr />
+                            <hr/>
                             <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-user'}
                                     rounded={true}></Button>
                             <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fa-check-circle'}
@@ -394,7 +402,7 @@ function TheLab() {
                             error={emailError}
                         />
 
-                        <hr />
+                        <hr/>
                         <div><b>Name:</b> {name}</div>
                         <div><b>Email:</b> {email}</div>
                         <div className={styles.documentationBox}>
@@ -424,14 +432,14 @@ function TheLab() {
                         value={selectedValue}
                         onChange={handleSelectChange}
                         options={[
-                            { value: 'option1', label: 'Option 1' },
-                            { value: 'option2', label: 'Option 2' },
-                            { value: 'option3', label: 'Option 3' },
+                            {value: 'option1', label: 'Option 1'},
+                            {value: 'option2', label: 'Option 2'},
+                            {value: 'option3', label: 'Option 3 (is an error)'},
                         ]}
                         error={selectError}
                     />
                     <div className={styles.documentationBox}>
-                        <div>{`<FormSelect label="Select Option" value={selectedValue} onChange={handleSelectChange} options={[{ value: 'option1', label: 'Option 1' }, { value: 'option2', label: 'Option 2' }, { value: 'option3', label: 'Option 3' }]} error={selectError} />`}</div>
+                        <div>{`<FormSelect label="Select Option" value={selectedValue} onChange={handleSelectChange} options={[{ value: 'option1', label: 'Option 1' }, { value: 'option2', label: 'Option 2' }, { value: 'option3', label: 'Option 3 (is an error)' }]} error={selectError} />`}</div>
                     </div>
                     <div className={styles.parametersBox}>
                         <h5>Parameters:</h5>
@@ -441,6 +449,19 @@ function TheLab() {
                             <li><code>onChange</code>: function</li>
                             <li><code>options</code>: {`{ value: string; label: string }[]`}</li>
                             <li><code>error</code>: string (optional)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className={styles.section}>
+                    <h3>Product Card</h3>
+                    <ProductCard title={'Product Title'}/>
+                    <div className={styles.documentationBox}>
+                        <div>{`<ProductCard title={'Product Title'} />`}</div>
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                        <ul>
+                            <li><code>title</code>: string</li>
                         </ul>
                     </div>
                 </div>
