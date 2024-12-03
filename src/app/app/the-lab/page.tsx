@@ -14,6 +14,7 @@ import FormInput from "@/components/microcomponents/form-input/form-input.compon
 import FormSelect from "@/components/microcomponents/form-select/form-select.component";
 import ProductCard from "@/components/microcomponents/product-card/product-card.component";
 import ProductCardContainer from "@/components/microcomponents/product-card-container/product-card-container.component";
+import FormPassword from "@/components/microcomponents/form-password/form-password.component";
 import styles from './lab.module.css';
 import {z} from 'zod';
 import Logo from "../../../../public/images/logo.png";
@@ -24,6 +25,7 @@ const nameSchema = z.string().min(3, {message: 'Name must be longer than 2 chara
 const selectSchema = z.enum(['option1', 'option2', 'option3']).refine(value => value !== 'option3', {
     message: 'Option 3 is not allowed',
 });
+const passwordSchema = z.string().min(8, {message: 'Password must be at least 8 characters long'});
 
 
 function TheLab() {
@@ -39,10 +41,12 @@ function TheLab() {
     const {theme} = useTheme();
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [nameError, setNameError] = useState('');
     const [selectedValue, setSelectedValue] = useState('option2');
     const [selectError, setSelectError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
 
 
     const handleToggle = () => {
@@ -97,6 +101,16 @@ function TheLab() {
         }
     };
 
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(e.target.value);
+        const result = passwordSchema.safeParse(e.target.value);
+        if (!result.success) {
+            setPasswordError(result.error.errors[0].message);
+        } else {
+            setPasswordError('');
+        }
+    }
+
     return (
         <div className={styles['outer-container']}>
             <h1><i className={'fad fa-flask'}/> The Lab</h1>
@@ -106,7 +120,8 @@ function TheLab() {
                 <div className={styles.section}>
                     <h3>NavLink</h3>
                     <div className={styles['component-container']}>
-                        <NavLink onClick={() => alert('NavLink clicked')} iconName={'fad fa-flask'}>Go to example</NavLink>
+                        <NavLink onClick={() => alert('NavLink clicked')} iconName={'fad fa-flask'}>Go to
+                            example</NavLink>
                     </div>
                     <div className={styles.documentationBox}>
                         {`<NavLink onClick={handleClick} iconName={'fad fa-flask'}>Go to example</NavLink>`}
@@ -177,7 +192,8 @@ function TheLab() {
                 <div className={styles.section}>
                     <h3>App Reset</h3>
                     <div className={styles['flex-buttons']}>
-                        <Button state={'error'} iconName={'fas fa-arrow-rotate-left'} onClick={clearCookiesAndLocalStorage}>Reset
+                        <Button state={'error'} iconName={'fas fa-arrow-rotate-left'}
+                                onClick={clearCookiesAndLocalStorage}>Reset
                             Cookie and Consent</Button>
                     </div>
                 </div>
@@ -367,7 +383,8 @@ function TheLab() {
                             <Button onClick={() => alert('Success Button clicked!')} iconName={'fas fa-check-circle'}
                                     state={'success'} small={true}>Success</Button>
                             <Button onClick={() => alert('Warning Button clicked!')}
-                                    iconName={'fas fa-exclamation-triangle'} state={'warning'} small={true}>Warning</Button>
+                                    iconName={'fas fa-exclamation-triangle'} state={'warning'}
+                                    small={true}>Warning</Button>
                             <Button onClick={() => alert('Error Button clicked!')} iconName={'fas fa-times-circle'}
                                     state={'error'} small={true}>Error</Button>
                             <Button onClick={() => alert('Disabled Button clicked!')} iconName={'fas fa-ban'}
@@ -493,21 +510,16 @@ function TheLab() {
                     </div>
                 </div>
                 <div className={styles.section}>
-                    <h3>Form Select</h3>
-                    <FormSelect
-                        id='select'
-                        label="Select Option"
-                        value={selectedValue}
-                        onChange={handleSelectChange}
-                        options={[
-                            {value: 'option1', label: 'Option 1'},
-                            {value: 'option2', label: 'Option 2'},
-                            {value: 'option3', label: 'Option 3 (is an error)'},
-                        ]}
-                        error={selectError}
+                    <h3>Form Password</h3>
+                    <FormPassword
+                        id='password'
+                        label="Password"
+                        value={password}
+                        onChange={handlePasswordChange}
+                        error={passwordError}
                     />
                     <div className={styles.documentationBox}>
-                        <div>{`<FormSelect label="Select Option" value={selectedValue} onChange={handleSelectChange} options={[{ value: 'option1', label: 'Option 1' }, { value: 'option2', label: 'Option 2' }, { value: 'option3', label: 'Option 3 (is an error)' }]} error={selectError} />`}</div>
+                        <div>{`<FormPassword label="Password" value={password} onChange={handlePasswordChange} />`}</div>
                     </div>
                     <div className={styles.parametersBox}>
                         <h5>Parameters:</h5>
@@ -515,38 +527,66 @@ function TheLab() {
                             <li><code>label</code>: string</li>
                             <li><code>value</code>: string</li>
                             <li><code>onChange</code>: function</li>
-                            <li><code>options</code>: {`{ value: string; label: string }[]`}</li>
                             <li><code>error</code>: string (optional)</li>
+                            <li><code>showPassword</code>: boolean (optional)</li>
                         </ul>
                     </div>
-                </div>
-                <div className={styles.section}>
-                    <h3>Product Card</h3>
-                    <ProductCardContainer>
-                        <ProductCard title={'Product Title'}/>
-                        <ProductCard title={'Product Title'}/>
-                        <ProductCard title={'Product Title'}/>
-                    </ProductCardContainer>
-
-                    <div className={styles.documentationBox}>
-                        <div>{`<ProductCardContainer>`}</div>
-                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`<ProductCard title={'Product Title'} />`}</div>
-                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`<ProductCard title={'Product Title'} />`}</div>
-                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`<ProductCard title={'Product Title'} />`}</div>
-                        <div>{`</ProductCardContainer>`}</div>
+                    <div className={styles.section}>
+                        <h3>Form Select</h3>
+                        <FormSelect
+                            id='select'
+                            label="Select Option"
+                            value={selectedValue}
+                            onChange={handleSelectChange}
+                            options={[
+                                {value: 'option1', label: 'Option 1'},
+                                {value: 'option2', label: 'Option 2'},
+                                {value: 'option3', label: 'Option 3 (is an error)'},
+                            ]}
+                            error={selectError}
+                        />
+                        <div className={styles.documentationBox}>
+                            <div>{`<FormSelect label="Select Option" value={selectedValue} onChange={handleSelectChange} options={[{ value: 'option1', label: 'Option 1' }, { value: 'option2', label: 'Option 2' }, { value: 'option3', label: 'Option 3 (is an error)' }]} error={selectError} />`}</div>
+                        </div>
+                        <div className={styles.parametersBox}>
+                            <h5>Parameters:</h5>
+                            <ul>
+                                <li><code>label</code>: string</li>
+                                <li><code>value</code>: string</li>
+                                <li><code>onChange</code>: function</li>
+                                <li><code>options</code>: {`{ value: string; label: string }[]`}</li>
+                                <li><code>error</code>: string (optional)</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div className={styles.parametersBox}>
-                        <h5>Parameters:</h5>
-                        <ul>
-                            <li><code>title</code>: string</li>
-                        </ul>
+                    <div className={styles.section}>
+                        <h3>Product Card</h3>
+                        <ProductCardContainer>
+                            <ProductCard title={'Product Title'}/>
+                            <ProductCard title={'Product Title'}/>
+                            <ProductCard title={'Product Title'}/>
+                        </ProductCardContainer>
+
+                        <div className={styles.documentationBox}>
+                            <div>{`<ProductCardContainer>`}</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`<ProductCard title={'Product Title'} />`}</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`<ProductCard title={'Product Title'} />`}</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`<ProductCard title={'Product Title'} />`}</div>
+                            <div>{`</ProductCardContainer>`}</div>
+                        </div>
+                        <div className={styles.parametersBox}>
+                            <h5>Parameters:</h5>
+                            <ul>
+                                <li><code>title</code>: string</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className={styles['container-full']}>
+                <div className={styles['container-full']}>
 
-                <div className={`${styles['section']} ${styles['full-width-section']}`}>
-                    <h3>DataGrid</h3>
+                    <div className={`${styles['section']} ${styles['full-width-section']}`}>
+                        <h3>DataGrid</h3>
+                    </div>
                 </div>
             </div>
         </div>
