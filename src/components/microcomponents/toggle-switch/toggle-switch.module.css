@@ -1,7 +1,7 @@
 .toggle {
     width: 32px;
     height: 18px;
-    background-color: var(--grey-30);
+    background-color: var(--grey-20);
     border-radius: 25px;
     position: relative;
     cursor: pointer;

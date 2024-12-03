@@ -32,7 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ payload }) => {
                         <h3 className={section.current ? styles['primary-color'] : ''}>{section.title}</h3>
                         <div className={section.current ? styles['primary-color'] : ''}>{section.current && <h5>{section.currentText}</h5>}</div>
                         <div>
-                            <Button onClick={section.callBack} small={true} state={section.buttonState}>{section.buttonText}</Button>
+                            <Button onClick={section.callBack} size={'tiny'} state={section.buttonState}>{section.buttonText}</Button>
                         </div>
                     </div>
                     <div className={styles['product-card__section-content']}>

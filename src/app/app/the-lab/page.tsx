@@ -469,114 +469,6 @@ function TheLab() {
                     </div>
                 </div>
                 <div className={styles.section}>
-                    <h3>Button</h3>
-                    <div className={styles['component-container']}>
-                        <div className={styles['flex-buttons']}>
-
-                            <Button onClick={() => alert('Default Button clicked!')}
-                                    iconName={'fas fa-check'}>Default</Button>
-                            <Button onClick={() => alert('Default Button clicked!')} iconName={'fas fa-user'}
-                                    state={'secondary'}>Secondary</Button>
-                            <Button onClick={() => alert('Success Button clicked!')} iconName={'fas fa-check-circle'}
-                                    state={'success'}>Success</Button>
-                            <Button onClick={() => alert('Warning Button clicked!')}
-                                    iconName={'fas fa-exclamation-triangle'} state={'warning'}>Warning</Button>
-                            <Button onClick={() => alert('Error Button clicked!')} iconName={'fas fa-times-circle'}
-                                    state={'error'}>Error</Button>
-                            <Button onClick={() => alert('Disabled Button clicked!')} iconName={'fas fa-ban'}
-                                    state={'disabled'} disabled={true}>Disabled</Button>
-                            <hr/>
-                            <Button onClick={() => alert('Default Button clicked!')} iconName={'fas fa-check'}
-                                    small={true}>Default</Button>
-                            <Button onClick={() => alert('Default Button clicked!')} iconName={'fas fa-user'}
-                                    state={'secondary'} small={true}>Secondary</Button>
-                            <Button onClick={() => alert('Success Button clicked!')} iconName={'fas fa-check-circle'}
-                                    state={'success'} small={true}>Success</Button>
-                            <Button onClick={() => alert('Warning Button clicked!')}
-                                    iconName={'fas fa-exclamation-triangle'} state={'warning'}
-                                    small={true}>Warning</Button>
-                            <Button onClick={() => alert('Error Button clicked!')} iconName={'fas fa-times-circle'}
-                                    state={'error'} small={true}>Error</Button>
-                            <Button onClick={() => alert('Disabled Button clicked!')} iconName={'fas fa-ban'}
-                                    state={'disabled'} small={true} disabled={true}>Disabled</Button>
-                            <hr/>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-check'}
-                                    rounded={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-user'}
-                                    state={'secondary'} rounded={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-check-circle'}
-                                    state={'success'} rounded={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')}
-                                    iconName={'fas fa-exclamation-triangle'} state={'warning'} rounded={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-times-circle'}
-                                    state={'error'} rounded={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-ban'}
-                                    state={'disabled'} rounded={true} disabled={true}></Button>
-                            <hr/>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-check'}
-                                    rounded={true} small={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-user'}
-                                    state={'secondary'} rounded={true} small={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-check-circle'}
-                                    state={'success'} small={true} rounded={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')}
-                                    iconName={'fas fa-exclamation-triangle'} state={'warning'} small={true}
-                                    rounded={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-times-circle'}
-                                    state={'error'} small={true} rounded={true}></Button>
-                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-ban'}
-                                    state={'disabled'} small={true} rounded={true} disabled={true}></Button>
-
-                            <hr/>
-                            <Button onClick={() => alert('Default Button clicked!')}>Default</Button>
-                            <Button onClick={() => alert('Default Button clicked!')}
-                                    state={'secondary'}>Default</Button>
-                            <Button onClick={() => alert('Success Button clicked!')} state={'success'}>Success</Button>
-                            <Button onClick={() => alert('Warning Button clicked!')} state={'warning'}>Warning</Button>
-                            <Button onClick={() => alert('Error Button clicked!')} state={'error'}>Error</Button>
-                            <Button onClick={() => alert('Disabled Button clicked!')} state={'disabled'}
-                                    disabled={true}>Disabled</Button>
-                            <hr/>
-                            <Button onClick={() => alert('Default Button clicked!')} small={true}>Default</Button>
-                            <Button onClick={() => alert('Default Button clicked!')} state={'secondary'}
-                                    small={true}>Secondary</Button>
-                            <Button onClick={() => alert('Success Button clicked!')} state={'success'}
-                                    small={true}>Success</Button>
-                            <Button onClick={() => alert('Warning Button clicked!')} small={true}
-                                    state={'warning'}>Warning</Button>
-                            <Button onClick={() => alert('Error Button clicked!')} state={'error'}
-                                    small={true}>Error</Button>
-                            <Button onClick={() => alert('Disabled Button clicked!')} small={true}
-                                    state={'disabled'}
-                                    disabled={true}>Disabled</Button>
-
-                        </div>
-                    </div>
-                    <div className={styles.documentationBox}>
-                        {`<Button onClick={handleClick} iconName={'fad fa-flask'} state={'warning'}>Click me</Button>`}
-                    </div>
-                    <div className={styles.parametersBox}>
-                        <h5>Parameters:</h5>
-                        <ul>
-                            <li><code>iconName</code>: string (optional)</li>
-                            <li><code>label</code>: string (optional)</li>
-                            <li><code>onClick</code>: function (optional)</li>
-                            <li><code>rounded</code>: boolean (optional)</li>
-                            <li><code>href</code>: string (optional)</li>
-                            <li><code>children</code>: React.ReactNode</li>
-                            <li>
-                                <code>state</code>: &#39;default&#39; | &#39;warning&#39; | &#39;error&#39; | &#39;disabled&#39; | &#39;success&#39; (optional)
-                            </li>
-                            <li>
-                                <code>disabled</code>: boolean (optional)
-                            </li>
-                            <li>
-                                <code>small</code>: boolean (optional)
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div className={styles.section}>
                     <h3>Form Input</h3>
                     <div>
                         <FormInput
@@ -670,6 +562,154 @@ function TheLab() {
                         </ul>
                     </div>
                 </div>
+                <div className={styles.section}>
+                    <h3>Button</h3>
+                    <div className={styles['component-container']}>
+                        <div className={styles['flex-buttons']}>
+
+                            <Button onClick={() => alert('Default Button clicked!')}
+                                    iconName={'fas fa-check'}>Default</Button>
+                            <Button onClick={() => alert('Default Button clicked!')} iconName={'fas fa-user'}
+                                    state={'secondary'}>Secondary</Button>
+                            <Button onClick={() => alert('Success Button clicked!')} iconName={'fas fa-check-circle'}
+                                    state={'success'}>Success</Button>
+                            <Button onClick={() => alert('Warning Button clicked!')}
+                                    iconName={'fas fa-exclamation-triangle'} state={'warning'}>Warning</Button>
+                            <Button onClick={() => alert('Error Button clicked!')} iconName={'fas fa-times-circle'}
+                                    state={'error'}>Error</Button>
+                            <Button onClick={() => alert('Disabled Button clicked!')} iconName={'fas fa-ban'}
+                                    state={'disabled'} disabled={true}>Disabled</Button>
+                            <hr/>
+                            <Button onClick={() => alert('Default Button clicked!')} iconName={'fas fa-check'}
+                                    size={'small'}>Default</Button>
+                            <Button onClick={() => alert('Default Button clicked!')} iconName={'fas fa-user'}
+                                    state={'secondary'} size={'small'}>Secondary</Button>
+                            <Button onClick={() => alert('Success Button clicked!')} iconName={'fas fa-check-circle'}
+                                    state={'success'} size={'small'}>Success</Button>
+                            <Button onClick={() => alert('Warning Button clicked!')}
+                                    iconName={'fas fa-exclamation-triangle'} state={'warning'}
+                                    size={'small'}>Warning</Button>
+                            <Button onClick={() => alert('Error Button clicked!')} iconName={'fas fa-times-circle'}
+                                    state={'error'} size={'small'}>Error</Button>
+                            <Button onClick={() => alert('Disabled Button clicked!')} iconName={'fas fa-ban'}
+                                    state={'disabled'} size={'small'} disabled={true}>Disabled</Button>
+                            <hr/>
+                            <Button onClick={() => alert('Default Button clicked!')} iconName={'fas fa-check'}
+                                    size={'tiny'}>Default</Button>
+                            <Button onClick={() => alert('Default Button clicked!')} iconName={'fas fa-user'}
+                                    state={'secondary'} size={'tiny'}>Secondary</Button>
+                            <Button onClick={() => alert('Success Button clicked!')} iconName={'fas fa-check-circle'}
+                                    state={'success'} size={'tiny'}>Success</Button>
+                            <Button onClick={() => alert('Warning Button clicked!')}
+                                    iconName={'fas fa-exclamation-triangle'} state={'warning'}
+                                    size={'tiny'}>Warning</Button>
+                            <Button onClick={() => alert('Error Button clicked!')} iconName={'fas fa-times-circle'}
+                                    state={'error'} size={'tiny'}>Error</Button>
+                            <Button onClick={() => alert('Disabled Button clicked!')} iconName={'fas fa-ban'}
+                                    state={'disabled'} size={'tiny'} disabled={true}>Disabled</Button>
+                            <hr/>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-check'}
+                                    rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-user'}
+                                    state={'secondary'} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-check-circle'}
+                                    state={'success'} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')}
+                                    iconName={'fas fa-exclamation-triangle'} state={'warning'} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-times-circle'}
+                                    state={'error'} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-ban'}
+                                    state={'disabled'} rounded={true} disabled={true}></Button>
+                            <hr/>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-check'}
+                                    rounded={true} size={'small'}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-user'}
+                                    state={'secondary'} rounded={true} size={'small'}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-check-circle'}
+                                    state={'success'} size={'small'} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')}
+                                    iconName={'fas fa-exclamation-triangle'} state={'warning'} size={'small'}
+                                    rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-times-circle'}
+                                    state={'error'} size={'small'} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-ban'}
+                                    state={'disabled'} size={'small'} rounded={true} disabled={true}></Button>
+                            <hr/>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-check'}
+                                    rounded={true} size={'tiny'}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-user'}
+                                    state={'secondary'} rounded={true} size={'tiny'}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-check-circle'}
+                                    state={'success'} size={'tiny'} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')}
+                                    iconName={'fas fa-exclamation-triangle'} state={'warning'} size={'tiny'}
+                                    rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-times-circle'}
+                                    state={'error'} size={'tiny'} rounded={true}></Button>
+                            <Button onClick={() => alert('Rounded Button clicked!')} iconName={'fas fa-ban'}
+                                    state={'disabled'} size={'tiny'} rounded={true} disabled={true}></Button>
+                            <hr/>
+                            <Button onClick={() => alert('Default Button clicked!')}>Default</Button>
+                            <Button onClick={() => alert('Default Button clicked!')}
+                                    state={'secondary'}>Default</Button>
+                            <Button onClick={() => alert('Success Button clicked!')} state={'success'}>Success</Button>
+                            <Button onClick={() => alert('Warning Button clicked!')} state={'warning'}>Warning</Button>
+                            <Button onClick={() => alert('Error Button clicked!')} state={'error'}>Error</Button>
+                            <Button onClick={() => alert('Disabled Button clicked!')} state={'disabled'}
+                                    disabled={true}>Disabled</Button>
+                            <hr/>
+                            <Button onClick={() => alert('Default Button clicked!')} size={'small'}>Default</Button>
+                            <Button onClick={() => alert('Default Button clicked!')} state={'secondary'}
+                                    size={'small'}>Secondary</Button>
+                            <Button onClick={() => alert('Success Button clicked!')} state={'success'}
+                                    size={'small'}>Success</Button>
+                            <Button onClick={() => alert('Warning Button clicked!')} size={'small'}
+                                    state={'warning'}>Warning</Button>
+                            <Button onClick={() => alert('Error Button clicked!')} state={'error'}
+                                    size={'small'}>Error</Button>
+                            <Button onClick={() => alert('Disabled Button clicked!')} size={'small'}
+                                    state={'disabled'}
+                                    disabled={true}>Disabled</Button>
+                            <hr/>
+                            <Button onClick={() => alert('Default Button clicked!')} size={'tiny'}>Default</Button>
+                            <Button onClick={() => alert('Default Button clicked!')} state={'secondary'}
+                                    size={'tiny'}>Secondary</Button>
+                            <Button onClick={() => alert('Success Button clicked!')} state={'success'}
+                                    size={'tiny'}>Success</Button>
+                            <Button onClick={() => alert('Warning Button clicked!')} size={'tiny'}
+                                    state={'warning'}>Warning</Button>
+                            <Button onClick={() => alert('Error Button clicked!')} state={'error'}
+                                    size={'tiny'}>Error</Button>
+                            <Button onClick={() => alert('Disabled Button clicked!')} size={'tiny'}
+                                    state={'disabled'}
+                                    disabled={true}>Disabled</Button>
+
+                        </div>
+                    </div>
+                    <div className={styles.documentationBox}>
+                        {`<Button onClick={handleClick} iconName={'fad fa-flask'} state={'warning'}>Click me</Button>`}
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                        <ul>
+                            <li><code>iconName</code>: string (optional)</li>
+                            <li><code>label</code>: string (optional)</li>
+                            <li><code>onClick</code>: function (optional)</li>
+                            <li><code>rounded</code>: boolean (optional)</li>
+                            <li><code>href</code>: string (optional)</li>
+                            <li><code>children</code>: React.ReactNode</li>
+                            <li>
+                                <code>state</code>: &#39;default&#39; | &#39;warning&#39; | &#39;error&#39; | &#39;disabled&#39; | &#39;success&#39; (optional)
+                            </li>
+                            <li>
+                                <code>disabled</code>: boolean (optional)
+                            </li>
+                            <li>
+                                <code>size</code>: &#39;small&#39; | &#39;tiny&#39; (optional)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <div className={styles['container-full']}>
@@ -681,7 +721,14 @@ function TheLab() {
                         <ProductCard payload={card3data}/>
                     </ProductCardContainer>
                     <pre>
+                        <h2>Card 1</h2>
                         <code>{JSON.stringify(card1data, null, 2)}</code>
+                        <hr/>
+                        <h2>Card 2</h2>
+                        <code>{JSON.stringify(card2data, null, 2)}</code>
+                        <h2>Card 3</h2>
+                        <hr/>
+                        <code>{JSON.stringify(card3data, null, 2)}</code>
                     </pre>
                     <div className={styles.documentationBox}>
                         <div>{`<ProductCardContainer>`}</div>

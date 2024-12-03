@@ -20,6 +20,13 @@
     min-width: 24px;
 }
 
+.button.tiny {
+    padding: 1px 16px 2px 16px;
+    border-radius: 12px;
+    min-width: 12px;
+    font-size:12px;
+}
+
 .button:focus {
     outline: 2px solid var(--light-primary);
     outline-offset: 3px;
@@ -37,6 +44,10 @@
     margin-right: 6px;
 }
 
+.tiny .button__icon-wrapper {
+    width: 12px;
+}
+
 .icon {
     width: 16px;
     height: 16px;
@@ -47,7 +58,14 @@
     padding: 12px;
 }
 .rounded.small{
-    padding: 4px;
+    padding: 4px 4px 6px 4px;
+}
+.rounded.tiny{
+    padding: 1px 2px 0px 2px;
+}
+
+.tiny i {
+    margin-top:3px;
 }
 .button.warning {
     background-color: var(--warning-color);

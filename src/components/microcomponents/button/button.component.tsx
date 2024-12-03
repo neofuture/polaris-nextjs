@@ -1,5 +1,3 @@
-"use client";
-
 import React from 'react';
 import clsx from 'clsx';
 import styles from './button.module.css';
@@ -13,10 +11,10 @@ interface ButtonProps {
     children?: React.ReactNode;
     state?: 'default' | 'secondary' | 'warning' | 'error' | 'disabled' | 'success' | string;
     disabled?: boolean;
-    small?: boolean;
+    size?: 'default' | 'small' | 'tiny';
 }
 
-const Button: React.FC<ButtonProps> = ({ iconName, onClick, rounded, className, href, children, state = 'default', disabled, small }) => {
+const Button: React.FC<ButtonProps> = ({ iconName, onClick, rounded, className, href, children, state = 'default', disabled, size = 'default' }) => {
     const handleClick = () => {
         if (onClick) {
             onClick();
@@ -31,7 +29,7 @@ const Button: React.FC<ButtonProps> = ({ iconName, onClick, rounded, className, 
             onClick={handleClick}
             className={clsx(
                 styles.button,
-                small && styles.small,
+                size && styles[size],
                 rounded && styles.rounded,
                 className,
                 styles[state]
@@ -55,4 +53,5 @@ const Button: React.FC<ButtonProps> = ({ iconName, onClick, rounded, className, 
         </button>
     );
 }
+
 export default Button;

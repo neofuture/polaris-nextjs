@@ -10,7 +10,7 @@
 
 .product-card h2 {
     margin: 0;
-    color: var(--background-main);
+    color: var(--button-color);
     border-radius: 3px;
     text-align: center;
     font-size: 20px;
@@ -25,11 +25,11 @@
 }
 
 .productCard__container {
-    padding: 8px 16px 8px 16px;
+    padding: 8px 12px 8px 12px;
 }
 
 .product-card__section {
-    padding: 16px;
+    padding: 12px;
 }
 
 .product-card__section:not(:last-child) {
@@ -77,7 +77,7 @@
     content: '\f00c';
     font-family: 'Font Awesome 6 Pro';
     font-weight: 900;
-    margin-right: 8px;
+    margin-right: 12px;
 }
 
 .product-card__section-footer {
