@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styles from './form-password.module.css';
 
 interface FormPasswordProps {
@@ -10,7 +10,7 @@ interface FormPasswordProps {
     showPassword?: boolean;
 }
 
-const FormPassword: React.FC<FormPasswordProps> = ({ label, value, onChange, error, id, showPassword = false }) => {
+const FormPassword: React.FC<FormPasswordProps> = ({label, value, onChange, error, id, showPassword = false}) => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(showPassword);
 
     const toggleShowPassword = () => {
@@ -28,12 +28,9 @@ const FormPassword: React.FC<FormPasswordProps> = ({ label, value, onChange, err
                     onChange={onChange}
                     className={`${styles['form-field']} ${error ? styles['error'] : ''}`}
                 />
-                <button
-                    type="button"
-                    onClick={toggleShowPassword}
-                    className={styles['toggle-button']}
-                >
-                    <i className={isPasswordVisible ? 'fad fa-eye-slash' : 'fad fa-eye'}></i>
+                <button className={styles['toggle-button']}>
+                    <i onClick={toggleShowPassword}
+                       className={isPasswordVisible ? 'fad fa-eye-slash' : 'fad fa-eye'}></i>
                 </button>
             </div>
             {error && <span className={styles['error-message']}>{error}</span>}
