@@ -11,7 +11,7 @@ interface ButtonProps {
     className?: string;
     href?: string;
     children?: React.ReactNode;
-    state?: 'default' | 'secondary' | 'warning' | 'error' | 'disabled' | 'success';
+    state?: 'default' | 'secondary' | 'warning' | 'error' | 'disabled' | 'success' | string;
     disabled?: boolean;
     small?: boolean;
 }

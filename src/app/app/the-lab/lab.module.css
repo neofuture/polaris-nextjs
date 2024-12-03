@@ -44,9 +44,21 @@
     padding: 16px;
     border: 1px solid var(--grey-30);
     border-radius: 8px;
-    margin-top: 16px;
+    margin-top: 8px;
     font-family: monospace;
     white-space: pre-wrap;
+}
+
+.section pre {
+    background-color: var(--grey-5);
+    padding: 16px;
+    border: 1px solid var(--grey-30);
+    border-radius: 8px;
+    margin-top: 8px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    height:150px;
+    overflow: auto;
 }
 
 .parametersBox {

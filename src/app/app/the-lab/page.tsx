@@ -111,6 +111,116 @@ function TheLab() {
         }
     }
 
+    const card1data = {
+        title: {
+            text: 'Individual',
+            className: 'primary'
+        },
+        sections: [
+            {
+                title: 'Personal',
+                content: ['15 Active product listings', 'Unlimited inventory products', 'Unlimited Selling Channels', 'Multi Channel Listing', 'Cross Channel Syncronisation', 'Autodelisting'],
+                current: true,
+                currentText: 'Your membership',
+                buttonText: 'View Details',
+                buttonState: 'primary',
+                callBack: () => openModal('isFirstModalOpen'),
+                cost: 'Free'
+            },
+            {
+                title: 'Casual',
+                content: ['25 Active product listings', 'Unlimited inventory products', 'Unlimited Selling Channels', 'Multi Channel Listing', 'Cross Channel Syncronisation', 'Autodelisting'],
+                current: false,
+                buttonText: 'Upgrade',
+                buttonState: 'secondary',
+                callBack: () => openModal('isFirstModalOpen'),
+                cost: '£7 / month'
+            },
+            {
+                title: 'Starter',
+                content: ['50 Active product listings', 'Unlimited inventory products', 'Unlimited Selling Channels', 'Multi Channel Listing', 'Cross Channel Syncronisation', 'Autodelisting'],
+                current: false,
+                buttonText: 'Upgrade',
+                buttonState: 'secondary',
+                callBack: () => openModal('isFirstModalOpen'),
+                cost: '£15 / month'
+            }
+        ]
+
+    };
+
+    const card2data = {
+        title: {
+            text: 'Trader',
+            className: 'secondary'
+        },
+        sections: [
+            {
+                title: 'Bronze',
+                content: ['200 Active product listings', 'Unlimited inventory products', 'Unlimited Selling Channels', 'Multi Channel Listing', 'Cross Channel Syncronisation', 'Autodelisting'],
+                current: false,
+                buttonText: 'Upgrade',
+                buttonState: 'secondary',
+                callBack: () => openModal('isFirstModalOpen'),
+                cost: '£35 / month'
+            },
+            {
+                title: 'Silver',
+                content: ['500 Active product listings', 'Unlimited inventory products', 'Unlimited Selling Channels', 'Multi Channel Listing', 'Cross Channel Syncronisation', 'Autodelisting'],
+                current: false,
+                buttonText: 'Upgrade',
+                buttonState: 'secondary',
+                callBack: () => openModal('isFirstModalOpen'),
+                cost: '£75 / month'
+            },
+            {
+                title: 'Gold',
+                content: ['1000 Active product listings', 'Unlimited inventory products', 'Unlimited Selling Channels', 'Multi Channel Listing', 'Cross Channel Syncronisation', 'Autodelisting'],
+                current: false,
+                buttonText: 'Upgrade',
+                buttonState: 'secondary',
+                callBack: () => openModal('isFirstModalOpen'),
+                cost: '£90 / month'
+            }
+        ]
+    };
+
+    const card3data = {
+        title: {
+            text: 'Business',
+            className: 'secondary'
+        },
+        sections: [
+            {
+                title: 'Bronze',
+                content: ['2000 Active product listings', 'Unlimited inventory products', 'Unlimited Selling Channels', 'Multi Channel Listing', 'Cross Channel Syncronisation', 'Autodelisting'],
+                current: false,
+                buttonText: 'Upgrade',
+                buttonState: 'secondary',
+                callBack: () => openModal('isFirstModalOpen'),
+                cost: '£125 / month'
+            },
+            {
+                title: 'Silver',
+                content: ['5000 Active product listings', 'Unlimited inventory products', 'Unlimited Selling Channels', 'Multi Channel Listing', 'Cross Channel Syncronisation', 'Autodelisting'],
+                current: false,
+                buttonText: 'Upgrade',
+                buttonState: 'secondary',
+                callBack: () => openModal('isFirstModalOpen'),
+                cost: '£175 / month'
+            },
+            {
+                title: 'Gold',
+                content: ['10000 Active product listings', 'Unlimited inventory products', 'Unlimited Selling Channels', 'Multi Channel Listing', 'Cross Channel Syncronisation', 'Autodelisting'],
+                current: false,
+                buttonText: 'Upgrade',
+                buttonState: 'secondary',
+                callBack: () => openModal('isFirstModalOpen'),
+                cost: '£250 / month'
+            }
+        ]
+    };
+
     return (
         <div className={styles['outer-container']}>
             <h1><i className={'fad fa-flask'}/> The Lab</h1>
@@ -531,65 +641,72 @@ function TheLab() {
                             <li><code>showPassword</code>: boolean (optional)</li>
                         </ul>
                     </div>
-                    <div className={styles.section}>
-                        <h3>Form Select</h3>
-                        <FormSelect
-                            id='select'
-                            label="Select Option"
-                            value={selectedValue}
-                            onChange={handleSelectChange}
-                            options={[
-                                {value: 'option1', label: 'Option 1'},
-                                {value: 'option2', label: 'Option 2'},
-                                {value: 'option3', label: 'Option 3 (is an error)'},
-                            ]}
-                            error={selectError}
-                        />
-                        <div className={styles.documentationBox}>
-                            <div>{`<FormSelect label="Select Option" value={selectedValue} onChange={handleSelectChange} options={[{ value: 'option1', label: 'Option 1' }, { value: 'option2', label: 'Option 2' }, { value: 'option3', label: 'Option 3 (is an error)' }]} error={selectError} />`}</div>
-                        </div>
-                        <div className={styles.parametersBox}>
-                            <h5>Parameters:</h5>
-                            <ul>
-                                <li><code>label</code>: string</li>
-                                <li><code>value</code>: string</li>
-                                <li><code>onChange</code>: function</li>
-                                <li><code>options</code>: {`{ value: string; label: string }[]`}</li>
-                                <li><code>error</code>: string (optional)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className={styles.section}>
-                        <h3>Product Card</h3>
-                        <ProductCardContainer>
-                            <ProductCard title={'Product Title'}/>
-                            <ProductCard title={'Product Title'}/>
-                            <ProductCard title={'Product Title'}/>
-                        </ProductCardContainer>
-
-                        <div className={styles.documentationBox}>
-                            <div>{`<ProductCardContainer>`}</div>
-                            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`<ProductCard title={'Product Title'} />`}</div>
-                            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`<ProductCard title={'Product Title'} />`}</div>
-                            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`<ProductCard title={'Product Title'} />`}</div>
-                            <div>{`</ProductCardContainer>`}</div>
-                        </div>
-                        <div className={styles.parametersBox}>
-                            <h5>Parameters:</h5>
-                            <ul>
-                                <li><code>title</code>: string</li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
-                <div className={styles['container-full']}>
-
-                    <div className={`${styles['section']} ${styles['full-width-section']}`}>
-                        <h3>DataGrid</h3>
+                <div className={styles.section}>
+                    <h3>Form Select</h3>
+                    <FormSelect
+                        id='select'
+                        label="Select Option"
+                        value={selectedValue}
+                        onChange={handleSelectChange}
+                        options={[
+                            {value: 'option1', label: 'Option 1'},
+                            {value: 'option2', label: 'Option 2'},
+                            {value: 'option3', label: 'Option 3 (is an error)'},
+                        ]}
+                        error={selectError}
+                    />
+                    <div className={styles.documentationBox}>
+                        <div>{`<FormSelect label="Select Option" value={selectedValue} onChange={handleSelectChange} options={[{ value: 'option1', label: 'Option 1' }, { value: 'option2', label: 'Option 2' }, { value: 'option3', label: 'Option 3 (is an error)' }]} error={selectError} />`}</div>
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                        <ul>
+                            <li><code>label</code>: string</li>
+                            <li><code>value</code>: string</li>
+                            <li><code>onChange</code>: function</li>
+                            <li><code>options</code>: {`{ value: string; label: string }[]`}</li>
+                            <li><code>error</code>: string (optional)</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+
+            <div className={styles['container-full']}>
+                <div className={styles.section}>
+                    <h3>Product Card</h3>
+                    <ProductCardContainer>
+                        <ProductCard payload={card1data}/>
+                        <ProductCard payload={card2data}/>
+                        <ProductCard payload={card3data}/>
+                    </ProductCardContainer>
+                    <pre>
+                        <code>{JSON.stringify(card1data, null, 2)}</code>
+                    </pre>
+                    <div className={styles.documentationBox}>
+                        <div>{`<ProductCardContainer>`}</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`<ProductCard payload={card1data} />`}</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`<ProductCard payload={card2data} />`}</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`<ProductCard payload={card3data} />`}</div>
+                        <div>{`</ProductCardContainer>`}</div>
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                        <ul>
+                            <li><code>payload</code>: object</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div className={styles['container-full']}>
+
+                <div className={`${styles['section']} ${styles['full-width-section']}`}>
+                    <h3>DataGrid</h3>
+                </div>
+            </div>
         </div>
+
     );
 }
 
