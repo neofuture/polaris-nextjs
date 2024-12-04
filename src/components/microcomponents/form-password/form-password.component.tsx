@@ -33,7 +33,7 @@ const FormPassword: React.FC<FormPasswordProps> = ({label, value, onChange, erro
                        className={isPasswordVisible ? 'fad fa-eye-slash' : 'fad fa-eye'}></i>
                 </button>
             </div>
-            {error && <span className={styles['error-message']}>{error}</span>}
+            {error && <span className={styles['error-message']}><i className='fas fa-xmark'/> {error}</span>}
         </div>
     );
 };

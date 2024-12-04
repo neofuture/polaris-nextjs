@@ -26,7 +26,7 @@ const FormSelect: React.FC<FormSelectProps> = ({label, value, onChange, options,
                     </option>
                 ))}
             </select>
-            {error && <div className={styles['error-message']}>{error}</div>}
+            {error && <div className={styles['error-message']}><i className='fas fa-xmark'/> {error}</div>}
         </div>
     );
 };

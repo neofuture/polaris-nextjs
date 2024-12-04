@@ -23,7 +23,7 @@ const FormInput: React.FC<FormInputProps> = ({type, label, value, onChange, erro
                 onChange={onChange}
                 className={`${styles['form-field']} ${error ? styles['error'] : ''}`}
             />
-            {error && <span className={styles['error-message']}>{error}</span>}
+            {error && <span className={styles['error-message']}><i className='fas fa-xmark'/> {error}</span>}
         </div>
     );
 };
