@@ -14,7 +14,7 @@ const inter = Inter({
 
 export const metadata = {
     title: projectName,
-    description: `${projectName} NextJS Starter`,
+    description: `${projectName}`,
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
