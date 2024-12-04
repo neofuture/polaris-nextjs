@@ -25,7 +25,7 @@ const CookieConsent: React.FC = () => {
     return (
         <div className={styles['cookie-consent']}>
             <p>We use cookies to improve your experience on our site. By using our app, you consent to cookies.</p>
-            <Button iconName={'fa-check'} onClick={handleAccept}>Accept</Button>
+            <Button iconName={'fas fa-check'} onClick={handleAccept}>Accept</Button>
         </div>
     );
 };
