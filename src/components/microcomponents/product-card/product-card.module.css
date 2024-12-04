@@ -40,6 +40,7 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    gap: 8px;
 }
 
 .product-card__section-header h3 {
