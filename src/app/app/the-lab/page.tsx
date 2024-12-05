@@ -683,6 +683,9 @@ function TheLab() {
                             <Button onClick={() => alert('Disabled Button clicked!')} size={'tiny'}
                                     state={'disabled'}
                                     disabled={true}>Disabled</Button>
+                            <hr/>
+                            <Button onClick={() => alert('Fixed Width Button clicked!')} width={500}>Fixed Width (500px)</Button>
+                            <Button onClick={() => alert('Fixed Width Button clicked!')} width={'100%'}>Fixed Width (100%)</Button>
 
                         </div>
                     </div>

@@ -12,9 +12,10 @@ interface ButtonProps {
     state?: 'default' | 'secondary' | 'warning' | 'error' | 'disabled' | 'success' | string;
     disabled?: boolean;
     size?: 'default' | 'small' | 'tiny';
+    width?: number | string; // Allow width to be a number or a string
 }
 
-const Button: React.FC<ButtonProps> = ({ iconName, onClick, rounded, className, href, children, state = 'default', disabled, size = 'default' }) => {
+const Button: React.FC<ButtonProps> = ({ iconName, onClick, rounded, className, href, children, state = 'default', disabled, size = 'default', width }) => {
     const handleClick = () => {
         if (onClick) {
             onClick();
@@ -35,6 +36,7 @@ const Button: React.FC<ButtonProps> = ({ iconName, onClick, rounded, className, 
                 styles[state]
             )}
             disabled={disabled}
+            style={{ width: typeof width === 'number' ? `${width}px` : width }} // Apply width style
         >
             {iconName && (
                 <>
