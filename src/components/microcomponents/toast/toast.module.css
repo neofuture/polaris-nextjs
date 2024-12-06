@@ -162,3 +162,16 @@
 .toast-clickable.secondary:hover {
     background-color: var(--dark-secondary);
 }
+
+.toast.info {
+    background-color: var(--info-color);
+    color: var(--light-button-color);
+}
+
+.toast.info .close-button:hover {
+    background-color: var(--info-hover-color);
+}
+
+.toast-clickable.info:hover {
+    background-color: var(--info-hover-color);
+}

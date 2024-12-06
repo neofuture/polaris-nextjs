@@ -9,10 +9,10 @@ interface ButtonProps {
     className?: string;
     href?: string;
     children?: React.ReactNode;
-    state?: 'default' | 'secondary' | 'warning' | 'error' | 'disabled' | 'success' | string;
+    state?: 'default' | 'secondary' | 'warning' | 'error' | 'disabled' | 'success' | 'info' | string;
     disabled?: boolean;
     size?: 'default' | 'small' | 'tiny';
-    width?: number | string; // Allow width to be a number or a string
+    width?: number | string;
 }
 
 const Button: React.FC<ButtonProps> = ({ iconName, onClick, rounded, className, href, children, state = 'default', disabled, size = 'default', width }) => {

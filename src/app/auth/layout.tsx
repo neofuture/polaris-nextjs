@@ -2,7 +2,7 @@
 
 import React, {useEffect, useState} from "react";
 import styles from "./layout.module.css";
-import ColorPicker from "@/components/color-picker/color-picker.component";
+import ColorPicker from "@/components/microcomponents/color-picker/color-picker.component";
 import ToggleSwitch from "@/components/microcomponents/toggle-switch/toggle-switch.component";
 import {useTheme} from "@/context/ThemeContext";
 

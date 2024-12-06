@@ -7,7 +7,7 @@ import {useTheme} from "@/context/ThemeContext";
 import {showToast} from "@/components/microcomponents/toast/toast-utils";
 import NavLink from '@/components/microcomponents/nav-link/nav-link.component';
 import Button from '@/components/microcomponents/button/button.component';
-import ColorPicker from "@/components/color-picker/color-picker.component";
+import ColorPicker from "@/components/microcomponents/color-picker/color-picker.component";
 import ToggleSwitch from "@/components/microcomponents/toggle-switch/toggle-switch.component";
 import Modal from "@/components/microcomponents/modal/modal.component";
 import FormInput from "@/components/microcomponents/form-input/form-input.component";
@@ -401,6 +401,9 @@ function TheLab() {
                                 state={'default'}>Show
                             Toast</Button>
                         <Button iconName={'fas fa-bread-slice'}
+                                onClick={() => showToast('Title', 'Message', 'info')}
+                                state={'info'}>Show Toast</Button>
+                        <Button iconName={'fas fa-bread-slice'}
                                 onClick={() => showToast('Title', 'Message', 'secondary', undefined,)}
                                 state={'secondary'}>Show
                             Toast</Button>
@@ -684,8 +687,10 @@ function TheLab() {
                                     state={'disabled'}
                                     disabled={true}>Disabled</Button>
                             <hr/>
-                            <Button onClick={() => alert('Fixed Width Button clicked!')} width={500}>Fixed Width (500px)</Button>
-                            <Button onClick={() => alert('Fixed Width Button clicked!')} width={'100%'}>Fixed Width (100%)</Button>
+                            <Button onClick={() => alert('Fixed Width Button clicked!')} width={500}>Fixed Width
+                                (500px)</Button>
+                            <Button onClick={() => alert('Fixed Width Button clicked!')} width={'100%'}>Fixed Width
+                                (100%)</Button>
 
                         </div>
                     </div>
@@ -709,6 +714,9 @@ function TheLab() {
                             </li>
                             <li>
                                 <code>size</code>: &#39;small&#39; | &#39;tiny&#39; (optional)
+                            </li>
+                            <li>
+                                <code>width</code>: number | string (optional)
                             </li>
                         </ul>
                     </div>

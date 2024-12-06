@@ -123,3 +123,12 @@
 .button.secondary:hover {
     background-color: var(--dark-secondary);
 }
+
+.button.info {
+    background-color: var(--info-color);
+    color: var(--light-button-color);
+}
+
+.button.info:hover {
+    background-color: var(--info-hover-color);
+}

@@ -6,7 +6,7 @@ import Logo from "../../public/images/logo.png";
 import LogoDark from "../../public/images/logo_dark.png";
 import Hoops from "../../public/images/hoops.png";
 import Link from "next/link";
-import ColorPicker from "@/components/color-picker/color-picker.component";
+import ColorPicker from "@/components/microcomponents/color-picker/color-picker.component";
 import ToggleSwitch from "@/components/microcomponents/toggle-switch/toggle-switch.component";
 import React, {useEffect, useState} from "react";
 import {useTheme} from "@/context/ThemeContext";

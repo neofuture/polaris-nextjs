@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useSidebar } from "@/context/SidebarContext";
 import { useTheme } from "@/context/ThemeContext";
 import Button from "@/components/microcomponents/button/button.component";
-import ColorPicker from "@/components/color-picker/color-picker.component";
+import ColorPicker from "@/components/microcomponents/color-picker/color-picker.component";
 import ToggleSwitch from "@/components/microcomponents/toggle-switch/toggle-switch.component";
 import styles from "./top-navigation.module.css";
 import Hoops from "../../../public/images/hoops.png";

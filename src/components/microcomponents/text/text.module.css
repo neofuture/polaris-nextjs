@@ -1,0 +1,83 @@
+.default {
+    color: var(--foreground);
+}
+
+.inherit {
+    color: inherit;
+}
+
+.success {
+    color: var(--success-color);
+}
+
+.error {
+    color: var(--error-color);
+}
+
+.warning {
+    color: var(--warning-color);
+}
+
+.info {
+    color: var(--info-color);
+}
+
+.light {
+    color: var(--light-primary);
+}
+
+.dark {
+    color: var(--dark-primary);
+}
+
+.T200 {
+    font-size: 12px;
+}
+
+.T300 {
+    font-size: 14px;
+}
+
+.T400 {
+    font-size: 16px;
+}
+
+.T500 {
+    font-size: 18px;
+}
+
+.T600 {
+    font-size: 20px;
+}
+
+.T700 {
+    font-size: 24px;
+}
+
+.T800 {
+    font-size: 28px;
+}
+
+.T900 {
+    font-size: 32px;
+}
+
+.light {
+    font-weight: 300;
+}
+
+.regular {
+    font-weight: 400;
+}
+
+.medium {
+    font-weight: 500;
+}
+
+.heavy {
+    font-weight: 600;
+}
+
+.bold {
+    font-weight: 700;
+}
