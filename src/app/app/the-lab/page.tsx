@@ -20,6 +20,8 @@ import styles from './lab.module.css';
 import {z} from 'zod';
 import Logo from "../../../../public/images/logo.png";
 import LogoDark from "../../../../public/images/logo_dark.png";
+import FormRadioGroup from "@/components/microcomponents/form-radio-group/form-radio-group.component";
+import FormRadioInput from "@/components/microcomponents/form-radio-input/form-radio-input.component";
 
 const emailSchema = z.string().email({message: 'Invalid email address'});
 const nameSchema = z.string().min(3, {message: 'Name must be longer than 2 characters'});
@@ -27,7 +29,9 @@ const selectSchema = z.enum(['option1', 'option2', 'option3']).refine(value => v
     message: 'Option 3 is not allowed',
 });
 const passwordSchema = z.string().min(8, {message: 'Password must be at least 8 characters long'});
-
+const radioSchema = z.enum(['option 1', 'option 2', 'option 3']).refine(value => value !== 'option 3', {
+    message: 'Option 3 is not allowed',
+});
 
 function TheLab() {
     const [toggleState, setToggleState] = useState(false);
@@ -48,6 +52,8 @@ function TheLab() {
     const [selectedValue, setSelectedValue] = useState('option2');
     const [selectError, setSelectError] = useState('');
     const [passwordError, setPasswordError] = useState('');
+    const [selectedRadio, setSelectedRadio] = useState('');
+    const [radioError, setRadioError] = useState('');
 
 
     const handleToggle = () => {
@@ -111,6 +117,16 @@ function TheLab() {
             setPasswordError('');
         }
     }
+
+    const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSelectedRadio(e.target.value);
+        const result = radioSchema.safeParse(e.target.value);
+        if (!result.success) {
+            setRadioError(result.error.errors[0].message);
+        } else {
+            setRadioError('');
+        }
+    };
 
     const card1data = {
         title: {
@@ -567,6 +583,52 @@ function TheLab() {
                     </div>
                 </div>
                 <div className={styles.section}>
+                    <h3>Form Radio/Group</h3>
+                    <div className={styles['flex-buttons']}>
+                        <FormRadioGroup label={'Form Group'} error={radioError}>
+                            <FormRadioInput
+                                name={'radioGroup'}
+                                value={'option 1'}
+                                label='Option 1'
+                                checked={selectedRadio === 'option 1'}
+                                onChange={handleRadioChange}
+                                error={radioError}
+                            />
+                            <FormRadioInput
+                                name={'radioGroup'}
+                                value={'option 2'}
+                                label='Option 2'
+                                checked={selectedRadio === 'option 2'}
+                                onChange={handleRadioChange}
+                                error={radioError}
+                            />
+                            <FormRadioInput
+                                name={'radioGroup'}
+                                value={'option 3'}
+                                label='Option 3'
+                                checked={selectedRadio === 'option 3'}
+                                onChange={handleRadioChange}
+                                error={radioError}
+                            />
+                        </FormRadioGroup>
+                    </div>
+                    <div className={styles.documentationBox}>
+                        <div>{`<FormRadioGroup label={'Form Group'} error={radioError}>`}</div>
+                        <div>&nbsp;&nbsp;{`<FormRadioInput name={'radioGroup'} value={'option 1'} label='Option 1' checked={selectedRadio === 'option 1'} onChange={handleRadioChange} error={radioError} />`}</div>
+                        <div>&nbsp;&nbsp;{`<FormRadioInput name={'radioGroup'} value={'option 2'} label='Option 2' checked={selectedRadio === 'option 2'} onChange={handleRadioChange} error={radioError} />`}</div>
+                        <div>&nbsp;&nbsp;{`<FormRadioInput name={'radioGroup'} value={'option 3'} label='Option 3' checked={selectedRadio === 'option 3'} onChange={handleRadioChange} error={radioError} />`}</div>
+                        <div>{`</FormRadioGroup>`}</div>
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                        <ul>
+                            <li><code>label</code>: string</li>
+                            <li><code>error</code>: string (optional)</li>
+                            <li><code>children</code>: React.ReactNode</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className={styles.section}>
                     <h3>Button</h3>
                     <div className={styles['component-container']}>
                         <div className={styles['flex-buttons']}>
@@ -814,7 +876,10 @@ function TheLab() {
                     <div className={styles.parametersBox}>
                         <h5>Parameters:</h5>
                         <ul>
-                            <li><code>as</code>: string</li>
+                            <li>
+                                <code>as</code>: &#39;h1&#39; | &#39;h2&#39; | &#39;h3&#39; | &#39;h4&#39; | &#39;h5&#39; | &#39;h6v
+                                | &#39;p&#39; | &#39;span&#39; | &#39;div&#39; | &#39;a&#39; | &#39;button&#39; | &#39;label&#39; | &#39;li&#39; | &#39;ul&#39; | &#39;ol&#39; | &#39;nav&#39; | &#39;section&#39; | &#39;article&#39; | &#39;header&#39; | &#39;footer&#39; | &#39;main&#39;;
+                            </li>
                             <li>
                                 <code>state</code>: &#39;default&#39; | &#39;info&#39; | &#39;warning&#39; | &#39;error&#39; | &#39;success&#39; | &#39;light&#39; | &#39;dark&#39; | &#39;inherit&#39;
                             </li>
