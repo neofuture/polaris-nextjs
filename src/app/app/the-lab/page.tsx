@@ -1,10 +1,10 @@
 "use client";
 
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from "next/image";
 import Link from "next/link";
-import {useTheme} from "@/context/ThemeContext";
-import {showToast} from "@/components/microcomponents/toast/toast-utils";
+import { useTheme } from "@/context/ThemeContext";
+import { showToast } from "@/components/microcomponents/toast/toast-utils";
 import NavLink from '@/components/microcomponents/nav-link/nav-link.component';
 import Button from '@/components/microcomponents/button/button.component';
 import ColorPicker from "@/components/microcomponents/color-picker/color-picker.component";
@@ -17,26 +17,51 @@ import ProductCardContainer from "@/components/microcomponents/product-card-cont
 import FormPassword from "@/components/microcomponents/form-password/form-password.component";
 import Text from "@/components/microcomponents/text/text.component";
 import styles from './lab.module.css';
-import {z} from 'zod';
+import { z } from 'zod';
 import Logo from "../../../../public/images/logo.png";
 import LogoDark from "../../../../public/images/logo_dark.png";
 import FormRadioGroup from "@/components/microcomponents/form-radio-group/form-radio-group.component";
 import FormRadioInput from "@/components/microcomponents/form-radio-input/form-radio-input.component";
 import FormCheckbox from "@/components/microcomponents/form-checkbox/form-checkbox.component";
-const emailSchema = z.string().email({message: 'Invalid email address'});
-const nameSchema = z.string().min(3, {message: 'Name must be longer than 2 characters'});
-const selectSchema = z.enum(['option1', 'option2', 'option3']).refine(value => value !== 'option3', {
-    message: 'Option 3 is not allowed',
-});
-const passwordSchema = z.string().min(8, {message: 'Password must be at least 8 characters long'});
-const radioSchema = z.enum(['option 1', 'option 2', 'option 3']).refine(value => value !== 'option 3', {
-    message: 'Option 3 is not allowed',
-});
-const checkboxSchema = z.boolean().refine(value => value === true, {
-    message: 'This checkbox must be checked',
+
+const formSchema = z.object({
+    email: z.string().email({ message: 'Invalid email address' }),
+    name: z.string().min(3, { message: 'Name must be longer than 2 characters' }),
+    selectedValue: z.enum(['option1', 'option2', 'option3']).refine(value => value !== 'option3', {
+        message: 'Option 3 is not allowed',
+    }),
+    password: z.string().min(8, { message: 'Password must be at least 8 characters long' }),
+    selectedRadio: z.enum(['option 1', 'option 2', 'option 3'], {
+        errorMap: (issue) => {
+            if (issue.code === 'invalid_enum_value') {
+                return { message: 'Please choose at least one option.' };
+            }
+            return { message: issue.message || 'Invalid value' };
+        }
+    }).refine(value => value !== 'option 3', {
+        message: 'Option 3 is not allowed',
+    }),
+    isChecked: z.boolean().refine(value => value, {
+        message: 'This checkbox must be checked',
+    }),
 });
 
 function TheLab() {
+    const [formState, setFormState] = useState({
+        email: '',
+        name: '',
+        password: '',
+        selectedValue: 'option2',
+        selectedRadio: '',
+        isChecked: false,
+        emailError: '',
+        nameError: '',
+        selectError: '',
+        passwordError: '',
+        radioError: '',
+        checkboxError: ''
+    });
+
     const [toggleState, setToggleState] = useState(false);
     const [color, setColor] = useState('purple');
     const [modalStates, setModalStates] = useState({
@@ -46,30 +71,58 @@ function TheLab() {
         isFourthModalOpen: false,
         isFifthModalOpen: false
     });
-    const {theme} = useTheme();
-    const [email, setEmail] = useState('');
-    const [name, setName] = useState('');
-    const [password, setPassword] = useState('');
-    const [emailError, setEmailError] = useState('');
-    const [nameError, setNameError] = useState('');
-    const [selectedValue, setSelectedValue] = useState('option2');
-    const [selectError, setSelectError] = useState('');
-    const [passwordError, setPasswordError] = useState('');
-    const [selectedRadio, setSelectedRadio] = useState('');
-    const [radioError, setRadioError] = useState('');
-    const [isChecked, setIsChecked] = useState(false);
-    const [checkboxError, setCheckboxError] = useState('');
+    const { theme } = useTheme();
+
+    useEffect(() => {
+        const validateInitialState = () => {
+            const result = formSchema.safeParse({
+                email: formState.email,
+                name: formState.name,
+                selectedValue: formState.selectedValue,
+                password: formState.password,
+                selectedRadio: formState.selectedRadio,
+                isChecked: formState.isChecked,
+            });
+
+            if (!result.success) {
+                result.error.errors.forEach(error => {
+                    switch (error.path[0]) {
+                        case 'email':
+                            setFormState(prevState => ({ ...prevState, emailError: error.message }));
+                            break;
+                        case 'name':
+                            setFormState(prevState => ({ ...prevState, nameError: error.message }));
+                            break;
+                        case 'selectedValue':
+                            setFormState(prevState => ({ ...prevState, selectError: error.message }));
+                            break;
+                        case 'password':
+                            setFormState(prevState => ({ ...prevState, passwordError: error.message }));
+                            break;
+                        case 'selectedRadio':
+                            setFormState(prevState => ({ ...prevState, radioError: error.message }));
+                            break;
+                        case 'isChecked':
+                            setFormState(prevState => ({ ...prevState, checkboxError: error.message }));
+                            break;
+                    }
+                });
+            }
+        };
+
+        validateInitialState();
+    }, []);
 
     const handleToggle = () => {
         setToggleState(!toggleState);
     };
 
     const openModal = (modalName: string) => {
-        setModalStates(prevState => ({...prevState, [modalName]: true}));
+        setModalStates(prevState => ({ ...prevState, [modalName]: true }));
     };
 
     const closeModal = (modalName: string) => {
-        setModalStates(prevState => ({...prevState, [modalName]: false}));
+        setModalStates(prevState => ({ ...prevState, [modalName]: false }));
     };
 
     const clearCookiesAndLocalStorage = () => {
@@ -83,64 +136,63 @@ function TheLab() {
     };
 
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
-        const result = emailSchema.safeParse(e.target.value);
-        if (!result.success) {
-            setEmailError(result.error.errors[0].message);
-        } else {
-            setEmailError('');
-        }
+        const email = e.target.value;
+        const result = formSchema.shape.email.safeParse(email);
+        setFormState(prevState => ({
+            ...prevState,
+            email,
+            emailError: result.success ? '' : result.error.errors[0].message
+        }));
     };
 
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setName(e.target.value);
-        const result = nameSchema.safeParse(e.target.value);
-        if (!result.success) {
-            setNameError(result.error.errors[0].message);
-        } else {
-            setNameError('');
-        }
+        const name = e.target.value;
+        const result = formSchema.shape.name.safeParse(name);
+        setFormState(prevState => ({
+            ...prevState,
+            name,
+            nameError: result.success ? '' : result.error.errors[0].message
+        }));
     };
 
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedValue(e.target.value);
-        const result = selectSchema.safeParse(e.target.value);
-        if (!result.success) {
-            setSelectError(result.error.errors[0].message);
-        } else {
-            setSelectError('');
-        }
+        const selectedValue = e.target.value;
+        const result = formSchema.shape.selectedValue.safeParse(selectedValue);
+        setFormState(prevState => ({
+            ...prevState,
+            selectedValue,
+            selectError: result.success ? '' : result.error.errors[0].message
+        }));
     };
 
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-        const result = passwordSchema.safeParse(e.target.value);
-        if (!result.success) {
-            setPasswordError(result.error.errors[0].message);
-        } else {
-            setPasswordError('');
-        }
-    }
+        const password = e.target.value;
+        const result = formSchema.shape.password.safeParse(password);
+        setFormState(prevState => ({
+            ...prevState,
+            password,
+            passwordError: result.success ? '' : result.error.errors[0].message
+        }));
+    };
 
     const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSelectedRadio(e.target.value);
-        const result = radioSchema.safeParse(e.target.value);
-        if (!result.success) {
-            setRadioError(result.error.errors[0].message);
-        } else {
-            setRadioError('');
-        }
+        const selectedRadio = e.target.value;
+        const result = formSchema.shape.selectedRadio.safeParse(selectedRadio);
+        setFormState(prevState => ({
+            ...prevState,
+            selectedRadio,
+            radioError: result.success ? '' : result.error.errors[0].message
+        }));
     };
 
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const checked = e.target.checked;
-        setIsChecked(checked);
-        const result = checkboxSchema.safeParse(checked);
-        if (!result.success) {
-            setCheckboxError(result.error.errors[0].message);
-        } else {
-            setCheckboxError('');
-        }
+        const isChecked = e.target.checked;
+        const result = formSchema.shape.isChecked.safeParse(isChecked);
+        setFormState(prevState => ({
+            ...prevState,
+            isChecked,
+            checkboxError: result.success ? '' : result.error.errors[0].message
+        }));
     };
 
     const card1data = {
@@ -502,23 +554,23 @@ function TheLab() {
                             id='name'
                             type="text"
                             label="Name"
-                            value={name}
+                            value={formState.name}
                             onChange={handleNameChange}
-                            error={nameError}
+                            error={formState.nameError}
                         />
 
                         <FormInput
                             id='email'
                             type="email"
                             label="Email"
-                            value={email}
+                            value={formState.email}
                             onChange={handleEmailChange}
-                            error={emailError}
+                            error={formState.emailError}
                         />
 
                         <hr/>
-                        <div><b>Name:</b> {name}</div>
-                        <div><b>Email:</b> {email}</div>
+                        <div><b>Name:</b> {formState.name}</div>
+                        <div><b>Email:</b> {formState.email}</div>
                         <div className={styles.documentationBox}>
                             <div>{`<FormInput type="text" label="Name" value={name} onChange={handleNameChange} error={nameError} />`}</div>
                         </div>
@@ -543,9 +595,9 @@ function TheLab() {
                     <FormPassword
                         id='password'
                         label="Password"
-                        value={password}
+                        value={formState.password}
                         onChange={handlePasswordChange}
-                        error={passwordError}
+                        error={formState.passwordError}
                     />
                     <div className={styles.documentationBox}>
                         <div>{`<FormPassword label="Password" value={password} onChange={handlePasswordChange} />`}</div>
@@ -566,9 +618,9 @@ function TheLab() {
                     <FormSelect
                         id='select'
                         label="Select Option"
-                        value={selectedValue}
+                        value={formState.selectedValue}
                         onChange={handleSelectChange}
-                        error={selectError}
+                        error={formState.selectError}
                     >
                         <option value='option1'>Option 1</option>
                         <option value='option2'>Option 2</option>
@@ -595,30 +647,30 @@ function TheLab() {
                 <div className={styles.section}>
                     <h3>Form Radio/Group</h3>
                     <div className={styles['flex-buttons']}>
-                        <FormRadioGroup label={'Form Group'} error={radioError}>
+                        <FormRadioGroup label={'Form Group'} error={formState.radioError}>
                             <FormRadioInput
                                 name={'radioGroup'}
                                 value={'option 1'}
                                 label='Option 1'
-                                checked={selectedRadio === 'option 1'}
+                                checked={formState.selectedRadio === 'option 1'}
                                 onChange={handleRadioChange}
-                                error={radioError}
+                                error={formState.radioError}
                             />
                             <FormRadioInput
                                 name={'radioGroup'}
                                 value={'option 2'}
                                 label='Option 2'
-                                checked={selectedRadio === 'option 2'}
+                                checked={formState.selectedRadio === 'option 2'}
                                 onChange={handleRadioChange}
-                                error={radioError}
+                                error={formState.radioError}
                             />
                             <FormRadioInput
                                 name={'radioGroup'}
                                 value={'option 3'}
                                 label='Option 3'
-                                checked={selectedRadio === 'option 3'}
+                                checked={formState.selectedRadio === 'option 3'}
                                 onChange={handleRadioChange}
-                                error={radioError}
+                                error={formState.radioError}
                                 rounded={true}
                             />
                         </FormRadioGroup>
@@ -654,10 +706,10 @@ function TheLab() {
                     <div>
                         <FormCheckbox
                             label={'Form Checkbox'}
-                            error={checkboxError}
+                            error={formState.checkboxError}
                             name={'checkbox'}
                             value={'checkbox'}
-                            checked={isChecked}
+                            checked={formState.isChecked}
                             onChange={handleCheckboxChange}
                         />
                         <FormCheckbox
