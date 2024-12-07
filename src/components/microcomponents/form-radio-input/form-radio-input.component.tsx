@@ -8,9 +8,10 @@ interface FormRadioInputProps {
     checked?: boolean;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     error?: string;
+    rounded?: boolean;
 }
 
-const FormRadioInput: React.FC<FormRadioInputProps> = ({ name, value, label, checked, onChange, error }) => {
+const FormRadioInput: React.FC<FormRadioInputProps> = ({ name, value, label, checked, onChange, error, rounded = false }) => {
     return (
         <div className={styles['radio-input']}>
             <input
@@ -20,7 +21,7 @@ const FormRadioInput: React.FC<FormRadioInputProps> = ({ name, value, label, che
                 value={value}
                 checked={checked}
                 onChange={onChange}
-                className={`${styles.input} ${error ? styles['error-input'] : ''}`}
+                className={`${styles.input} ${rounded ? styles['rounded-input'] : ''} ${error ? styles['error-input'] : ''}`}
             />
             <label htmlFor={value} className={styles.label}>
                 {label}

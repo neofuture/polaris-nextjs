@@ -22,7 +22,7 @@ import Logo from "../../../../public/images/logo.png";
 import LogoDark from "../../../../public/images/logo_dark.png";
 import FormRadioGroup from "@/components/microcomponents/form-radio-group/form-radio-group.component";
 import FormRadioInput from "@/components/microcomponents/form-radio-input/form-radio-input.component";
-
+import FormCheckbox from "@/components/microcomponents/form-checkbox/form-checkbox.component";
 const emailSchema = z.string().email({message: 'Invalid email address'});
 const nameSchema = z.string().min(3, {message: 'Name must be longer than 2 characters'});
 const selectSchema = z.enum(['option1', 'option2', 'option3']).refine(value => value !== 'option3', {
@@ -31,6 +31,9 @@ const selectSchema = z.enum(['option1', 'option2', 'option3']).refine(value => v
 const passwordSchema = z.string().min(8, {message: 'Password must be at least 8 characters long'});
 const radioSchema = z.enum(['option 1', 'option 2', 'option 3']).refine(value => value !== 'option 3', {
     message: 'Option 3 is not allowed',
+});
+const checkboxSchema = z.boolean().refine(value => value === true, {
+    message: 'This checkbox must be checked',
 });
 
 function TheLab() {
@@ -54,7 +57,8 @@ function TheLab() {
     const [passwordError, setPasswordError] = useState('');
     const [selectedRadio, setSelectedRadio] = useState('');
     const [radioError, setRadioError] = useState('');
-
+    const [isChecked, setIsChecked] = useState(false);
+    const [checkboxError, setCheckboxError] = useState('');
 
     const handleToggle = () => {
         setToggleState(!toggleState);
@@ -125,6 +129,17 @@ function TheLab() {
             setRadioError(result.error.errors[0].message);
         } else {
             setRadioError('');
+        }
+    };
+
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const checked = e.target.checked;
+        setIsChecked(checked);
+        const result = checkboxSchema.safeParse(checked);
+        if (!result.success) {
+            setCheckboxError(result.error.errors[0].message);
+        } else {
+            setCheckboxError('');
         }
     };
 
@@ -315,14 +330,6 @@ function TheLab() {
                             <Link href="/app/the-lab/string3">Slug 3</Link>
                         </li>
                     </ul>
-                </div>
-                <div className={styles.section}>
-                    <h3>App Reset</h3>
-                    <div className={styles['flex-buttons']}>
-                        <Button state={'error'} iconName={'fas fa-arrow-rotate-left'}
-                                onClick={clearCookiesAndLocalStorage}>Reset
-                            Cookie and Consent</Button>
-                    </div>
                 </div>
             </div>
 
@@ -561,15 +568,18 @@ function TheLab() {
                         label="Select Option"
                         value={selectedValue}
                         onChange={handleSelectChange}
-                        options={[
-                            {value: 'option1', label: 'Option 1'},
-                            {value: 'option2', label: 'Option 2'},
-                            {value: 'option3', label: 'Option 3 (is an error)'},
-                        ]}
                         error={selectError}
-                    />
+                    >
+                        <option value='option1'>Option 1</option>
+                        <option value='option2'>Option 2</option>
+                        <option value='option3'>Option 3 (is an error)</option>
+                    </FormSelect>
                     <div className={styles.documentationBox}>
-                        <div>{`<FormSelect label="Select Option" value={selectedValue} onChange={handleSelectChange} options={[{ value: 'option1', label: 'Option 1' }, { value: 'option2', label: 'Option 2' }, { value: 'option3', label: 'Option 3 (is an error)' }]} error={selectError} />`}</div>
+                        <div>{`<FormSelect label="Select Option" value={selectedValue} onChange={handleSelectChange} error={selectError}>`}</div>
+                        <div>&nbsp;&nbsp;{`<option value='option1'>Option 1</option>`}</div>
+                        <div>&nbsp;&nbsp;{`<option value='option2'>Option 2</option>`}</div>
+                        <div>&nbsp;&nbsp;{`<option value='option3'>Option 3 (is an error)</option>`}</div>
+                        <div>{`</FormSelect>`}</div>
                     </div>
                     <div className={styles.parametersBox}>
                         <h5>Parameters:</h5>
@@ -577,8 +587,8 @@ function TheLab() {
                             <li><code>label</code>: string</li>
                             <li><code>value</code>: string</li>
                             <li><code>onChange</code>: function</li>
-                            <li><code>options</code>: {`{ value: string; label: string }[]`}</li>
                             <li><code>error</code>: string (optional)</li>
+                            <li><code>children</code>: React.ReactNode</li>
                         </ul>
                     </div>
                 </div>
@@ -609,6 +619,7 @@ function TheLab() {
                                 checked={selectedRadio === 'option 3'}
                                 onChange={handleRadioChange}
                                 error={radioError}
+                                rounded={true}
                             />
                         </FormRadioGroup>
                     </div>
@@ -620,11 +631,62 @@ function TheLab() {
                         <div>{`</FormRadioGroup>`}</div>
                     </div>
                     <div className={styles.parametersBox}>
-                        <h5>Parameters:</h5>
+                        <h5>Parameters FormRadioGroup:</h5>
                         <ul>
                             <li><code>label</code>: string</li>
                             <li><code>error</code>: string (optional)</li>
                             <li><code>children</code>: React.ReactNode</li>
+                        </ul>
+                        <h5>Parameters FormRadioInput:</h5>
+                        <ul>
+                            <li><code>name</code>: string</li>
+                            <li><code>value</code>: string</li>
+                            <li><code>label</code>: string</li>
+                            <li><code>checked</code>: boolean</li>
+                            <li><code>onChange</code>: function</li>
+                            <li><code>error</code>: string (optional)</li>
+                            <li><code>rounded</code>: boolean (optional)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className={styles.section}>
+                    <h3>Form Checkbox</h3>
+                    <div>
+                        <FormCheckbox
+                            label={'Form Checkbox'}
+                            error={checkboxError}
+                            name={'checkbox'}
+                            value={'checkbox'}
+                            checked={isChecked}
+                            onChange={handleCheckboxChange}
+                        />
+                        <FormCheckbox
+                            label={'Form Checkbox 2'}
+                            name={'checkbox2'}
+                            value={'checkbox2'}
+                        />
+                        <FormCheckbox
+                            label={'Form Checkbox Rounded'}
+                            name={'checkbox3'}
+                            value={'checkbox3'}
+                            rounded={true}
+                        />
+                    </div>
+                    <div className={styles.documentationBox}>
+                        <div>{`<FormCheckbox label={'Form Checkbox'} error={checkboxError} name={'checkbox'} value={'checkbox'} checked={isChecked} onChange={handleCheckboxChange} />`}</div>
+                        <div>{`<FormCheckbox label={'Form Checkbox 2'} name={'checkbox2'} value={'checkbox2'} />`}</div>
+                        <div>{`<FormCheckbox label={'Form Checkbox Rounded'} name={'checkbox3'} value={'checkbox3'} rounded={true} />`}</div>
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                        <ul>
+                            <li><code>label</code>: string</li>
+                            <li><code>error</code>: string (optional)</li>
+                            <li><code>name</code>: string</li>
+                            <li><code>value</code>: string</li>
+                            <li><code>checked</code>: boolean</li>
+                            <li><code>onChange</code>: function</li>
+                            <li><code>rounded</code>: boolean (optional)</li>
                         </ul>
                     </div>
                 </div>
@@ -896,7 +958,16 @@ function TheLab() {
                 <div className={`${styles['section']} ${styles['full-width-section']}`}>
                     <h3>DataGrid</h3>
                 </div>
+                <div className={styles.section}>
+                    <h3>App Reset</h3>
+                    <div className={styles['flex-buttons']}>
+                        <Button state={'error'} iconName={'fas fa-arrow-rotate-left'}
+                                onClick={clearCookiesAndLocalStorage}>Reset
+                            Cookie and Consent</Button>
+                    </div>
+                </div>
             </div>
+
         </div>
     );
 }

@@ -5,12 +5,12 @@ interface FormSelectProps {
     label: string;
     value: string;
     onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-    options: { value: string; label: string }[];
     error?: string;
     id: string;
+    children: React.ReactNode;
 }
 
-const FormSelect: React.FC<FormSelectProps> = ({label, value, onChange, options, error, id}) => {
+const FormSelect: React.FC<FormSelectProps> = ({ label, value, onChange, error, id, children }) => {
     return (
         <div className={styles['form-select']}>
             <label htmlFor={id} className={styles['form-label']}>{label}</label>
@@ -20,11 +20,7 @@ const FormSelect: React.FC<FormSelectProps> = ({label, value, onChange, options,
                 value={value}
                 onChange={onChange}
             >
-                {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                        {option.label}
-                    </option>
-                ))}
+                {children}
             </select>
             {error && <div className={styles['error-message']}><i className='fas fa-xmark'/> {error}</div>}
         </div>
