@@ -15,6 +15,7 @@ import FormSelect from "@/components/microcomponents/form-select/form-select.com
 import ProductCard from "@/components/microcomponents/product-card/product-card.component";
 import ProductCardContainer from "@/components/microcomponents/product-card-container/product-card-container.component";
 import FormPassword from "@/components/microcomponents/form-password/form-password.component";
+import Text from "@/components/microcomponents/text/text.component";
 import styles from './lab.module.css';
 import {z} from 'zod';
 import Logo from "../../../../public/images/logo.png";
@@ -401,12 +402,12 @@ function TheLab() {
                                 state={'default'}>Show
                             Toast</Button>
                         <Button iconName={'fas fa-bread-slice'}
-                                onClick={() => showToast('Title', 'Message', 'info')}
-                                state={'info'}>Show Toast</Button>
-                        <Button iconName={'fas fa-bread-slice'}
                                 onClick={() => showToast('Title', 'Message', 'secondary', undefined,)}
                                 state={'secondary'}>Show
                             Toast</Button>
+                        <Button iconName={'fas fa-bread-slice'}
+                                onClick={() => showToast('Title', 'Message', 'info')}
+                                state={'info'}>Show Toast</Button>
                         <Button iconName={'fas fa-bread-slice'}
                                 onClick={() => showToast('Title', 'Message', 'success', undefined)}
                                 state={'success'}>Show
@@ -707,7 +708,7 @@ function TheLab() {
                             <li><code>href</code>: string (optional)</li>
                             <li><code>children</code>: React.ReactNode</li>
                             <li>
-                                <code>state</code>: &#39;default&#39; | &#39;warning&#39; | &#39;error&#39; | &#39;disabled&#39; | &#39;success&#39; (optional)
+                                <code>state</code>: &#39;default&#39; | &#39;info&#39; | &#39;warning&#39; | &#39;error&#39; | &#39;disabled&#39; | &#39;success&#39; (optional)
                             </li>
                             <li>
                                 <code>disabled</code>: boolean (optional)
@@ -755,7 +756,75 @@ function TheLab() {
                         </ul>
                     </div>
                 </div>
+                <div className={styles.section}>
+                    <h3>Text</h3>
+                    <Text as="h1" state="default" size="T900" weight="bold">Default H1 Bold</Text>
+                    <Text as="h2" state="success" size="T800" weight="heavy">Success H2 Heavy</Text>
+                    <Text as="h3" state="error" size="T700" weight="medium">Error H3 Medium</Text>
+                    <Text as="span" state="warning" size="T600" weight="regular">Warning Span Regular</Text>
+                    <Text as="div" state="info" size="T500" weight="light">Info Div Light</Text>
+                    <Text as="h1" state="light" size="T400" weight="bold">Light H1 Bold</Text>
+                    <Text as="h2" state="dark" size="T300" weight="heavy">Dark H2 Heavy</Text>
+                    <Text as="h3" state="inherit" size="T200" weight="medium">Inherit H3 Medium</Text>
+                    <Text as="h1" state="default" size="T900" weight="bold">Default H1 Bold</Text>
+                    <Text as="h2" state="success" size="T800" weight="heavy">Success H2 Heavy</Text>
+                    <Text as="h3" state="error" size="T700" weight="medium">Error H3 Medium</Text>
+                    <Text as="span" state="warning" size="T600" weight="regular">Warning Span Regular</Text>
+                    <Text as="div" state="info" size="T500" weight="light">Info Div Light</Text>
+                    <Text as="h1" state="light" size="T400" weight="bold">Light H1 Bold</Text>
+                    <Text as="h2" state="dark" size="T300" weight="heavy">Dark H2 Heavy</Text>
+                    <Text as="h3" state="inherit" size="T200" weight="medium">Inherit H3 Medium</Text>
+                    <Text as="p" state="default" size="T500" weight="regular">Default P Regular</Text>
+                    <Text as="h4" state="success" size="T600" weight="bold">Success H4 Bold</Text>
+                    <Text as="h5" state="error" size="T700" weight="heavy">Error H5 Heavy</Text>
+                    <Text as="h6" state="warning" size="T800" weight="medium">Warning H6 Medium</Text>
+                    <Text as="span" state="info" size="T900" weight="light">Info Span Light</Text>
+                    <Text as="div" state="light" size="T200" weight="regular">Light Div Regular</Text>
+                    <Text as="h1" state="dark" size="T300" weight="bold">Dark H1 Bold</Text>
+                    <Text as="h2" state="inherit" size="T400" weight="heavy">Inherit H2 Heavy</Text>
+                    <Text as="h3" state="default" size="T500" weight="medium">Default H3 Medium</Text>
+                    <Text as="p" state="success" size="T600" weight="light">Success P Light</Text>
+                    <Text as="h4" state="error" size="T700" weight="regular">Error H4 Regular</Text>
+                    <Text as="h5" state="warning" size="T800" weight="bold">Warning H5 Bold</Text>
+                    <Text as="h6" state="info" size="T900" weight="heavy">Info H6 Heavy</Text>
+                    <Text as="span" state="light" size="T200" weight="medium">Light Span Medium</Text>
+                    <Text as="div" state="dark" size="T300" weight="light">Dark Div Light</Text>
+                    <Text as="h1" state="inherit" size="T400" weight="regular">Inherit H1 Regular</Text>
+                    <Text as="h2" state="default" size="T500" weight="bold">Default H2 Bold</Text>
+                    <Text as="h3" state="success" size="T600" weight="heavy">Success H3 Heavy</Text>
+                    <Text as="p" state="error" size="T700" weight="medium">Error P Medium</Text>
+                    <Text as="h4" state="warning" size="T800" weight="light">Warning H4 Light</Text>
+                    <Text as="h5" state="info" size="T900" weight="regular">Info H5 Regular</Text>
+                    <Text as="h6" state="light" size="T200" weight="bold">Light H6 Bold</Text>
+                    <Text as="span" state="dark" size="T300" weight="heavy">Dark Span Heavy</Text>
+                    <Text as="div" state="inherit" size="T400" weight="medium">Inherit Div Medium</Text>
+                    <Text as="h1" state="default" size="T500" weight="light">Default H1 Light</Text>
+                    <Text as="h2" state="success" size="T600" weight="regular">Success H2 Regular</Text>
+                    <Text as="h3" state="error" size="T700" weight="bold">Error H3 Bold</Text>
+                    <Text as="p" state="warning" size="T800" weight="heavy">Warning P Heavy</Text>
+                    <Text as="h4" state="info" size="T900" weight="medium">Info H4 Medium</Text>
+                    <Text as="h5" state="light" size="T200" weight="light">Light H5 Light</Text>
+                    <Text as="h6" state="dark" size="T300" weight="regular">Dark H6 Regular</Text>
+                    <Text as="span" state="inherit" size="T400" weight="bold">Inherit Span Bold</Text>
+                    <Text as="div" state="default" size="T500" weight="heavy">Default Div Heavy</Text>
+
+                    <div className={styles.documentationBox}>
+                        <div>{`<Text as="h1" state="default" size="T900" weight="bold">Default H1 Bold</Text>`}</div>
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                        <ul>
+                            <li><code>as</code>: string</li>
+                            <li>
+                                <code>state</code>: &#39;default&#39; | &#39;info&#39; | &#39;warning&#39; | &#39;error&#39; | &#39;success&#39; | &#39;light&#39; | &#39;dark&#39; | &#39;inherit&#39;
+                            </li>
+                            <li><code>size</code>: string</li>
+                            <li><code>weight</code>: string</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+
 
             <div className={styles['container-full']}>
 
