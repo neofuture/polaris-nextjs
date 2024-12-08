@@ -9,7 +9,7 @@ import ToastManager from "@/components/microcomponents/toast/toast-manager.compo
 const projectName = process.env.NEXT_PUBLIC_PROJECT_NAME || "Default Project Name";
 const inter = Inter({
     subsets: ["latin"],
-    weight: ["400", "700"],
+    weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata = {

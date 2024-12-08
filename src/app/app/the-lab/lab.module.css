@@ -92,3 +92,13 @@
 .outer-container code {
     color: var(--light-primary);
 }
+
+.select-row {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+}
+
+.select-row > * {
+    flex: 1;
+}

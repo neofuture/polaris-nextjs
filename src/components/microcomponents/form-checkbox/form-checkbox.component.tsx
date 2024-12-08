@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './form-checkbox.module.css';
 
 interface FormCheckboxInputProps {
+    id: string;
     name: string;
     value: string;
     label: string;
@@ -11,20 +12,20 @@ interface FormCheckboxInputProps {
     rounded?: boolean;
 }
 
-const FormCheckbox: React.FC<FormCheckboxInputProps> = ({ name, value, label, checked, onChange = () => {}, error, rounded = false }) => {
+const FormCheckbox: React.FC<FormCheckboxInputProps> = ({ id, name, value, label, checked, onChange = () => {}, error, rounded = false }) => {
     return (
         <div className={styles['checkbox-input']}>
             <div className={styles['checkbox-container']}>
                 <input
                     type="checkbox"
-                    id={value}
+                    id={id}
                     name={name}
                     value={value}
                     checked={checked}
                     onChange={onChange}
                     className={`${styles.input} ${rounded ? styles['rounded-input'] : ''} ${error ? styles['error-input'] : ''}`}
                 />
-                <label htmlFor={value} className={styles.label}>
+                <label htmlFor={id} className={styles.label}>
                     {label}
                 </label>
             </div>

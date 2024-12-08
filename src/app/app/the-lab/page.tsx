@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Image from "next/image";
 import Link from "next/link";
-import { useTheme } from "@/context/ThemeContext";
-import { showToast } from "@/components/microcomponents/toast/toast-utils";
+import {useTheme} from "@/context/ThemeContext";
+import {showToast} from "@/components/microcomponents/toast/toast-utils";
 import NavLink from '@/components/microcomponents/nav-link/nav-link.component';
 import Button from '@/components/microcomponents/button/button.component';
 import ColorPicker from "@/components/microcomponents/color-picker/color-picker.component";
@@ -17,7 +17,7 @@ import ProductCardContainer from "@/components/microcomponents/product-card-cont
 import FormPassword from "@/components/microcomponents/form-password/form-password.component";
 import Text from "@/components/microcomponents/text/text.component";
 import styles from './lab.module.css';
-import { z } from 'zod';
+import {z} from 'zod';
 import Logo from "../../../../public/images/logo.png";
 import LogoDark from "../../../../public/images/logo_dark.png";
 import FormRadioGroup from "@/components/microcomponents/form-radio-group/form-radio-group.component";
@@ -25,18 +25,18 @@ import FormRadioInput from "@/components/microcomponents/form-radio-input/form-r
 import FormCheckbox from "@/components/microcomponents/form-checkbox/form-checkbox.component";
 
 const formSchema = z.object({
-    email: z.string().email({ message: 'Invalid email address' }),
-    name: z.string().min(3, { message: 'Name must be longer than 2 characters' }),
+    email: z.string().email({message: 'Invalid email address'}),
+    name: z.string().min(3, {message: 'Name must be longer than 2 characters'}),
     selectedValue: z.enum(['option1', 'option2', 'option3']).refine(value => value !== 'option3', {
         message: 'Option 3 is not allowed',
     }),
-    password: z.string().min(8, { message: 'Password must be at least 8 characters long' }),
+    password: z.string().min(8, {message: 'Password must be at least 8 characters long'}),
     selectedRadio: z.enum(['option 1', 'option 2', 'option 3'], {
         errorMap: (issue) => {
             if (issue.code === 'invalid_enum_value') {
-                return { message: 'Please choose at least one option.' };
+                return {message: 'Please choose at least one option.'};
             }
-            return { message: issue.message || 'Invalid value' };
+            return {message: issue.message || 'Invalid value'};
         }
     }).refine(value => value !== 'option 3', {
         message: 'Option 3 is not allowed',
@@ -71,7 +71,15 @@ function TheLab() {
         isFourthModalOpen: false,
         isFifthModalOpen: false
     });
-    const { theme } = useTheme();
+    const {theme} = useTheme();
+    const [element, setElement] = useState<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div' | 'a' | 'button' | 'label' | 'li' | 'ul' | 'ol' | 'nav' | 'section' | 'article' | 'header' | 'footer' | 'main'>('div');
+    const [state, setState] = useState<'default' | 'success' | 'error' | 'warning' | 'info' | 'primary' | 'secondary' | 'inherit'>('default');
+    const [size, setSize] = useState<'T900' | 'T800' | 'T700' | 'T600' | 'T500' | 'T400' | 'T300' | 'T200'>('T400');
+    const [weight, setWeight] = useState<'200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'>('400');
+    const [textContent, setTextContent] = useState('The quick brown fox jumps over the lazy dog.');
+    const [underline, setUnderline] = useState(false);
+    const [italic, setItalic] = useState(false);
+    const [strikethrough, setStrikethrough] = useState(false);
 
     useEffect(() => {
         const validateInitialState = () => {
@@ -88,22 +96,22 @@ function TheLab() {
                 result.error.errors.forEach(error => {
                     switch (error.path[0]) {
                         case 'email':
-                            setFormState(prevState => ({ ...prevState, emailError: error.message }));
+                            setFormState(prevState => ({...prevState, emailError: error.message}));
                             break;
                         case 'name':
-                            setFormState(prevState => ({ ...prevState, nameError: error.message }));
+                            setFormState(prevState => ({...prevState, nameError: error.message}));
                             break;
                         case 'selectedValue':
-                            setFormState(prevState => ({ ...prevState, selectError: error.message }));
+                            setFormState(prevState => ({...prevState, selectError: error.message}));
                             break;
                         case 'password':
-                            setFormState(prevState => ({ ...prevState, passwordError: error.message }));
+                            setFormState(prevState => ({...prevState, passwordError: error.message}));
                             break;
                         case 'selectedRadio':
-                            setFormState(prevState => ({ ...prevState, radioError: error.message }));
+                            setFormState(prevState => ({...prevState, radioError: error.message}));
                             break;
                         case 'isChecked':
-                            setFormState(prevState => ({ ...prevState, checkboxError: error.message }));
+                            setFormState(prevState => ({...prevState, checkboxError: error.message}));
                             break;
                     }
                 });
@@ -118,11 +126,11 @@ function TheLab() {
     };
 
     const openModal = (modalName: string) => {
-        setModalStates(prevState => ({ ...prevState, [modalName]: true }));
+        setModalStates(prevState => ({...prevState, [modalName]: true}));
     };
 
     const closeModal = (modalName: string) => {
-        setModalStates(prevState => ({ ...prevState, [modalName]: false }));
+        setModalStates(prevState => ({...prevState, [modalName]: false}));
     };
 
     const clearCookiesAndLocalStorage = () => {
@@ -194,6 +202,13 @@ function TheLab() {
             checkboxError: result.success ? '' : result.error.errors[0].message
         }));
     };
+
+    useEffect(() => {
+        setElement('div');
+        setState('default');
+        setSize('T400');
+        setWeight('400');
+    }, []);
 
     const card1data = {
         title: {
@@ -591,60 +606,6 @@ function TheLab() {
                     </div>
                 </div>
                 <div className={styles.section}>
-                    <h3>Form Password</h3>
-                    <FormPassword
-                        id='password'
-                        label="Password"
-                        value={formState.password}
-                        onChange={handlePasswordChange}
-                        error={formState.passwordError}
-                    />
-                    <div className={styles.documentationBox}>
-                        <div>{`<FormPassword label="Password" value={password} onChange={handlePasswordChange} />`}</div>
-                    </div>
-                    <div className={styles.parametersBox}>
-                        <h5>Parameters:</h5>
-                        <ul>
-                            <li><code>label</code>: string</li>
-                            <li><code>value</code>: string</li>
-                            <li><code>onChange</code>: function</li>
-                            <li><code>error</code>: string (optional)</li>
-                            <li><code>showPassword</code>: boolean (optional)</li>
-                        </ul>
-                    </div>
-                </div>
-                <div className={styles.section}>
-                    <h3>Form Select</h3>
-                    <FormSelect
-                        id='select'
-                        label="Select Option"
-                        value={formState.selectedValue}
-                        onChange={handleSelectChange}
-                        error={formState.selectError}
-                    >
-                        <option value='option1'>Option 1</option>
-                        <option value='option2'>Option 2</option>
-                        <option value='option3'>Option 3 (is an error)</option>
-                    </FormSelect>
-                    <div className={styles.documentationBox}>
-                        <div>{`<FormSelect label="Select Option" value={selectedValue} onChange={handleSelectChange} error={selectError}>`}</div>
-                        <div>&nbsp;&nbsp;{`<option value='option1'>Option 1</option>`}</div>
-                        <div>&nbsp;&nbsp;{`<option value='option2'>Option 2</option>`}</div>
-                        <div>&nbsp;&nbsp;{`<option value='option3'>Option 3 (is an error)</option>`}</div>
-                        <div>{`</FormSelect>`}</div>
-                    </div>
-                    <div className={styles.parametersBox}>
-                        <h5>Parameters:</h5>
-                        <ul>
-                            <li><code>label</code>: string</li>
-                            <li><code>value</code>: string</li>
-                            <li><code>onChange</code>: function</li>
-                            <li><code>error</code>: string (optional)</li>
-                            <li><code>children</code>: React.ReactNode</li>
-                        </ul>
-                    </div>
-                </div>
-                <div className={styles.section}>
                     <h3>Form Radio/Group</h3>
                     <div className={styles['flex-buttons']}>
                         <FormRadioGroup label={'Form Group'} error={formState.radioError}>
@@ -701,10 +662,66 @@ function TheLab() {
                         </ul>
                     </div>
                 </div>
+
+                <div className={styles.section}>
+                    <h3>Form Password</h3>
+                    <FormPassword
+                        id='password'
+                        label="Password"
+                        value={formState.password}
+                        onChange={handlePasswordChange}
+                        error={formState.passwordError}
+                    />
+                    <div className={styles.documentationBox}>
+                        <div>{`<FormPassword label="Password" value={password} onChange={handlePasswordChange} />`}</div>
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                        <ul>
+                            <li><code>label</code>: string</li>
+                            <li><code>value</code>: string</li>
+                            <li><code>onChange</code>: function</li>
+                            <li><code>error</code>: string (optional)</li>
+                            <li><code>showPassword</code>: boolean (optional)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className={styles.section}>
+                    <h3>Form Select</h3>
+                    <FormSelect
+                        id='select'
+                        label="Select Option"
+                        value={formState.selectedValue}
+                        onChange={handleSelectChange}
+                        error={formState.selectError}
+                    >
+                        <option value='option1'>Option 1</option>
+                        <option value='option2'>Option 2</option>
+                        <option value='option3'>Option 3 (is an error)</option>
+                    </FormSelect>
+                    <div className={styles.documentationBox}>
+                        <div>{`<FormSelect label="Select Option" value={selectedValue} onChange={handleSelectChange} error={selectError}>`}</div>
+                        <div>&nbsp;&nbsp;{`<option value='option1'>Option 1</option>`}</div>
+                        <div>&nbsp;&nbsp;{`<option value='option2'>Option 2</option>`}</div>
+                        <div>&nbsp;&nbsp;{`<option value='option3'>Option 3 (is an error)</option>`}</div>
+                        <div>{`</FormSelect>`}</div>
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                        <ul>
+                            <li><code>label</code>: string</li>
+                            <li><code>value</code>: string</li>
+                            <li><code>onChange</code>: function</li>
+                            <li><code>error</code>: string (optional)</li>
+                            <li><code>children</code>: React.ReactNode</li>
+                        </ul>
+                    </div>
+                </div>
                 <div className={styles.section}>
                     <h3>Form Checkbox</h3>
                     <div>
                         <FormCheckbox
+                            id={'checkbox'}
                             label={'Form Checkbox'}
                             error={formState.checkboxError}
                             name={'checkbox'}
@@ -713,11 +730,13 @@ function TheLab() {
                             onChange={handleCheckboxChange}
                         />
                         <FormCheckbox
+                            id={'checkbox2'}
                             label={'Form Checkbox 2'}
                             name={'checkbox2'}
                             value={'checkbox2'}
                         />
                         <FormCheckbox
+                            id={'checkbox3'}
                             label={'Form Checkbox Rounded'}
                             name={'checkbox3'}
                             value={'checkbox3'}
@@ -742,6 +761,156 @@ function TheLab() {
                         </ul>
                     </div>
                 </div>
+                <div className={styles.section}>
+                    <h3>Example Text Builder</h3>
+                    <div className={styles['select-row']}>
+                        <FormSelect
+                            id='element'
+                            label="Element"
+                            value={element}
+                            onChange={(e) => setElement(e.target.value as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div' | 'a' | 'button' | 'label' | 'li' | 'ul' | 'ol' | 'nav' | 'section' | 'article' | 'header' | 'footer' | 'main')}
+                        >
+                            <option value='a'>Anchor</option>
+                            <option value='article'>Article</option>
+                            <option value='button'>Button</option>
+                            <option value='div'>Div</option>
+                            <option value='footer'>Footer</option>
+                            <option value='h1'>H1</option>
+                            <option value='h2'>H2</option>
+                            <option value='h3'>H3</option>
+                            <option value='h4'>H4</option>
+                            <option value='h5'>H5</option>
+                            <option value='h6'>H6</option>
+                            <option value='header'>Header</option>
+                            <option value='label'>Label</option>
+                            <option value='li'>List Item</option>
+                            <option value='main'>Main</option>
+                            <option value='nav'>Nav</option>
+                            <option value='ol'>Ordered List</option>
+                            <option value='p'>Paragraph</option>
+                            <option value='section'>Section</option>
+                            <option value='span'>Span</option>
+                            <option value='ul'>Unordered List</option>
+                        </FormSelect>
+
+                        <FormSelect
+                            id='state'
+                            label="State"
+                            value={state}
+                            onChange={(e) => setState(e.target.value as 'default' | 'success' | 'error' | 'warning' | 'info' | 'primary' | 'secondary' | 'inherit')}
+                        >
+                            <option value='default'>Default</option>
+                            <option value='primary'>Primary</option>
+                            <option value='secondary'>Secondary</option>
+                            <option value='success'>Success</option>
+                            <option value='error'>Error</option>
+                            <option value='warning'>Warning</option>
+                            <option value='info'>Info</option>
+                            <option value='inherit'>Inherit</option>
+                        </FormSelect>
+
+                        <FormSelect
+                            id='size'
+                            label="Size"
+                            value={size}
+                            onChange={(e) => setSize(e.target.value as 'T900' | 'T800' | 'T700' | 'T600' | 'T500' | 'T400' | 'T300' | 'T200')}
+                        >
+                            <option value='T900'>T900</option>
+                            <option value='T800'>T800</option>
+                            <option value='T700'>T700</option>
+                            <option value='T600'>T600</option>
+                            <option value='T500'>T500</option>
+                            <option value='T400'>T400</option>
+                            <option value='T300'>T300</option>
+                            <option value='T200'>T200</option>
+                        </FormSelect>
+
+                        <FormSelect
+                            id='weight'
+                            label="Weight"
+                            value={weight}
+                            onChange={(e) => setWeight(e.target.value as '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900')}
+                        >
+                            <option value='200'>Light (200)</option>
+                            <option value='300'>Regular (300)</option>
+                            <option value='400'>Normal (400)</option>
+                            <option value='500'>Medium (500)</option>
+                            <option value='600'>Semi-Bold (600)</option>
+                            <option value='700'>Bold (700)</option>
+                            <option value='800'>Extra-Bold (800)</option>
+                            <option value='900'>Black (900)</option>
+                        </FormSelect>
+                    </div>
+                    <div className={styles['select-row']}>
+                        <FormCheckbox
+                            id='underline'
+                            label="Underline"
+                            checked={underline}
+                            onChange={(e) => setUnderline(e.target.checked)}
+                            name={'underline'}
+                            value={'true'}
+                        />
+
+                        <FormCheckbox
+                            id='italic'
+                            label="Italic"
+                            checked={italic}
+                            onChange={(e) => setItalic(e.target.checked)}
+                            name={'italic'}
+                            value={'true'}/>
+
+                        <FormCheckbox
+                            id='strikethrough'
+                            label="Strikethrough"
+                            checked={strikethrough}
+                            onChange={(e) => setStrikethrough(e.target.checked)}
+                            name={'strikethrough'}
+                            value={'true'}
+                        />
+                    </div>
+                    <div>
+                        <FormInput
+                            id='textContent'
+                            type="text"
+                            label="Text Content"
+                            value={textContent}
+                            onChange={(e) => setTextContent(e.target.value)}
+                        />
+                    </div>
+                    <hr/>
+                    <div className={styles['example-text']}>
+                        <Text as={element} state={state} size={size} weight={weight} underline={underline}
+                              italic={italic} strikethrough={strikethrough}>
+                            {textContent}
+                        </Text>
+                    </div>
+                    <div className={styles.documentationBox}>
+                        <div>
+                            {`<Text`}
+                            {element !== 'div' && ` as="${element}"`}
+                            {state !== 'default' && ` state="${state}"`}
+                            {size !== 'T400' && ` size="${size}"`}
+                            {weight !== '400' && ` weight="${weight}"`}
+                            {underline && ` underline`}
+                            {italic && ` italic`}
+                            {strikethrough && ` strikethrough`}
+                            {`>${textContent}</Text>`}
+                        </div>
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                        <ul>
+                            <li><code>as</code>: string (optional)</li>
+                            <li><code>state</code>: string (optional)</li>
+                            <li><code>size</code>: string (optional)</li>
+                            <li><code>weight</code>: string (optional)</li>
+                            <li><code>underline</code>: boolean (optional)</li>
+                            <li><code>italic</code>: boolean (optional)</li>
+                            <li><code>strikethrough</code>: boolean (optional)</li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div className={styles.section}>
                     <h3>Button</h3>
                     <div className={styles['component-container']}>
@@ -929,76 +1098,6 @@ function TheLab() {
                         <h5>Parameters:</h5>
                         <ul>
                             <li><code>payload</code>: object</li>
-                        </ul>
-                    </div>
-                </div>
-                <div className={styles.section}>
-                    <h3>Text</h3>
-                    <Text as="h1" state="default" size="T900" weight="bold">Default H1 Bold</Text>
-                    <Text as="h2" state="success" size="T800" weight="heavy">Success H2 Heavy</Text>
-                    <Text as="h3" state="error" size="T700" weight="medium">Error H3 Medium</Text>
-                    <Text as="span" state="warning" size="T600" weight="regular">Warning Span Regular</Text>
-                    <Text as="div" state="info" size="T500" weight="light">Info Div Light</Text>
-                    <Text as="h1" state="light" size="T400" weight="bold">Light H1 Bold</Text>
-                    <Text as="h2" state="dark" size="T300" weight="heavy">Dark H2 Heavy</Text>
-                    <Text as="h3" state="inherit" size="T200" weight="medium">Inherit H3 Medium</Text>
-                    <Text as="h1" state="default" size="T900" weight="bold">Default H1 Bold</Text>
-                    <Text as="h2" state="success" size="T800" weight="heavy">Success H2 Heavy</Text>
-                    <Text as="h3" state="error" size="T700" weight="medium">Error H3 Medium</Text>
-                    <Text as="span" state="warning" size="T600" weight="regular">Warning Span Regular</Text>
-                    <Text as="div" state="info" size="T500" weight="light">Info Div Light</Text>
-                    <Text as="h1" state="light" size="T400" weight="bold">Light H1 Bold</Text>
-                    <Text as="h2" state="dark" size="T300" weight="heavy">Dark H2 Heavy</Text>
-                    <Text as="h3" state="inherit" size="T200" weight="medium">Inherit H3 Medium</Text>
-                    <Text as="p" state="default" size="T500" weight="regular">Default P Regular</Text>
-                    <Text as="h4" state="success" size="T600" weight="bold">Success H4 Bold</Text>
-                    <Text as="h5" state="error" size="T700" weight="heavy">Error H5 Heavy</Text>
-                    <Text as="h6" state="warning" size="T800" weight="medium">Warning H6 Medium</Text>
-                    <Text as="span" state="info" size="T900" weight="light">Info Span Light</Text>
-                    <Text as="div" state="light" size="T200" weight="regular">Light Div Regular</Text>
-                    <Text as="h1" state="dark" size="T300" weight="bold">Dark H1 Bold</Text>
-                    <Text as="h2" state="inherit" size="T400" weight="heavy">Inherit H2 Heavy</Text>
-                    <Text as="h3" state="default" size="T500" weight="medium">Default H3 Medium</Text>
-                    <Text as="p" state="success" size="T600" weight="light">Success P Light</Text>
-                    <Text as="h4" state="error" size="T700" weight="regular">Error H4 Regular</Text>
-                    <Text as="h5" state="warning" size="T800" weight="bold">Warning H5 Bold</Text>
-                    <Text as="h6" state="info" size="T900" weight="heavy">Info H6 Heavy</Text>
-                    <Text as="span" state="light" size="T200" weight="medium">Light Span Medium</Text>
-                    <Text as="div" state="dark" size="T300" weight="light">Dark Div Light</Text>
-                    <Text as="h1" state="inherit" size="T400" weight="regular">Inherit H1 Regular</Text>
-                    <Text as="h2" state="default" size="T500" weight="bold">Default H2 Bold</Text>
-                    <Text as="h3" state="success" size="T600" weight="heavy">Success H3 Heavy</Text>
-                    <Text as="p" state="error" size="T700" weight="medium">Error P Medium</Text>
-                    <Text as="h4" state="warning" size="T800" weight="light">Warning H4 Light</Text>
-                    <Text as="h5" state="info" size="T900" weight="regular">Info H5 Regular</Text>
-                    <Text as="h6" state="light" size="T200" weight="bold">Light H6 Bold</Text>
-                    <Text as="span" state="dark" size="T300" weight="heavy">Dark Span Heavy</Text>
-                    <Text as="div" state="inherit" size="T400" weight="medium">Inherit Div Medium</Text>
-                    <Text as="h1" state="default" size="T500" weight="light">Default H1 Light</Text>
-                    <Text as="h2" state="success" size="T600" weight="regular">Success H2 Regular</Text>
-                    <Text as="h3" state="error" size="T700" weight="bold">Error H3 Bold</Text>
-                    <Text as="p" state="warning" size="T800" weight="heavy">Warning P Heavy</Text>
-                    <Text as="h4" state="info" size="T900" weight="medium">Info H4 Medium</Text>
-                    <Text as="h5" state="light" size="T200" weight="light">Light H5 Light</Text>
-                    <Text as="h6" state="dark" size="T300" weight="regular">Dark H6 Regular</Text>
-                    <Text as="span" state="inherit" size="T400" weight="bold">Inherit Span Bold</Text>
-                    <Text as="div" state="default" size="T500" weight="heavy">Default Div Heavy</Text>
-
-                    <div className={styles.documentationBox}>
-                        <div>{`<Text as="h1" state="default" size="T900" weight="bold">Default H1 Bold</Text>`}</div>
-                    </div>
-                    <div className={styles.parametersBox}>
-                        <h5>Parameters:</h5>
-                        <ul>
-                            <li>
-                                <code>as</code>: &#39;h1&#39; | &#39;h2&#39; | &#39;h3&#39; | &#39;h4&#39; | &#39;h5&#39; | &#39;h6v
-                                | &#39;p&#39; | &#39;span&#39; | &#39;div&#39; | &#39;a&#39; | &#39;button&#39; | &#39;label&#39; | &#39;li&#39; | &#39;ul&#39; | &#39;ol&#39; | &#39;nav&#39; | &#39;section&#39; | &#39;article&#39; | &#39;header&#39; | &#39;footer&#39; | &#39;main&#39;;
-                            </li>
-                            <li>
-                                <code>state</code>: &#39;default&#39; | &#39;info&#39; | &#39;warning&#39; | &#39;error&#39; | &#39;success&#39; | &#39;light&#39; | &#39;dark&#39; | &#39;inherit&#39;
-                            </li>
-                            <li><code>size</code>: string</li>
-                            <li><code>weight</code>: string</li>
                         </ul>
                     </div>
                 </div>

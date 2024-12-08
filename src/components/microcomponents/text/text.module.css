@@ -22,12 +22,12 @@
     color: var(--info-color);
 }
 
-.light {
+.primary {
     color: var(--light-primary);
 }
 
-.dark {
-    color: var(--dark-primary);
+.secondary {
+    color: var(--light-secondary);
 }
 
 .T200 {
@@ -62,22 +62,46 @@
     font-size: 32px;
 }
 
-.light {
+.weight-200 {
+    font-weight: 200;
+}
+
+.weight-300 {
     font-weight: 300;
 }
 
-.regular {
+.weight-400 {
     font-weight: 400;
 }
 
-.medium {
+.weight-500 {
     font-weight: 500;
 }
 
-.heavy {
+.weight-600 {
     font-weight: 600;
 }
 
-.bold {
+.weight-700 {
     font-weight: 700;
+}
+
+.weight-800 {
+    font-weight: 800;
+}
+
+.weight-900 {
+    font-weight: 900;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.strikethrough {
+    text-decoration: line-through;
 }
