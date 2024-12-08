@@ -1,0 +1,112 @@
+.date-picker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    border: 1px solid  var(--grey-30);
+    border-radius: 8px;
+    padding: 16px;
+    background-color: var(--field-background);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.chevron-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color var(--transition-delay);
+}
+
+.chevron-wrapper:focus {
+    outline: 2px solid var(--light-primary);
+    outline-offset: 3px;
+}
+
+.chevron {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.chevron-wrapper:hover {
+    background-color: var(--light-primary);
+}
+
+.days-of-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.day-of-week {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--foreground);
+}
+
+.current-date {
+    font-size: 16px;
+    width: 160px;
+    text-align: center;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0;
+    width:100%;
+    margin-left:12px;
+}
+
+.day {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    padding: 4px;
+    transition: background-color var(--transition-delay);
+}
+
+.day:hover {
+    background-color: var(--light-primary);
+}
+
+.day:focus {
+    outline: 2px solid var(--light-primary);
+    outline-offset: 3px;
+}
+
+.outside-month {
+    color: var(--grey-30);
+}
+
+.outside-month:hover {
+    background-color: var(--grey-20);
+}
+
+.today {
+    background-color: var(--light-primary);
+    color: var(--button-color);
+}
+
+.selected {
+    background-color: var(--light-secondary);
+    color: #fff;
+}

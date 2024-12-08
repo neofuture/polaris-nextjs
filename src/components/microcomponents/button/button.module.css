@@ -24,7 +24,11 @@
     padding: 1px 16px 2px 16px;
     border-radius: 12px;
     min-width: 12px;
-    font-size:12px;
+    font-size: 12px;
+}
+
+.button.tiny .icon {
+    font-size: 14px;
 }
 
 .button:focus {
@@ -57,16 +61,19 @@
     border-radius: 50%;
     padding: 12px;
 }
-.rounded.small{
-    padding: 4px 4px 6px 4px;
+
+.rounded.small {
+    padding: 4px 4px 4px 4px;
 }
-.rounded.tiny{
-    padding: 1px 2px 0px 2px;
+
+.rounded.tiny {
+    padding: 0 2px 1px 2px;
 }
 
 .tiny i {
-    margin-top:3px;
+    margin-top: 3px;
 }
+
 .button.warning {
     background-color: var(--warning-color);
     color: var(--dark-button-color);

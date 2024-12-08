@@ -23,6 +23,8 @@ import LogoDark from "../../../../public/images/logo_dark.png";
 import FormRadioGroup from "@/components/microcomponents/form-radio-group/form-radio-group.component";
 import FormRadioInput from "@/components/microcomponents/form-radio-input/form-radio-input.component";
 import FormCheckbox from "@/components/microcomponents/form-checkbox/form-checkbox.component";
+import DatePicker from "@/components/microcomponents/date-picker/date-picker.component";
+import { addDays } from 'date-fns';
 
 const formSchema = z.object({
     email: z.string().email({message: 'Invalid email address'}),
@@ -80,6 +82,30 @@ function TheLab() {
     const [underline, setUnderline] = useState(false);
     const [italic, setItalic] = useState(false);
     const [strikethrough, setStrikethrough] = useState(false);
+    const [startDate, setStartDate] = useState<Date | null>(addDays(new Date(), 2));
+
+    const [buttonText, setButtonText] = useState('Click Me');
+    const [buttonState, setButtonState] = useState<'default' | 'success' | 'error' | 'warning' | 'info' | 'primary' | 'secondary' | 'disabled'>('default');
+    const [buttonSize, setButtonSize] = useState<'small' | 'tiny' | 'default'>('default');
+    const [buttonIcon, setButtonIcon] = useState('');
+    const [buttonRounded, setButtonRounded] = useState(false);
+    const [buttonDisabled, setButtonDisabled] = useState(false);
+    const [buttonWidth, setButtonWidth] = useState<string>('unset');
+
+    const iconOptions = [
+        { value: '', label: 'None' },
+        { value: 'fas fa-check', label: 'Check' },
+        { value: 'fas fa-user', label: 'User' },
+        { value: 'fas fa-times', label: 'Times' },
+        { value: 'fas fa-info', label: 'Info' },
+        { value: 'fas fa-exclamation', label: 'Exclamation' },
+    ];
+
+    const widthOptions = [
+        { value: 'unset', label: 'Unset' },
+        { value: 500, label: '500px' },
+        { value: '100%', label: '100%' },
+    ];
 
     useEffect(() => {
         const validateInitialState = () => {
@@ -762,6 +788,26 @@ function TheLab() {
                     </div>
                 </div>
                 <div className={styles.section}>
+                    <h3>Date Picker</h3>
+                    <div>
+                        <DatePicker
+                            selected={startDate}
+                            onChange={(date: Date) => setStartDate(date)}
+                        />
+                    </div>
+                    <div className={styles.documentationBox}>
+                        <div>{`<DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)} />`}</div>
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                        <ul>
+                            <li><code>selected</code>: Date</li>
+                            <li><code>onChange</code>: function</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div className={styles.section}>
                     <h3>Example Text Builder</h3>
                     <div className={styles['select-row']}>
                         <FormSelect
@@ -868,7 +914,7 @@ function TheLab() {
                             value={'true'}
                         />
                     </div>
-                    <div>
+                    <div className={styles['select-row']}>
                         <FormInput
                             id='textContent'
                             type="text"
@@ -907,6 +953,117 @@ function TheLab() {
                             <li><code>underline</code>: boolean (optional)</li>
                             <li><code>italic</code>: boolean (optional)</li>
                             <li><code>strikethrough</code>: boolean (optional)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className={styles.section}>
+                    <h3>Button Builder</h3>
+                    <div className={styles['select-row']}>
+                        <FormSelect
+                            id='buttonState'
+                            label="State"
+                            value={buttonState}
+                            onChange={(e) => setButtonState(e.target.value as 'default' | 'success' | 'error' | 'warning' | 'info' | 'primary' | 'secondary' | 'disabled')}
+                        >
+                            <option value='default'>Default</option>
+                            <option value='primary'>Primary</option>
+                            <option value='secondary'>Secondary</option>
+                            <option value='success'>Success</option>
+                            <option value='error'>Error</option>
+                            <option value='warning'>Warning</option>
+                            <option value='info'>Info</option>
+                            <option value='disabled'>Disabled</option>
+                        </FormSelect>
+                        <FormSelect
+                            id='buttonSize'
+                            label="Size"
+                            value={buttonSize}
+                            onChange={(e) => setButtonSize(e.target.value as 'small' | 'tiny' | 'default')}
+                        >
+                            <option value='default'>Default</option>
+                            <option value='small'>Small</option>
+                            <option value='tiny'>Tiny</option>
+                        </FormSelect>
+                        <FormSelect
+                            id='buttonIcon'
+                            label="Icon Class"
+                            value={buttonIcon}
+                            onChange={(e) => setButtonIcon(e.target.value)}
+                        >
+                            {iconOptions.map((icon) => (
+                                <option key={icon.value} value={icon.value}>
+                                    {icon.label}
+                                </option>
+                            ))}
+                        </FormSelect>
+                        <FormSelect
+                            id='buttonWidth'
+                            label="Button Width"
+                            value={buttonWidth}
+                            onChange={(e) => setButtonWidth(e.target.value)}
+                        >
+                            {widthOptions.map((width) => (
+                                <option key={width.value} value={width.value}>
+                                    {width.label}
+                                </option>
+                            ))}
+                        </FormSelect>
+                    </div>
+                    <div className={styles['select-row']}>
+                        <FormCheckbox
+                            id='buttonRounded'
+                            label="Rounded"
+                            checked={buttonRounded}
+                            onChange={(e) => setButtonRounded(e.target.checked)} name={''} value={''}                        />
+                        <FormCheckbox
+                            id='buttonDisabled'
+                            label="Disabled"
+                            checked={buttonDisabled}
+                            onChange={(e) => setButtonDisabled(e.target.checked)} name={''} value={''}                        />
+                    </div>
+                    <div className={styles['select-row']}>
+                        <FormInput
+                            id='buttonText'
+                            type="text"
+                            label="Button Text"
+                            value={buttonText}
+                            onChange={(e) => setButtonText(e.target.value)}
+                        />
+                    </div>
+                    <hr/>
+                    <div className={styles['example-button']}>
+                        <Button
+                            onClick={() => alert('Button clicked!')}
+                            iconName={buttonIcon}
+                            state={buttonState}
+                            size={buttonSize}
+                            rounded={buttonRounded}
+                            disabled={buttonDisabled}
+                            width={buttonWidth}
+                        >
+                            {buttonText}
+                        </Button>
+                    </div>
+                    <div className={styles.documentationBox}>
+                        <div>
+                            {`<Button`}
+                            {buttonIcon && ` iconName="${buttonIcon}"`}
+                            {buttonState !== 'default' && ` state="${buttonState}"`}
+                            {buttonSize !== 'default' && ` size="${buttonSize}"`}
+                            {buttonRounded && ` rounded`}
+                            {buttonDisabled && ` disabled`}
+                            {buttonWidth !== 'unset' && ` width="${buttonWidth}"`}
+                            {`>${buttonText}</Button>`}
+                        </div>
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                        <ul>
+                            <li><code>iconName</code>: string (optional)</li>
+                            <li><code>state</code>: string (optional)</li>
+                            <li><code>size</code>: string (optional)</li>
+                            <li><code>rounded</code>: boolean (optional)</li>
+                            <li><code>disabled</code>: boolean (optional)</li>
                         </ul>
                     </div>
                 </div>
