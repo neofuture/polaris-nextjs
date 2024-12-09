@@ -277,10 +277,10 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange, appointment
             {renderDays()}
             <hr/>
             <div className={styles['button-container']}>
-                <Button onClick={handleTodayClick} iconName="fas fa-calendar-day" size="tiny" state="secondary">
+                <Button onClick={handleTodayClick} iconName="fas fa-calendar-day" size="small" state="secondary">
                     Today
                 </Button>
-                <Button onClick={handleSelectedDateClick} iconName="fas fa-calendar-check" size="tiny" state='primary'>
+                <Button onClick={handleSelectedDateClick} iconName="fas fa-calendar-check" size="small" state='primary'>
                     Selected Date
                 </Button>
             </div>

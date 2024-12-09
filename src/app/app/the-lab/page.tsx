@@ -846,6 +846,7 @@ const TheLab: React.FC = () => {
                         <ul>
                             <li><code>selected</code>: Date</li>
                             <li><code>onChange</code>: function</li>
+                            <li><code>appointments</code>: Date[] (optional)</li>
                         </ul>
                     </div>
                 </div>
