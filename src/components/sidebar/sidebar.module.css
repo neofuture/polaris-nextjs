@@ -99,3 +99,7 @@
 .sidebar__content--closed ul ul {
     margin-left: 0;
 }
+
+.sidebar__content--closed:hover ul ul {
+    margin-left: 16px;
+}
