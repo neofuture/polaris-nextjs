@@ -4,7 +4,7 @@
     background-color: var(--light-primary);
     color: var(--button-color);
     padding: 8px 16px 8px 16px;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: inherit;
     display: flex;
     justify-content: center;

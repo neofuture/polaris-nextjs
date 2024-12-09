@@ -72,7 +72,11 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
     };
 
     const handleDateClick = (date: Date) => {
+        if (selectedDate && isSameDay(date, selectedDate)) {
+            return;
+        }
         setSelectedDate(date);
+        setCurrentDate(date); // Update the currentDate state
         if (onChange) {
             onChange(date);
         }
@@ -121,9 +125,11 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
     };
 
     const handleTodayClick = () => {
+        const today = new Date();
         setIsTransitioning(true);
         setTimeout(() => {
-            setCurrentDate(new Date());
+            setFocusedDate(today);
+            setCurrentDate(today);
             setIsTransitioning(false);
         }, 300);
     };
@@ -149,6 +155,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
         if (selectedDate) {
             setIsTransitioning(true);
             setTimeout(() => {
+                setFocusedDate(selectedDate);
                 setCurrentDate(selectedDate);
                 setIsTransitioning(false);
             }, 300);
