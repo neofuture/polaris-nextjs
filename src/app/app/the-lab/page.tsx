@@ -73,38 +73,6 @@ function TheLab() {
         isFifthModalOpen: false
     });
     const {theme} = useTheme();
-    const [element, setElement] = useState<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div' | 'a' | 'button' | 'label' | 'li' | 'ul' | 'ol' | 'nav' | 'section' | 'article' | 'header' | 'footer' | 'main'>('div');
-    const [state, setState] = useState<'default' | 'success' | 'error' | 'warning' | 'info' | 'primary' | 'secondary' | 'inherit'>('default');
-    const [size, setSize] = useState<'T900' | 'T800' | 'T700' | 'T600' | 'T500' | 'T400' | 'T300' | 'T200'>('T400');
-    const [weight, setWeight] = useState<'200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'>('400');
-    const [textContent, setTextContent] = useState('The quick brown fox jumps over the lazy dog.');
-    const [underline, setUnderline] = useState(false);
-    const [italic, setItalic] = useState(false);
-    const [strikethrough, setStrikethrough] = useState(false);
-    const [startDate, setStartDate] = useState<Date | null>(addDays(new Date(), 2));
-
-    const [buttonText, setButtonText] = useState('Click Me');
-    const [buttonState, setButtonState] = useState<'default' | 'success' | 'error' | 'warning' | 'info' | 'primary' | 'secondary' | 'disabled'>('default');
-    const [buttonSize, setButtonSize] = useState<'small' | 'tiny' | 'default'>('default');
-    const [buttonIcon, setButtonIcon] = useState('');
-    const [buttonRounded, setButtonRounded] = useState(false);
-    const [buttonDisabled, setButtonDisabled] = useState(false);
-    const [buttonWidth, setButtonWidth] = useState<string>('unset');
-
-    const iconOptions = [
-        { value: '', label: 'None' },
-        { value: 'fas fa-check', label: 'Check' },
-        { value: 'fas fa-user', label: 'User' },
-        { value: 'fas fa-times', label: 'Times' },
-        { value: 'fas fa-info', label: 'Info' },
-        { value: 'fas fa-exclamation', label: 'Exclamation' },
-    ];
-
-    const widthOptions = [
-        { value: 'unset', label: 'Unset' },
-        { value: 500, label: '500px' },
-        { value: '100%', label: '100%' },
-    ];
 
     useEffect(() => {
         const validateInitialState = () => {
