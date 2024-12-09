@@ -196,13 +196,6 @@ function TheLab() {
         }));
     };
 
-    useEffect(() => {
-        setElement('div');
-        setState('default');
-        setSize('T400');
-        setWeight('400');
-    }, []);
-
     const card1data = {
         title: {
             text: 'Individual',
