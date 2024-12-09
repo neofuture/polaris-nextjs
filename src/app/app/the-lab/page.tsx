@@ -72,6 +72,7 @@ function TheLab() {
         isFourthModalOpen: false,
         isFifthModalOpen: false
     });
+    const [startDate, setStartDate] = useState<Date | null>(null);
     const {theme} = useTheme();
 
     useEffect(() => {
