@@ -29,6 +29,10 @@
     --dark-secondary: #0000b3;
     --darker-secondary: #000066;
 
+    --light-tertiary: #7a36fc;
+    --dark-tertiary: #330d80;
+    --darker-tertiary: #21006b;
+
     --nav-link-color: #ededed;
     --nav-link-highlight-color: #ededed;
     --button-color: #ffffff;
@@ -42,6 +46,10 @@
     --light-secondary: #1A77BD;
     --dark-secondary: #12548a;
     --darker-secondary: #0a3658;
+
+    --light-tertiary: #509f80;
+    --dark-tertiary: #316b5a;
+    --darker-tertiary: #1d4a38;
 
     --nav-link-color: #ededed;
     --nav-link-highlight-color: #ededed;
@@ -57,6 +65,10 @@
     --dark-secondary: #0000b3;
     --darker-secondary: #000066;
 
+    --light-tertiary: #a126fa;
+    --dark-tertiary: #6615a1;
+    --darker-tertiary: #420d69;
+
     --nav-link-color: #ededed;
     --nav-link-highlight-color: #ededed;
     --button-color: #ffffff;
@@ -70,6 +82,10 @@
     --light-secondary: #4d4dff;
     --dark-secondary: #0000b3;
     --darker-secondary: #000066;
+
+    --light-tertiary: #2699fa;
+    --dark-tertiary: #1541a1;
+    --darker-tertiary: #0d2969;
 
     --nav-link-color: #ededed;
     --nav-link-highlight-color: #1f1f1f;
@@ -85,6 +101,10 @@
     --dark-secondary: #6615a1;
     --darker-secondary: #420d69;
 
+    --light-tertiary: #7a36fc;
+    --dark-tertiary: #330d80;
+    --darker-tertiary: #21006b;
+
     --nav-link-color: #ededed;
     --nav-link-highlight-color: #ededed;
     --button-color: #ffffff;
@@ -99,6 +119,10 @@
     --dark-secondary: #0000b3;
     --darker-secondary: #000066;
 
+    --light-tertiary: #a126fa;
+    --dark-tertiary: #6615a1;
+    --darker-tertiary: #420d69;
+
     --nav-link-color: #ededed;
     --nav-link-highlight-color: #131313;
     --button-color: #111111;
@@ -112,6 +136,10 @@
     --light-secondary: #4d4dff;
     --dark-secondary: #0000b3;
     --darker-secondary: #000066;
+
+    --light-tertiary: #6666b3;
+    --dark-tertiary: #202066;
+    --darker-tertiary: #101033;
 
     --nav-link-color: #ededed;
     --nav-link-highlight-color: #ededed;

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './date-picker.module.css';
 import {
@@ -20,9 +22,10 @@ import Button from '@/components/microcomponents/button/button.component';
 interface DatePickerProps {
     selected?: Date | null;
     onChange?: (date: Date) => void;
+    appointments?: Date[];
 }
 
-const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
+const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange, appointments = [] }) => {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState<Date | null>(selected || null);
     const [isTransitioning, setIsTransitioning] = useState(false);
@@ -115,13 +118,6 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
                 return;
         }
         setFocusedDate(newDate);
-        if (!isSameMonth(newDate, currentDate)) {
-            setIsTransitioning(true);
-            setTimeout(() => {
-                setCurrentDate(startOfMonth(newDate));
-                setIsTransitioning(false);
-            }, 300);
-        }
     };
 
     const getDayWithSuffix = (day: number) => {
@@ -244,26 +240,32 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
 
         return (
             <div className={`${styles.days} ${isTransitioning ? styles.fade : ''}`} role="grid">
-                {days.map((day: Date, index: number) => (
-                    <div
-                        key={index}
-                        ref={focusedDate && isSameDay(day, focusedDate) ? focusedDateRef : null}
-                        className={`
-                        ${styles.day}
-                        ${!isSameMonth(day, currentDate) ? styles['outside-month'] : ''}
-                        ${isToday(day) ? styles.today : ''}
-                        ${selectedDate && isSameDay(day, selectedDate) ? styles.selected : ''}
-                    `}
-                        onClick={() => handleDateClick(day)}
-                        onKeyDown={(event) => handleKeyDown(event, day)}
-                        tabIndex={0}
-                        role="gridcell"
-                        aria-selected={selectedDate ? isSameDay(day, selectedDate) : false}
-                        aria-label={format(day, 'EEEE, MMMM d, yyyy')}
-                    >
-                        {format(day, 'd')}
-                    </div>
-                ))}
+                {days.map((day: Date, index: number) => {
+                    const hasAppointment = appointments.some((appointment: Date) => isSameDay(day, appointment));
+                    const dayClassNames = [
+                        styles.day,
+                        !isSameMonth(day, currentDate) && styles['outside-month'],
+                        isToday(day) && styles.today,
+                        selectedDate && isSameDay(day, selectedDate) && styles.selected,
+                        hasAppointment && styles.appointment
+                    ].filter(Boolean).join(' ');
+
+                    return (
+                        <div
+                            key={index}
+                            ref={focusedDate && isSameDay(day, focusedDate) ? focusedDateRef : null}
+                            className={dayClassNames}
+                            onClick={() => handleDateClick(day)}
+                            onKeyDown={(event) => handleKeyDown(event, day)}
+                            tabIndex={0}
+                            role="gridcell"
+                            aria-selected={selectedDate ? isSameDay(day, selectedDate) : false}
+                            aria-label={format(day, 'EEEE, MMMM d, yyyy')}
+                        >
+                            {format(day, 'd')}
+                        </div>
+                    );
+                })}
             </div>
         );
     };

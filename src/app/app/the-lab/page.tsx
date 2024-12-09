@@ -23,7 +23,8 @@ import FormRadioGroup from "@/components/microcomponents/form-radio-group/form-r
 import FormRadioInput from "@/components/microcomponents/form-radio-input/form-radio-input.component";
 import FormCheckbox from "@/components/microcomponents/form-checkbox/form-checkbox.component";
 import DatePicker from "@/components/microcomponents/date-picker/date-picker.component";
-import {format} from 'date-fns';
+import {endOfMonth, format, isSameMonth, startOfMonth} from 'date-fns';
+import CustomDropdown from "@/components/microcomponents/custom-dropdown/custom-dropdown.component";
 
 const formSchema = z.object({
     email: z.string().email({message: 'Invalid email address'}),
@@ -47,7 +48,7 @@ const formSchema = z.object({
     }),
 });
 
-function TheLab() {
+const TheLab: React.FC = () => {
     const [formState, setFormState] = useState({
         email: '',
         name: '',
@@ -73,7 +74,45 @@ function TheLab() {
         isFifthModalOpen: false
     });
     const [startDate, setStartDate] = useState<Date | null>(null);
+    const [buttonIcon, setButtonIcon] = useState<string>('');
     const {theme} = useTheme();
+
+    const iconOptions = [
+        {value: '', label: 'No Icon', icon: ''},
+        {value: 'fas fa-ban', label: 'Ban', icon: 'fas fa-ban'},
+        {value: 'fas fa-check', label: 'Check', icon: 'fas fa-check'},
+        {value: 'fas fa-user', label: 'User', icon: 'fas fa-user'},
+        {value: 'fas fa-check-circle', label: 'Check Circle', icon: 'fas fa-check-circle'},
+        {value: 'fas fa-exclamation-triangle', label: 'Exclamation Triangle', icon: 'fas fa-exclamation-triangle'},
+        {value: 'fas fa-times-circle', label: 'Times Circle', icon: 'fas fa-times-circle'},
+        {value: 'fas fa-info-circle', label: 'Info Circle', icon: 'fas fa-info-circle'},
+        {value: 'fas fa-exclamation-circle', label: 'Exclamation Circle', icon: 'fas fa-exclamation-circle'},
+        {value: 'fas fa-spinner', label: 'Spinner', icon: 'fas fa-spinner'},
+        {value: 'fas fa-cog', label: 'Cog', icon: 'fas fa-cog'},
+        {value: 'fas fa-copy', label: 'Copy', icon: 'fas fa-copy'},
+        {value: 'fas fa-plus', label: 'Plus', icon: 'fas fa-plus'},
+        {value: 'fas fa-minus', label: 'Minus', icon: 'fas fa-minus'},
+        {value: 'fas fa-times', label: 'Times', icon: 'fas fa-times'},
+        {value: 'fas fa-bars', label: 'Bars', icon: 'fas fa-bars'},
+        {value: 'fas fa-search', label: 'Search', icon: 'fas fa-search'},
+        {value: 'fas fa-chevron-left', label: 'Chevron Left', icon: 'fas fa-chevron-left'},
+        {value: 'fas fa-chevron-right', label: 'Chevron Right', icon: 'fas fa-chevron-right'},
+        {value: 'fas fa-chevron-up', label: 'Chevron Up', icon: 'fas fa-chevron-up'},
+        {value: 'fas fa-chevron-down', label: 'Chevron Down', icon: 'fas fa-chevron-down'},
+        {value: 'fas fa-arrow-left', label: 'Arrow Left', icon: 'fas fa-arrow-left'},
+        {value: 'fas fa-arrow-right', label: 'Arrow Right', icon: 'fas fa-arrow-right'},
+        {value: 'fas fa-arrow-up', label: 'Arrow Up', icon: 'fas fa-arrow-up'},
+        {value: 'fas fa-arrow-down', label: 'Arrow Down', icon: 'fas fa-arrow-down'},
+        {value: 'fas fa-angle-left', label: 'Angle Left', icon: 'fas fa-angle-left'},
+        {value: 'fas fa-angle-right', label: 'Angle Right', icon: 'fas fa-angle-right'},
+        {value: 'fas fa-angle-up', label: 'Angle Up', icon: 'fas fa-angle-up'},
+        {value: 'fas fa-angle-down', label: 'Angle Down', icon: 'fas fa-angle-down'},
+        {value: 'fas fa-caret-left', label: 'Caret Left', icon: 'fas fa-caret-left'},
+        {value: 'fas fa-caret-right', label: 'Caret Right', icon: 'fas fa-caret-right'},
+        {value: 'fas fa-caret-up', label: 'Caret Up', icon: 'fas fa-caret-up'},
+        {value: 'fas fa-caret-down', label: 'Caret Down', icon: 'fas fa-caret-down'},
+    ];
+
 
     useEffect(() => {
         const validateInitialState = () => {
@@ -306,6 +345,19 @@ function TheLab() {
             }
         ]
     };
+
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+
+    const appointments: Date[] = [
+        new Date(currentYear, currentMonth, 1),
+        new Date(currentYear, currentMonth, 12),
+        new Date(currentYear, currentMonth, 18),
+        new Date(currentYear, currentMonth, 22),
+        new Date(currentYear, currentMonth, 25),
+        new Date(currentYear, currentMonth, 28),
+        new Date(currentYear, currentMonth, 29),
+    ];
 
     return (
         <div className={styles['outer-container']}>
@@ -711,6 +763,27 @@ function TheLab() {
                     </div>
                 </div>
                 <div className={styles.section}>
+                    <h3>Custom Dropdown</h3>
+                    <CustomDropdown
+                        options={iconOptions}
+                        value={buttonIcon}
+                        label="Icon Class"
+                        onChange={(value) => setButtonIcon(value)}
+                    />
+                    <div className={styles.documentationBox}>
+                        <div>{`<CustomDropdown options={iconOptions} value={buttonIcon} label="Icon Class" onChange={(value) => setButtonIcon(value)} />`}</div>
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                        <ul>
+                            <li><code>options</code>: {`{ value: string, label: string, icon: string }[]`}</li>
+                            <li><code>value</code>: string</li>
+                            <li><code>label</code>: string</li>
+                            <li><code>onChange</code>: function</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className={styles.section}>
                     <h3>Form Checkbox</h3>
                     <div>
                         <FormCheckbox
@@ -760,6 +833,7 @@ function TheLab() {
                         <DatePicker
                             selected={startDate}
                             onChange={(date: Date) => setStartDate(date)}
+                            appointments={appointments}
                         />
                         <hr/>
                         <div>Chosen Date: {startDate ? format(startDate, 'do MMMM yyyy') : 'No date selected'}</div>

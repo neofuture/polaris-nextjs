@@ -68,7 +68,7 @@
 .days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 0;
+    gap: 8px;
     width: 100%;
     transition: opacity var(--transition-delay) ease-in-out;
 }
@@ -84,7 +84,7 @@
     outline: none;
     padding: 4px;
     transition: background-color var(--transition-delay);
-    margin-left: 8px;
+    margin-left: 4px;
 }
 
 .day:hover {
@@ -122,4 +122,8 @@
 .button-container {
     display: flex;
     gap: 8px; /* Adjust the gap between buttons as needed */
+}
+
+.appointment {
+    border: 2px solid var(--light-tertiary);
 }

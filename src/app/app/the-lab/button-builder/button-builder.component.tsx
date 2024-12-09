@@ -6,15 +6,42 @@ import Button from '@/components/microcomponents/button/button.component';
 import FormSelect from '@/components/microcomponents/form-select/form-select.component';
 import FormCheckbox from '@/components/microcomponents/form-checkbox/form-checkbox.component';
 import FormInput from '@/components/microcomponents/form-input/form-input.component';
+import CustomDropdown from "@/components/microcomponents/custom-dropdown/custom-dropdown.component";
 
 const iconOptions = [
-    {value: '', label: 'No Icon'},
-    {value: 'fas fa-ban', label: 'Ban'},
-    {value: 'fas fa-check', label: 'Check'},
-    {value: 'fas fa-user', label: 'User'},
-    {value: 'fas fa-check-circle', label: 'Check Circle'},
-    {value: 'fas fa-exclamation-triangle', label: 'Exclamation Triangle'},
-    {value: 'fas fa-times-circle', label: 'Times Circle'},
+    { value: '', label: 'No Icon', icon: '' },
+    { value: 'fas fa-ban', label: 'Ban', icon: 'fas fa-ban' },
+    { value: 'fas fa-check', label: 'Check', icon: 'fas fa-check' },
+    { value: 'fas fa-user', label: 'User', icon: 'fas fa-user' },
+    { value: 'fas fa-check-circle', label: 'Check Circle', icon: 'fas fa-check-circle' },
+    { value: 'fas fa-exclamation-triangle', label: 'Exclamation Triangle', icon: 'fas fa-exclamation-triangle' },
+    { value: 'fas fa-times-circle', label: 'Times Circle', icon: 'fas fa-times-circle' },
+    { value: 'fas fa-info-circle', label: 'Info Circle', icon: 'fas fa-info-circle' },
+    { value: 'fas fa-exclamation-circle', label: 'Exclamation Circle', icon: 'fas fa-exclamation-circle' },
+    { value: 'fas fa-spinner', label: 'Spinner', icon: 'fas fa-spinner' },
+    { value: 'fas fa-cog', label: 'Cog', icon: 'fas fa-cog' },
+    { value: 'fas fa-copy', label: 'Copy', icon: 'fas fa-copy' },
+    { value: 'fas fa-plus', label: 'Plus', icon: 'fas fa-plus' },
+    { value: 'fas fa-minus', label: 'Minus', icon: 'fas fa-minus' },
+    { value: 'fas fa-times', label: 'Times', icon: 'fas fa-times' },
+    { value: 'fas fa-bars', label: 'Bars', icon: 'fas fa-bars' },
+    { value: 'fas fa-search', label: 'Search', icon: 'fas fa-search' },
+    { value: 'fas fa-chevron-left', label: 'Chevron Left', icon: 'fas fa-chevron-left' },
+    { value: 'fas fa-chevron-right', label: 'Chevron Right', icon: 'fas fa-chevron-right' },
+    { value: 'fas fa-chevron-up', label: 'Chevron Up', icon: 'fas fa-chevron-up' },
+    { value: 'fas fa-chevron-down', label: 'Chevron Down', icon: 'fas fa-chevron-down' },
+    { value: 'fas fa-arrow-left', label: 'Arrow Left', icon: 'fas fa-arrow-left' },
+    { value: 'fas fa-arrow-right', label: 'Arrow Right', icon: 'fas fa-arrow-right' },
+    { value: 'fas fa-arrow-up', label: 'Arrow Up', icon: 'fas fa-arrow-up' },
+    { value: 'fas fa-arrow-down', label: 'Arrow Down', icon: 'fas fa-arrow-down' },
+    { value: 'fas fa-angle-left', label: 'Angle Left', icon: 'fas fa-angle-left' },
+    { value: 'fas fa-angle-right', label: 'Angle Right', icon: 'fas fa-angle-right' },
+    { value: 'fas fa-angle-up', label: 'Angle Up', icon: 'fas fa-angle-up' },
+    { value: 'fas fa-angle-down', label: 'Angle Down', icon: 'fas fa-angle-down' },
+    { value: 'fas fa-caret-left', label: 'Caret Left', icon: 'fas fa-caret-left' },
+    { value: 'fas fa-caret-right', label: 'Caret Right', icon: 'fas fa-caret-right' },
+    { value: 'fas fa-caret-up', label: 'Caret Up', icon: 'fas fa-caret-up' },
+    { value: 'fas fa-caret-down', label: 'Caret Down', icon: 'fas fa-caret-down' },
 ];
 
 const widthOptions = [
@@ -78,18 +105,12 @@ const ButtonBuilder = () => {
                         <option value='small'>Small</option>
                         <option value='tiny'>Tiny</option>
                     </FormSelect>
-                    <FormSelect
-                        id='buttonIcon'
-                        label="Icon Class"
+                    <CustomDropdown
+                        options={iconOptions}
                         value={buttonIcon}
-                        onChange={(e) => setButtonIcon(e.target.value)}
-                    >
-                        {iconOptions.map((icon) => (
-                            <option key={icon.value} value={icon.value}>
-                                {icon.label}
-                            </option>
-                        ))}
-                    </FormSelect>
+                        label="Icon Class"
+                        onChange={(value) => setButtonIcon(value)}
+                    />
                     <FormSelect
                         id='buttonWidth'
                         label="Button Width"
