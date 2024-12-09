@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './date-picker.module.css';
 import {
     format,
@@ -12,8 +12,10 @@ import {
     isSameMonth,
     isToday,
     isSameDay,
-    addDays
+    addDays,
+    subDays
 } from 'date-fns';
+import Button from '@/components/microcomponents/button/button.component';
 
 interface DatePickerProps {
     selected?: Date | null;
@@ -23,25 +25,50 @@ interface DatePickerProps {
 const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState<Date | null>(selected || null);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+    const [focusedDate, setFocusedDate] = useState<Date | null>(null);
+    const focusedDateRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         setSelectedDate(selected || null);
     }, [selected]);
 
+    useEffect(() => {
+        if (focusedDateRef.current) {
+            focusedDateRef.current.focus();
+        }
+    }, [focusedDate]);
+
     const handlePrevMonth = () => {
-        setCurrentDate(subMonths(currentDate, 1));
+        setIsTransitioning(true);
+        setTimeout(() => {
+            setCurrentDate(subMonths(currentDate, 1));
+            setIsTransitioning(false);
+        }, 300);
     };
 
     const handleNextMonth = () => {
-        setCurrentDate(addMonths(currentDate, 1));
+        setIsTransitioning(true);
+        setTimeout(() => {
+            setCurrentDate(addMonths(currentDate, 1));
+            setIsTransitioning(false);
+        }, 300);
     };
 
     const handlePrevYear = () => {
-        setCurrentDate(subYears(currentDate, 1));
+        setIsTransitioning(true);
+        setTimeout(() => {
+            setCurrentDate(subYears(currentDate, 1));
+            setIsTransitioning(false);
+        }, 300);
     };
 
     const handleNextYear = () => {
-        setCurrentDate(addYears(currentDate, 1));
+        setIsTransitioning(true);
+        setTimeout(() => {
+            setCurrentDate(addYears(currentDate, 1));
+            setIsTransitioning(false);
+        }, 300);
     };
 
     const handleDateClick = (date: Date) => {
@@ -50,15 +77,51 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
             onChange(date);
         }
         if (!isSameMonth(date, currentDate)) {
-            setCurrentDate(startOfMonth(date));
+            setIsTransitioning(true);
+            setTimeout(() => {
+                setCurrentDate(startOfMonth(date));
+                setIsTransitioning(false);
+            }, 300);
         }
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>, date: Date) => {
-        if (event.key === ' ') {
-            event.preventDefault();
-            handleDateClick(date);
+        let newDate = date;
+        switch (event.key) {
+            case 'ArrowUp':
+                event.preventDefault();
+                newDate = subDays(date, 7);
+                break;
+            case 'ArrowDown':
+                event.preventDefault();
+                newDate = addDays(date, 7);
+                break;
+            case 'ArrowLeft':
+                event.preventDefault();
+                newDate = subDays(date, 1);
+                break;
+            case 'ArrowRight':
+                event.preventDefault();
+                newDate = addDays(date, 1);
+                break;
+            case ' ':
+            case 'Enter':
+                event.preventDefault();
+                handleDateClick(date);
+                return;
         }
+        setFocusedDate(newDate);
+        if (!isSameMonth(newDate, currentDate)) {
+            setIsTransitioning(true);
+            setTimeout(() => {
+                setCurrentDate(startOfMonth(newDate));
+                setIsTransitioning(false);
+            }, 300);
+        }
+    };
+
+    const handleTodayClick = () => {
+        setCurrentDate(new Date());
     };
 
     const getDayWithSuffix = (day: number) => {
@@ -82,12 +145,14 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
         const day = currentDate.getDate();
         const month = format(currentDate, 'MMMM yyyy');
         return (
-            <div className={styles.header}>
+            <div className={styles.header} role="group" aria-label="Calendar navigation">
                 <div
                     className={styles['chevron-wrapper']}
                     onClick={handlePrevYear}
                     onKeyDown={(event) => handleChevronKeyDown(event, handlePrevYear)}
                     tabIndex={0}
+                    role="button"
+                    aria-label="Previous year"
                 >
                     <i className={`fas fa-angle-double-left ${styles.chevron}`}></i>
                 </div>
@@ -96,10 +161,12 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
                     onClick={handlePrevMonth}
                     onKeyDown={(event) => handleChevronKeyDown(event, handlePrevMonth)}
                     tabIndex={0}
+                    role="button"
+                    aria-label="Previous month"
                 >
                     <i className={`fas fa-chevron-left ${styles.chevron}`}></i>
                 </div>
-                <div className={styles['current-date']}>
+                <div className={styles['current-date']} aria-live="polite">
                     {`${getDayWithSuffix(day)} ${month}`}
                 </div>
                 <div
@@ -107,6 +174,8 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
                     onClick={handleNextMonth}
                     onKeyDown={(event) => handleChevronKeyDown(event, handleNextMonth)}
                     tabIndex={0}
+                    role="button"
+                    aria-label="Next month"
                 >
                     <i className={`fas fa-chevron-right ${styles.chevron}`}></i>
                 </div>
@@ -115,6 +184,8 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
                     onClick={handleNextYear}
                     onKeyDown={(event) => handleChevronKeyDown(event, handleNextYear)}
                     tabIndex={0}
+                    role="button"
+                    aria-label="Next year"
                 >
                     <i className={`fas fa-angle-double-right ${styles.chevron}`}></i>
                 </div>
@@ -125,9 +196,9 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
     const renderDaysOfWeek = () => {
         const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
         return (
-            <div className={styles['days-of-week']}>
+            <div className={styles['days-of-week']} role="row">
                 {daysOfWeek.map((day, index) => (
-                    <div key={index} className={styles['day-of-week']}>
+                    <div key={index} className={styles['day-of-week']} role="columnheader">
                         {day}
                     </div>
                 ))}
@@ -138,13 +209,14 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
     const renderDays = () => {
         const startDate = startOfWeek(startOfMonth(currentDate));
         const endDate = addDays(startDate, 6 * 7 - 1); // Always show 6 weeks
-        const days = eachDayOfInterval({start: startDate, end: endDate});
+        const days = eachDayOfInterval({ start: startDate, end: endDate });
 
         return (
-            <div className={styles.days}>
+            <div className={`${styles.days} ${isTransitioning ? styles.fade : ''}`} role="grid">
                 {days.map((day: Date, index: number) => (
                     <div
                         key={index}
+                        ref={focusedDate && isSameDay(day, focusedDate) ? focusedDateRef : null}
                         className={`
                         ${styles.day}
                         ${!isSameMonth(day, currentDate) ? styles['outside-month'] : ''}
@@ -154,6 +226,9 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
                         onClick={() => handleDateClick(day)}
                         onKeyDown={(event) => handleKeyDown(event, day)}
                         tabIndex={0}
+                        role="gridcell"
+                        aria-selected={selectedDate ? isSameDay(day, selectedDate) : false}
+                        aria-label={format(day, 'EEEE, MMMM d, yyyy')}
                     >
                         {format(day, 'd')}
                     </div>
@@ -163,10 +238,14 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
     };
 
     return (
-        <div className={styles['date-picker']}>
+        <div className={styles['date-picker']} role="application" aria-label="Date Picker">
             {renderHeader()}
             {renderDaysOfWeek()}
             {renderDays()}
+            <hr />
+            <Button onClick={handleTodayClick} iconName="fas fa-calendar-day" size="tiny">
+                Today
+            </Button>
         </div>
     );
 };

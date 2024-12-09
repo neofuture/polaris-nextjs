@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import Cookies from 'js-cookie';
+import {Inter} from "next/font/google";
 
 interface ThemeContextProps {
     theme: string;
@@ -15,6 +16,11 @@ interface ThemeProviderProps {
     cookies: { [key: string]: string };
 }
 
+const inter = Inter({
+    subsets: ["latin"],
+    weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, cookies }) => {
@@ -26,25 +32,25 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, cookies 
         const savedThemeColor = cookies['themeColor'] || 'purple';
         setTheme(savedTheme);
         setThemeColorState(savedThemeColor);
-        document.documentElement.className = `${document.documentElement.className} ${savedTheme} ${savedThemeColor}`;
+        document.documentElement.className = `${inter.className} ${savedTheme} ${savedThemeColor}`;
     }, [cookies]);
 
     const toggleTheme = () => {
         const newTheme = theme === 'light' ? 'dark' : 'light';
         setTheme(newTheme);
-        document.documentElement.className = `${document.documentElement.className.replace(theme, newTheme)}`;
+        document.documentElement.className = document.documentElement.className.replace(theme, newTheme);
         const consent = localStorage.getItem('cookieConsent') === 'true';
         if (consent) {
-            Cookies.set('theme', newTheme, {expires: 365});
+            Cookies.set('theme', newTheme, { expires: 365 });
         }
     };
 
     const setThemeColor = (color: string) => {
         setThemeColorState(color);
-        document.documentElement.className = `${document.documentElement.className.replace(themeColor, color)}`;
+        document.documentElement.className = document.documentElement.className.replace(themeColor, color);
         const consent = localStorage.getItem('cookieConsent') === 'true';
         if (consent) {
-            Cookies.set('themeColor', color, {expires: 365});
+            Cookies.set('themeColor', color, { expires: 365 });
         }
     };
 

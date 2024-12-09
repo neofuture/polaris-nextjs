@@ -3,10 +3,11 @@
     flex-direction: column;
     align-items: center;
     width: 350px;
-    border: 1px solid  var(--grey-30);
+    border: 1px solid var(--grey-30);
     border-radius: 8px;
     padding: 16px;
     background-color: var(--field-background);
+    overflow: hidden;
 }
 
 .header {
@@ -29,7 +30,7 @@
 }
 
 .chevron-wrapper:focus {
-    outline: 2px solid var(--light-primary);
+    outline: 2px solid var(--light-secondary);
     outline-offset: 3px;
 }
 
@@ -39,7 +40,8 @@
 }
 
 .chevron-wrapper:hover {
-    background-color: var(--light-primary);
+    background-color: var(--light-secondary);
+    color: var(--button-color);
 }
 
 .days-of-week {
@@ -67,8 +69,8 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 0;
-    width:100%;
-    margin-left:12px;
+    width: 100%;
+    transition: opacity var(--transition-delay) ease-in-out;
 }
 
 .day {
@@ -82,14 +84,16 @@
     outline: none;
     padding: 4px;
     transition: background-color var(--transition-delay);
+    margin-left: 8px;
 }
 
 .day:hover {
-    background-color: var(--light-primary);
+    background-color: var(--light-secondary);
+    color: var(--button-color);
 }
 
 .day:focus {
-    outline: 2px solid var(--light-primary);
+    outline: 2px solid var(--light-secondary);
     outline-offset: 3px;
 }
 
@@ -102,11 +106,15 @@
 }
 
 .today {
+    background-color: var(--light-secondary);
+    color: var(--light-button-color);
+}
+
+.selected {
     background-color: var(--light-primary);
     color: var(--button-color);
 }
 
-.selected {
-    background-color: var(--light-secondary);
-    color: #fff;
+.fade {
+    opacity: 0;
 }

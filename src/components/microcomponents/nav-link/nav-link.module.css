@@ -2,7 +2,7 @@
     border-radius: 6px;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
     padding: 10px;
     color: var(--nav-link-color);
@@ -27,6 +27,7 @@
     align-items: center;
     width: 16px;
     margin-right: 6px;
+    margin-left:2px;
 }
 
 .active {

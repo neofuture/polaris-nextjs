@@ -85,7 +85,17 @@
 .sidebar__content--closed:hover span {
     padding-left: 6px;
     opacity: 1;
-    width:100%;
+    width: 100%;
     transition: opacity ease-in-out var(--transition-delay),
     padding-left ease-in-out var(--transition-delay);
+}
+
+.sidebar__content ul ul {
+    margin-left: 16px;
+    list-style: none;
+    transition: margin-left ease-in-out var(--transition-delay);
+}
+
+.sidebar__content--closed ul ul {
+    margin-left: 0;
 }

@@ -48,6 +48,10 @@ const Sidebar: React.FC = () => {
                         </li>
                         <li>
                             <NavLink iconName="fad fa-flask" href="/app/the-lab">The Lab</NavLink>
+                            <ul>
+                                <li><NavLink iconName="fad fa-text" href="/app/the-lab/text-builder">Text Builder</NavLink></li>
+                                <li><NavLink iconName="fad fa-stop" href="/app/the-lab/button-builder">Button Builder</NavLink></li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
