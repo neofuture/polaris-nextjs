@@ -23,7 +23,7 @@ import FormRadioGroup from "@/components/microcomponents/form-radio-group/form-r
 import FormRadioInput from "@/components/microcomponents/form-radio-input/form-radio-input.component";
 import FormCheckbox from "@/components/microcomponents/form-checkbox/form-checkbox.component";
 import DatePicker from "@/components/microcomponents/date-picker/date-picker.component";
-import { addDays, format } from 'date-fns';
+import {format} from 'date-fns';
 
 const formSchema = z.object({
     email: z.string().email({message: 'Invalid email address'}),
@@ -388,7 +388,8 @@ function TheLab() {
                         </li>
                         <li>
                             <Link href="/app/the-lab/string3">Slug 3</Link>
-                        </li>                        <li>
+                        </li>
+                        <li>
                             <Link href="/app/the-lab/text-builder">Text Builder</Link>
                         </li>
                         <li>
@@ -770,7 +771,7 @@ function TheLab() {
                         <div>Chosen Date: {startDate ? format(startDate, 'do MMMM yyyy') : 'No date selected'}</div>
                     </div>
                     <div className={styles.documentationBox}>
-                    <div>{`<DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)} />`}</div>
+                        <div>{`<DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)} />`}</div>
                     </div>
                     <div className={styles.parametersBox}>
                         <h5>Parameters:</h5>
