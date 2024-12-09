@@ -82,14 +82,14 @@ const TextBuilder: React.FC = () => {
                         value={size}
                         onChange={(e) => setSize(e.target.value as typeof size)}
                     >
-                        <option value='T900'>T900</option>
-                        <option value='T800'>T800</option>
-                        <option value='T700'>T700</option>
-                        <option value='T600'>T600</option>
-                        <option value='T500'>T500</option>
-                        <option value='T400'>T400</option>
-                        <option value='T300'>T300</option>
                         <option value='T200'>T200</option>
+                        <option value='T300'>T300</option>
+                        <option value='T400'>T400</option>
+                        <option value='T500'>T500</option>
+                        <option value='T600'>T600</option>
+                        <option value='T700'>T700</option>
+                        <option value='T800'>T800</option>
+                        <option value='T900'>T900</option>
                     </FormSelect>
 
                     <FormSelect

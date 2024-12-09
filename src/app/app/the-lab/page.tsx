@@ -401,7 +401,7 @@ function TheLab() {
                         <Button onClick={() => openModal('isFirstModalOpen')}
                                 iconName='fas fa-up-right-from-square'>Open
                             First
-                            Model</Button>
+                            Modal</Button>
                         <Button onClick={() => openModal('isSecondModalOpen')}
                                 iconName='fas fa-up-right-from-square'>Open
                             Second Modal (No close button)</Button>

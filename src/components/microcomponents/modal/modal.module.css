@@ -80,3 +80,7 @@
     background-color: var(--success-color);
     transition: width 100ms linear;
 }
+
+.no-scroll {
+    overflow: hidden;
+}

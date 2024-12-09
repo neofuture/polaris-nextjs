@@ -1,4 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect, useRef } from "react";
+import FocusLock from "react-focus-lock";
+import { RemoveScroll } from "react-remove-scroll";
 import styles from "./modal.module.css";
 import Button from "@/components/microcomponents/button/button.component";
 
@@ -25,6 +27,7 @@ const Modal: React.FC<ModalProps> = (
     const [isFadingOut, setIsFadingOut] = useState(false);
     const [remainingTime, setRemainingTime] = useState(closeTimer || 0);
     const [percentage, setPercentage] = useState(100);
+    const firstFocusableElementRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         let timer: NodeJS.Timeout;
@@ -53,6 +56,10 @@ const Modal: React.FC<ModalProps> = (
                     });
                 }, 100);
             }
+
+            if (firstFocusableElementRef.current) {
+                firstFocusableElementRef.current.focus();
+            }
         } else {
             setIsFadingOut(true);
             setTimeout(() => setIsVisible(false), 300);
@@ -66,21 +73,33 @@ const Modal: React.FC<ModalProps> = (
 
     if (!isVisible) return null;
     return (
-        <div className={`${styles.modal} ${isFadingOut ? styles["fade-out"] : ""}`}
-             onClick={allowBlurClose ? onClose : undefined}>
-            <div className={styles["modal-content"]} onClick={(e) => e.stopPropagation()}>
-                <div className={styles["modal-inner"]}>
-                    {children}
-                    {showCloseButton &&
-                        <div className={styles["button-container"]}>
-                            <Button iconName='fas fa-xmark' size={'small'} onClick={onClose}>Close</Button>
-                        </div>}
+        <RemoveScroll>
+            <FocusLock>
+                <div className={`${styles.modal} ${isFadingOut ? styles["fade-out"] : ""}`}
+                     onClick={allowBlurClose ? onClose : undefined}
+                     role="dialog"
+                     aria-labelledby="modal-content"
+                     aria-describedby="modal-content"
+                     aria-modal="true">
+                    <div className={styles["modal-content"]} onClick={(e) => e.stopPropagation()}>
+                        <div className={styles["modal-inner"]}>
+                            <div id="modal-content">
+                                {children}
+                            </div>
+                            {showCloseButton &&
+                                <div className={styles["button-container"]}>
+                                    <div ref={firstFocusableElementRef}>
+                                        <Button iconName='fas fa-xmark' size={'small'} onClick={onClose}>Close</Button>
+                                    </div>
+                                </div>}
+                        </div>
+                        {closeTimer && Math.ceil(remainingTime / 1000) > 0 &&
+                            <div className={styles["percentage-bar"]} style={{width: `${percentage}%`}}></div>
+                        }
+                    </div>
                 </div>
-                {closeTimer && Math.ceil(remainingTime / 1000) > 0 &&
-                    <div className={styles["percentage-bar"]} style={{width: `${percentage}%`}}></div>
-                }
-            </div>
-        </div>
+            </FocusLock>
+        </RemoveScroll>
     );
 };
 

@@ -124,16 +124,6 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
         }
     };
 
-    const handleTodayClick = () => {
-        const today = new Date();
-        setIsTransitioning(true);
-        setTimeout(() => {
-            setFocusedDate(today);
-            setCurrentDate(today);
-            setIsTransitioning(false);
-        }, 300);
-    };
-
     const getDayWithSuffix = (day: number) => {
         if (day > 3 && day < 21) return `${day}th`;
         switch (day % 10) {
@@ -151,14 +141,34 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
         }
     };
 
-    const handleSelectedDateClick = () => {
-        if (selectedDate) {
+    const handleTodayClick = () => {
+        const today = new Date();
+        if (today.getMonth() === currentDate.getMonth() && today.getFullYear() === currentDate.getFullYear()) {
+            setFocusedDate(today);
+            setCurrentDate(today);
+        } else {
             setIsTransitioning(true);
             setTimeout(() => {
-                setFocusedDate(selectedDate);
-                setCurrentDate(selectedDate);
+                setFocusedDate(today);
+                setCurrentDate(today);
                 setIsTransitioning(false);
             }, 300);
+        }
+    };
+
+    const handleSelectedDateClick = () => {
+        if (selectedDate) {
+            if (selectedDate.getMonth() === currentDate.getMonth() && selectedDate.getFullYear() === currentDate.getFullYear()) {
+                setFocusedDate(selectedDate);
+                setCurrentDate(selectedDate);
+            } else {
+                setIsTransitioning(true);
+                setTimeout(() => {
+                    setFocusedDate(selectedDate);
+                    setCurrentDate(selectedDate);
+                    setIsTransitioning(false);
+                }, 300);
+            }
         }
     };
 
