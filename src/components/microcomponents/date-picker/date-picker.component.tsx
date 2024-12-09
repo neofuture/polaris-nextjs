@@ -76,7 +76,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
             return;
         }
         setSelectedDate(date);
-        setCurrentDate(date); // Update the currentDate state
+        setCurrentDate(date);
         if (onChange) {
             onChange(date);
         }
