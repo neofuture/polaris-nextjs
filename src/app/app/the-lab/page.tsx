@@ -828,7 +828,7 @@ const TheLab: React.FC = () => {
                     </div>
                 </div>
                 <div className={styles.section}>
-                    <h3>Date Picker</h3>
+                    <h3>Date Picker/Calendar View</h3>
                     <div>
                         <DatePicker
                             selected={startDate}
