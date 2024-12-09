@@ -10,10 +10,11 @@ interface NavLinkProps {
     href?: string;
     onClick?: () => void;
     exact?: boolean;
+    secondary?: boolean;
     children: React.ReactNode;
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ iconName, href, onClick, exact = false, children }) => {
+const NavLink: React.FC<NavLinkProps> = ({ iconName, href, onClick, exact = false, secondary = false, children }) => {
     const [active, setActive] = useState(false);
     const pathname = usePathname();
 
@@ -23,7 +24,7 @@ const NavLink: React.FC<NavLinkProps> = ({ iconName, href, onClick, exact = fals
         }
     }, [pathname, href, exact]);
 
-    const className = `${styles['nav-link']} ${active ? styles.active : ''}`;
+    const className = `${styles['nav-link']} ${active ? styles.active : ''} ${secondary ? styles.secondary : ''}`;
 
     return href ? (
         <Link href={href} onClick={onClick} className={className}>

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 350px;
+    width: 360px;
     border: 1px solid var(--grey-30);
     border-radius: 8px;
     padding: 16px;
@@ -61,7 +61,7 @@
 
 .current-date {
     font-size: 16px;
-    width: 160px;
+    width: 170px;
     text-align: center;
 }
 
@@ -117,4 +117,9 @@
 
 .fade {
     opacity: 0;
+}
+
+.button-container {
+    display: flex;
+    gap: 8px; /* Adjust the gap between buttons as needed */
 }

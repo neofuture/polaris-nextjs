@@ -15,7 +15,6 @@ import FormSelect from "@/components/microcomponents/form-select/form-select.com
 import ProductCard from "@/components/microcomponents/product-card/product-card.component";
 import ProductCardContainer from "@/components/microcomponents/product-card-container/product-card-container.component";
 import FormPassword from "@/components/microcomponents/form-password/form-password.component";
-import Text from "@/components/microcomponents/text/text.component";
 import styles from './lab.module.css';
 import {z} from 'zod';
 import Logo from "../../../../public/images/logo.png";
@@ -24,7 +23,7 @@ import FormRadioGroup from "@/components/microcomponents/form-radio-group/form-r
 import FormRadioInput from "@/components/microcomponents/form-radio-input/form-radio-input.component";
 import FormCheckbox from "@/components/microcomponents/form-checkbox/form-checkbox.component";
 import DatePicker from "@/components/microcomponents/date-picker/date-picker.component";
-import { addDays } from 'date-fns';
+import { addDays, format } from 'date-fns';
 
 const formSchema = z.object({
     email: z.string().email({message: 'Invalid email address'}),
@@ -799,9 +798,11 @@ function TheLab() {
                             selected={startDate}
                             onChange={(date: Date) => setStartDate(date)}
                         />
+                        <hr/>
+                        <div>Chosen Date: {startDate ? format(startDate, 'do MMMM yyyy') : 'No date selected'}</div>
                     </div>
                     <div className={styles.documentationBox}>
-                        <div>{`<DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)} />`}</div>
+                    <div>{`<DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)} />`}</div>
                     </div>
                     <div className={styles.parametersBox}>
                         <h5>Parameters:</h5>

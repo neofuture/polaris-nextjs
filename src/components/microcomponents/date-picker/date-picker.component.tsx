@@ -121,7 +121,11 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
     };
 
     const handleTodayClick = () => {
-        setCurrentDate(new Date());
+        setIsTransitioning(true);
+        setTimeout(() => {
+            setCurrentDate(new Date());
+            setIsTransitioning(false);
+        }, 300);
     };
 
     const getDayWithSuffix = (day: number) => {
@@ -138,6 +142,16 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
         if (event.key === ' ') {
             event.preventDefault();
             action();
+        }
+    };
+
+    const handleSelectedDateClick = () => {
+        if (selectedDate) {
+            setIsTransitioning(true);
+            setTimeout(() => {
+                setCurrentDate(selectedDate);
+                setIsTransitioning(false);
+            }, 300);
         }
     };
 
@@ -242,10 +256,15 @@ const DatePicker: React.FC<DatePickerProps> = ({ selected, onChange }) => {
             {renderHeader()}
             {renderDaysOfWeek()}
             {renderDays()}
-            <hr />
-            <Button onClick={handleTodayClick} iconName="fas fa-calendar-day" size="tiny">
-                Today
-            </Button>
+            <hr/>
+            <div className={styles['button-container']}>
+                <Button onClick={handleTodayClick} iconName="fas fa-calendar-day" size="tiny" state="secondary">
+                    Today
+                </Button>
+                <Button onClick={handleSelectedDateClick} iconName="fas fa-calendar-check" size="tiny" state='primary'>
+                    Selected Date
+                </Button>
+            </div>
         </div>
     );
 };

@@ -39,3 +39,11 @@
     width: 16px;
     height: 16px;
 }
+
+ul ul .active {
+    background-color: var(--light-secondary);
+}
+
+ul ul .nav-link:hover {
+    background-color: var(--dark-secondary);
+}
