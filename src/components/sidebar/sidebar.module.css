@@ -103,3 +103,7 @@
 .sidebar__content--closed:hover ul ul {
     margin-left: 16px;
 }
+
+a {
+    cursor: pointer;
+}
