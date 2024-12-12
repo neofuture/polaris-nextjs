@@ -1,16 +1,24 @@
 "use client";
 
 import React from 'react';
-import { useAuth } from '@/context/AuthContext';
+import {useAuth} from '@/context/AuthContext';
 import styles from './sidebar.module.css';
-import { useSidebar } from '@/context/SidebarContext';
+import {useSidebar} from '@/context/SidebarContext';
 import clsx from "clsx";
 import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
-import Link from "next/link";
+import {showToast} from "@/components/microcomponents/toast/toast-utils";
+
+function handleClick() {
+    showToast('Redirecting', 'To Google... please work', 'default', 5000)
+    setTimeout(() => {
+        window.location.href = 'https://www.google.com';
+    }, 5000);
+}
+
 
 const Sidebar: React.FC = () => {
-    const { isLoggedIn, logout } = useAuth();
-    const { isSidebarOpen } = useSidebar();
+    const {isLoggedIn, logout} = useAuth();
+    const {isSidebarOpen} = useSidebar();
 
     return (
         <div className={clsx(styles.sidebar, {
@@ -50,17 +58,15 @@ const Sidebar: React.FC = () => {
                         <li>
                             <NavLink iconName="fad fa-flask" href="/app/the-lab">The Lab</NavLink>
                             <ul>
-                                <li><NavLink secondary={true} iconName="fad fa-text" href="/app/the-lab/text-builder">Text Builder</NavLink></li>
-                                <li><NavLink secondary={true} iconName="fad fa-stop" href="/app/the-lab/button-builder">Button Builder</NavLink></li>
+                                <li><NavLink secondary={true} iconName="fad fa-text" href="/app/the-lab/text-builder">Text
+                                    Builder</NavLink></li>
+                                <li><NavLink secondary={true} iconName="fad fa-stop" href="/app/the-lab/button-builder">Button
+                                    Builder</NavLink></li>
                             </ul>
                         </li>
                         <li>
-                            <Link href='https://www.google.com' passHref={true}>Google (Link)</Link>
+                            <a onClick={handleClick}>Redirect To Google</a>
                         </li>
-                        <li>
-                            <a href='https://www.google.com'>Google (Anchor)</a>
-                        </li>
-
                     </ul>
                 </nav>
             </div>
