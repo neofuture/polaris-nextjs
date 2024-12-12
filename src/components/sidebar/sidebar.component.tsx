@@ -6,6 +6,7 @@ import styles from './sidebar.module.css';
 import { useSidebar } from '@/context/SidebarContext';
 import clsx from "clsx";
 import NavLink from "@/components/microcomponents/nav-link/nav-link.component";
+import Link from "next/link";
 
 const Sidebar: React.FC = () => {
     const { isLoggedIn, logout } = useAuth();
@@ -53,6 +54,13 @@ const Sidebar: React.FC = () => {
                                 <li><NavLink secondary={true} iconName="fad fa-stop" href="/app/the-lab/button-builder">Button Builder</NavLink></li>
                             </ul>
                         </li>
+                        <li>
+                            <Link href='https://www.google.com' passHref={true}>Google (Link)</Link>
+                        </li>
+                        <li>
+                            <a href='https://www.google.com'>Google (Anchor)</a>
+                        </li>
+
                     </ul>
                 </nav>
             </div>
