@@ -104,6 +104,6 @@
     margin-left: 16px;
 }
 
-a {
+.sidebar__content a {
     cursor: pointer;
 }
