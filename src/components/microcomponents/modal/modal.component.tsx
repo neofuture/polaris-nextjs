@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
-import FocusLock from "react-focus-lock";
-import { RemoveScroll } from "react-remove-scroll";
-import styles from "./modal.module.css";
-import Button from "@/components/microcomponents/button/button.component";
+import React, { useEffect, useState } from 'react';
+
+import Button from '@/components/microcomponents/button/button.component';
+
+import styles from './modal.module.css';
 
 interface ModalProps {
     isOpen: boolean;
@@ -11,27 +11,35 @@ interface ModalProps {
     showCloseButton?: boolean;
     allowBlurClose?: boolean;
     closeTimer?: number;
+    closeLabel?: string;
+    action?: () => void;
+    actionLabel?: string;
+    actionCancel?: () => void;
+    actionCancelLabel?: string;
 }
 
-const Modal: React.FC<ModalProps> = (
-    {
-        isOpen,
-        onClose,
-        children,
-        showCloseButton = true,
-        allowBlurClose = true,
-        closeTimer
-    }
-) => {
+function Modal({
+                   isOpen,
+                   onClose,
+                   children,
+                   showCloseButton = true,
+                   allowBlurClose = true,
+                   closeTimer,
+                   closeLabel,
+                   action,
+                   actionLabel,
+                   actionCancel,
+                   actionCancelLabel,
+               }: ModalProps) {
     const [isVisible, setIsVisible] = useState(isOpen);
     const [isFadingOut, setIsFadingOut] = useState(false);
     const [remainingTime, setRemainingTime] = useState(closeTimer || 0);
     const [percentage, setPercentage] = useState(100);
-    const firstFocusableElementRef = useRef<HTMLDivElement | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        let timer: NodeJS.Timeout;
-        let interval: NodeJS.Timeout;
+        let timer: ReturnType<typeof setTimeout>;
+        let interval: ReturnType<typeof setInterval>;
 
         if (isOpen) {
             setIsVisible(true);
@@ -45,7 +53,7 @@ const Modal: React.FC<ModalProps> = (
                 }, closeTimer);
 
                 interval = setInterval(() => {
-                    setRemainingTime(prev => {
+                    setRemainingTime((prev) => {
                         const newRemainingTime = prev - 100;
                         if (newRemainingTime <= 0) {
                             clearInterval(interval);
@@ -56,13 +64,12 @@ const Modal: React.FC<ModalProps> = (
                     });
                 }, 100);
             }
-
-            if (firstFocusableElementRef.current) {
-                firstFocusableElementRef.current.focus();
-            }
         } else {
             setIsFadingOut(true);
-            setTimeout(() => setIsVisible(false), 300);
+            setTimeout(() => {
+                setIsVisible(false);
+            }, 300);
+            setIsLoading(false);
         }
 
         return () => {
@@ -71,36 +78,96 @@ const Modal: React.FC<ModalProps> = (
         };
     }, [isOpen, closeTimer, onClose]);
 
+    const handleActionClick = async () => {
+        setIsLoading(true);
+        if (action) {
+            action();
+        }
+    };
+
+    const handleActionCancelClick = async () => {
+        setIsLoading(true);
+        if (actionCancel) {
+            actionCancel();
+        }
+    };
+
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape' && allowBlurClose) {
+                onClose();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [allowBlurClose, onClose]);
+
     if (!isVisible) return null;
     return (
-        <RemoveScroll>
-            <FocusLock>
-                <div className={`${styles.modal} ${isFadingOut ? styles["fade-out"] : ""}`}
-                     onClick={allowBlurClose ? onClose : undefined}
-                     role="dialog"
-                     aria-labelledby="modal-content"
-                     aria-describedby="modal-content"
-                     aria-modal="true">
-                    <div className={styles["modal-content"]} onClick={(e) => e.stopPropagation()}>
-                        <div className={styles["modal-inner"]}>
-                            <div id="modal-content">
-                                {children}
-                            </div>
-                            {showCloseButton &&
-                                <div className={styles["button-container"]}>
-                                    <div ref={firstFocusableElementRef}>
-                                        <Button iconName='fas fa-xmark' size={'small'} onClick={onClose}>Close</Button>
-                                    </div>
-                                </div>}
-                        </div>
-                        {closeTimer && Math.ceil(remainingTime / 1000) > 0 &&
-                            <div className={styles["percentage-bar"]} style={{width: `${percentage}%`}}></div>
+        <div
+            className={`${styles.modal} ${isFadingOut ? styles['fade-out'] : ''}`}
+            onClick={allowBlurClose ? onClose : undefined}
+            onKeyDown={
+                allowBlurClose
+                    ? (e) => {
+                        if (e.key === 'Escape') {
+                            onClose();
                         }
-                    </div>
+                    }
+                    : undefined
+            }
+            role="button"
+            tabIndex={-1}
+        >
+            <div
+                className={styles['modal-content']}
+                onClick={(e) => {
+                    e.stopPropagation();
+                }}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') e.stopPropagation();
+                }}
+                role="button"
+                tabIndex={0}
+            >
+                <div className={styles['modal-inner']}>
+                    {children}
+                    {showCloseButton || action || actionCancel ? (
+                        <div className={styles['button-container']}>
+                            {showCloseButton ? (
+                                <Button width="120px" size="small" onClick={onClose}>
+                                    {closeLabel ? closeLabel : 'Close'}
+                                </Button>
+                            ) : null}
+                            {action ? (
+                                <Button width="120px" size="small" onClick={handleActionClick} state="secondary" disabled={isLoading}>
+                                    {isLoading ? <i className="fas fa-spinner fa-spin" /> : actionLabel ? actionLabel : 'Action'}
+                                </Button>
+                            ) : null}
+                            {actionCancel ? (
+                                <Button width="200px" size="small" onClick={handleActionCancelClick} state="error" disabled={isLoading}>
+                                    {isLoading ? (
+                                        <i className="fas fa-spinner fa-spin" />
+                                    ) : actionCancelLabel ? (
+                                        actionCancelLabel
+                                    ) : (
+                                        'Cancel'
+                                    )}
+                                </Button>
+                            ) : null}
+                        </div>
+                    ) : null}
                 </div>
-            </FocusLock>
-        </RemoveScroll>
+                {closeTimer && Math.ceil(remainingTime / 1000) > 0 ? (
+                    <div className={styles['percentage-bar']} style={{ width: `${percentage}%` }} />
+                ) : null}
+            </div>
+        </div>
     );
-};
+}
 
 export default Modal;
