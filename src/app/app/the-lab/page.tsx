@@ -25,6 +25,7 @@ import FormCheckbox from "@/components/microcomponents/form-checkbox/form-checkb
 import DatePicker from "@/components/microcomponents/date-picker/date-picker.component";
 import {format} from 'date-fns';
 import CustomDropdown from "@/components/microcomponents/custom-dropdown/custom-dropdown.component";
+import Grid from "@/components/microcomponents/grid/grid.component";
 
 const formSchema = z.object({
     email: z.string().email({message: 'Invalid email address'}),
@@ -235,6 +236,39 @@ const TheLab: React.FC = () => {
             checkboxError: result.success ? '' : result.error.errors[0].message
         }));
     };
+
+    const cardData = {
+        columns: {
+            make: 'Make',
+            model: 'Model',
+            vehicleAge: 'Vehicle Age'
+        },
+        rows: [
+            {make: 'Ford', model: 'Cortina', vehicleAge: '6 months'},
+            {make: 'Chevrolet', model: 'Impala', vehicleAge: '2 years'},
+            {make: 'Toyota', model: 'Corolla', vehicleAge: '1 year'},
+            {make: 'Honda', model: 'Civic', vehicleAge: '3 years'},
+            {make: 'BMW', model: '3 Series', vehicleAge: '5 years'},
+            {make: 'Audi', model: 'A4', vehicleAge: '4 years'},
+            {make: 'Mercedes-Benz', model: 'C-Class', vehicleAge: '2 years'},
+            {make: 'Volkswagen', model: 'Golf', vehicleAge: '6 months'},
+            {make: 'Nissan', model: 'Altima', vehicleAge: '1 year'},
+            {make: 'Hyundai', model: 'Elantra', vehicleAge: '3 years'}, {
+                make: 'Ford',
+                model: 'Cortina',
+                vehicleAge: '6 months'
+            },
+            {make: 'Chevrolet', model: 'Impala', vehicleAge: '2 years'},
+            {make: 'Toyota', model: 'Corolla', vehicleAge: '1 year'},
+            {make: 'Honda', model: 'Civic', vehicleAge: '3 years'},
+            {make: 'BMW', model: '3 Series', vehicleAge: '5 years'},
+            {make: 'Audi', model: 'A4', vehicleAge: '4 years'},
+            {make: 'Mercedes-Benz', model: 'C-Class', vehicleAge: '2 years'},
+            {make: 'Volkswagen', model: 'Golf', vehicleAge: '6 months'},
+            {make: 'Nissan', model: 'Altima', vehicleAge: '1 year'},
+            {make: 'Hyundai', model: 'Elantra', vehicleAge: '3 years'},
+        ]
+    }
 
     const card1data = {
         title: {
@@ -1008,6 +1042,21 @@ const TheLab: React.FC = () => {
                     </div>
                 </div>
             </div>
+
+            <div className={styles['container-full']}>
+                <div className={styles.section}>
+                    <h3>Product Card</h3>
+                    <Grid payload={cardData}>
+                    </Grid>
+
+                    <div className={styles.documentationBox}>
+                    </div>
+                    <div className={styles.parametersBox}>
+                        <h5>Parameters:</h5>
+                    </div>
+                </div>
+            </div>
+
 
             <div className={styles['container-full']}>
                 <div className={styles.section}>

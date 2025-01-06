@@ -1,0 +1,69 @@
+.tableContainer {
+    width: 100%;
+}
+
+.tableContainer table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+}
+
+.tableContainer td {
+    padding: 8px;
+    border: 1px solid var(--grey-30);
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tableContainer th {
+    padding: 8px;
+    border: 1px solid var(--grey-30);
+    text-align: left;
+}
+
+.tableContainer th span {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tableContainer th {
+    background-color: var(--light-primary);
+    color: var(--button-color);
+    position: relative;
+    border: 1px solid var(--light-primary);
+    user-select: none;
+}
+
+.tableBody {
+    display: block;
+    max-height: 400px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.tableBody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.resizer {
+    width: 4px;
+    cursor: col-resize;
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    height: calc(100% + 4px);
+    z-index: 1;
+    background-color: var(--light-secondary);
+    border-radius: 8px;
+}
+
+.no-select {
+    user-select: none;
+}

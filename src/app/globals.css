@@ -262,3 +262,7 @@ hr {
     border-top: 1px solid var(--grey-30);
     margin: 16px 0;
 }
+
+.no-select {
+    user-select: none;
+}
